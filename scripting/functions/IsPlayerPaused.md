@@ -14,7 +14,7 @@ Detect if player is pausing.
 
 | Name     | Description                  |
 | -------- | ---------------------------- |
-| playerid | The ID of the player to ban. |
+| playerid | The ID of the player who was detected pausing. |
 
 ## Returns
 
