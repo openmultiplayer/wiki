@@ -1,7 +1,7 @@
 ---
 title: OnPlayerResume
 description: This callback is called when a player has resumed his/her game.
-tags: ["player"] ["time"]
+tags: ["player"]
 ---
 
 # OnPlayerSpawn
