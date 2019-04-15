@@ -1,6 +1,6 @@
 ---
 title: OnPlayerPause
-description: This callback is called when a player has paused his/her game.
+description: This callback is called when a player has paused their game.
 tags: ["player"]
 ---
 
@@ -10,11 +10,11 @@ tags: ["player"]
 
 ## Description
 
-This callback is called when a player has paused his/her game.
+This callback is called when a player has paused their game.
 
 | Name     | Description                        |
 | -------- | ---------------------------------- |
-| playerid | The ID of the player that spawned. |
+| playerid | The ID of the player that paused their game. |
 
 ## Examples
 
