@@ -1,0 +1,38 @@
+---
+title: OnPlayerJackVehicle
+description: This callback is called when a player jacks another player's vehicle.
+tags: []
+---
+
+# OnPlayerJackVehicle
+
+<TagLinks />
+
+## Description
+
+This callback is called when a player jacks another player's vehicle.
+
+| Name     | Description                  |
+| -------- | ---------------------------- |
+| playerid | The ID of the player who was jacking. |
+| targetid | The ID of the player who was getting jacked. |
+| vehicleid | The ID of the vehicle which was getting jacked. |
+
+## Returns
+
+This function returns true [1].
+
+## Examples
+```
+public OnPlayerJackVehicle(playerid, targetid, vehicleid)
+{
+ if((newkeys & KEY_SPRINT) && !(oldkeys & KEY_SPRINT)) 
+ {
+  SendClientMessage(playerid, -1, "You've been kicked for attempting to steal ID %d's vehicle ID %d", targetid, vehicleid);
+  Kick(playerid);
+ }
+ return 1;
+}
+```
+
+## Related Functions
