@@ -4,7 +4,7 @@ description: This callback is called when a player has resumed his/her game.
 tags: ["player"]
 ---
 
-# OnPlayerSpawn
+# OnPlayerResume
 
 <TagLinks />
 
@@ -31,5 +31,5 @@ public OnPlayerResume(playerid, time)
 
 ## Related Functions
 
-- OnPlayerPause: Callback is called when player is pausing his game.
+- OnPlayerPause: Callback is called when detects a player pausing his game.
 - IsPlayerPaused: Function is called to detect if player is paused or not.
