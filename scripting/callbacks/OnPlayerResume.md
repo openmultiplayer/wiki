@@ -1,6 +1,6 @@
 ---
 title: OnPlayerResume
-description: This callback is called when a player has resumed his/her game.
+description: This callback is called when a player has resumed their game.
 tags: ["player"]
 ---
 
@@ -10,11 +10,11 @@ tags: ["player"]
 
 ## Description
 
-This callback is called when a player has resumed his/her game.
+This callback is called when a player has resumed their game.
 
 | Name     | Description                        |
 | -------- | ---------------------------------- |
-| playerid | The ID of the player that spawned. |
+| playerid | The ID of the player that resumed their game.. |
 | time | The time of the player that paused in milliseconds. |
 
 ## Examples
