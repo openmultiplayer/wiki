@@ -31,4 +31,5 @@ public OnPlayerResume(playerid, time)
 
 ## Related Functions
 
-- OnPlayerPause: Detects if player is pausing his game.
+- OnPlayerPause: Callback is called when player is pausing his game.
+- IsPlayerPaused: Function is called to detect if player is paused or not.
