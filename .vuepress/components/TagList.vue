@@ -2,9 +2,9 @@
   <div>
     <div v-if="$route.hash === ''">
       <ul>
-        <li  v-for="tag in Object.keys(tags)">
-          <router-link :to="{path: `/tags.html#${tag}`}">
-            {{tag}}
+        <li v-for="tag in Object.keys(tags)">
+          <router-link :to="{ path: `/tags.html#${tag}` }">
+            {{ tag }}
           </router-link>
         </li>
       </ul>
@@ -13,15 +13,14 @@
       <a href="#">Show All</a>
       <span v-for="tag in Object.keys(tags)">
         <h2 :id="tag">
-          <router-link
-            :to="{ path: `/tags.html#${tag}`}"
-            class="header-anchor"
-            aria-hidden="true">#</router-link>
-          {{tag}}
+          <router-link :to="{ path: `/tags.html#${tag}` }" class="header-anchor" aria-hidden="true"
+            >#</router-link
+          >
+          {{ tag }}
         </h2>
         <ul>
           <li v-for="page in tags[tag]">
-            <router-link :to="{path: page.path}">{{page.title}}</router-link>
+            <router-link :to="{ path: page.path }">{{ page.title }}</router-link>
           </li>
         </ul>
       </span>
@@ -37,8 +36,8 @@ export default {
       for (let page of this.$site.pages) {
         for (let index in page.frontmatter.tags) {
           const tag = page.frontmatter.tags[index];
-          const hash = this.$route.hash.replace("#", "");
-          if (hash !== "" && tag !== hash) {
+          const hash = this.$route.hash.replace('#', '');
+          if (hash !== '' && tag !== hash) {
             continue;
           }
           if (tag in tags) {

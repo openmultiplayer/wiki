@@ -15,20 +15,20 @@ export default {
     tree() {
       let pages = this.$site.pages
         .filter((value, index, array) => {
-          return value.path !== "/";
+          return value.path !== '/';
         })
         .filter((value, index, array) => {
-          return value.path.split("/").length > 3;
+          return value.path.split('/').length > 3;
         })
         .map((value, index, array) => {
-          let split = value.path.split("/");
+          let split = value.path.split('/');
           value.cat = split[1];
           value.sub = split[2];
           return value;
         });
 
       let tree = {};
-      pages.forEach(page => {
+      pages.forEach((page) => {
         if (page.cat in tree) {
           tree[page.cat].push(page);
         } else {
