@@ -45,7 +45,7 @@ It is also possible to set a player's color to a color that has full transparenc
 
 ## Related Functions
 
-- SetPlayerMarkerForPlayer: Set a player's marker.
-- LimitPlayerMarkerRadius: Limit the player marker radius.
-- ShowNameTags: Set nametags on or off.
-- SetPlayerColor: Set a player's color.
+- [SetPlayerMarkerForPlayer](../functions/SetPlayerMarkerForPlayer): Set a player's marker.
+- [LimitPlayerMarkerRadius](../functions/LimitPlayerMarkerRadius): Limit the player marker radius.
+- [ShowNameTags](../functions/ShowNameTags): Set nametags on or off.
+- [SetPlayerColor](../functions/SetPlayerColor): Set a player's color.
