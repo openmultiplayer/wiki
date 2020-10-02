@@ -47,6 +47,6 @@ This function does not work in the current SA:MP version!
 ## Related Functions
 
 
--  CreatePickup: Create a pickup.
--  GivePlayerMoney: Give a player money.
--  OnPlayerDeath: Called when a player dies.
+-  [CreatePickup](../functions/CreatePickup): Create a pickup.
+-  [GivePlayerMoney](../functions/GivePlayerMoney): Give a player money.
+- [OnPlayerDeath](../functions/OnPlayerDeath): Called when a player dies.
