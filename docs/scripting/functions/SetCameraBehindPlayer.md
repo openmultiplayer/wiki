@@ -33,5 +33,5 @@ SetCameraBehindPlayer(playerid);
 ## Related Functions
 
 
--  SetPlayerCameraPos: Set a player's camera position.
--  SetPlayerCameraLookAt: Set where a player's camera should face.
+-  [SetPlayerCameraPos](../functions/SetPlayerCameraPos): Set a player's camera position.
+-  [SetPlayerCameraLookAt](../functions/SetPlayerCameraLookAt): Set where a player's camera should face.
