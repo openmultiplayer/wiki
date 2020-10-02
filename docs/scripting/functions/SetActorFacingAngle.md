@@ -65,5 +65,5 @@ Players will see actor's facing angle changed only when it is restreamed to them
 ## Related Functions
 
 
--  GetActorFacingAngle: Get the facing angle of an actor.
--  SetActorPos: Set the position of an actor.
+- [ GetActorFacingAngle](../functions/GetActorFacingAngle): Get the facing angle of an actor.
+-  [SetActorPos](../functions/SetActorPos): Set the position of an actor.
