@@ -51,5 +51,5 @@ Avoid using format specifiers in your messages without formatting the string tha
 ## Related Functions
 
 
--  SendClientMessage: Send a message to a certain player.
--  SendPlayerMessageToAll: Force a player to send text for all players.
+-  [SendClientMessage](../functions/SendClientMessage): Send a message to a certain player.
+-  [SendPlayerMessageToAll](../functions/SendPlayerMessageToAll): Force a player to send text for all players.
