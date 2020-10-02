@@ -67,6 +67,6 @@ You can use color embedding for multiple colors in the message.
 ## Related Functions
 
 
--  SendClientMessageToAll: Send a message to all players.
--  SendPlayerMessageToPlayer: Force a player to send text for one player.
--  SendPlayerMessageToAll: Force a player to send text for all players.
+-  [SendClientMessageToAll](../functions/SendClientMessageToAll): Send a message to all players.
+-  [SendPlayerMessageToPlayer](../functions/SendPlayerMessageToPlayer): Force a player to send text for one player.
+-  [SendPlayerMessageToAll](../functions/SendPlayerMessageToAll): Force a player to send text for all players.
