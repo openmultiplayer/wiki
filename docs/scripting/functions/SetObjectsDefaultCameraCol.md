@@ -89,5 +89,5 @@ This function ONLY works outside the normal SA map boundaries (past 3000 units).
 ## Related Functions
 
 
--  SetObjectNoCameraCol: Disables collisions between camera and object.
--  SetPlayerObjectNoCameraCol: Disables collisions between camera and player object.
+-  [SetObjectNoCameraCol](../functions/SetObjectNoCameraCol): Disables collisions between camera and object.
+-  [SetPlayerObjectNoCameraCol](../functions/SetPlayerObjectNoCameraCol): Disables collisions between camera and player object.
