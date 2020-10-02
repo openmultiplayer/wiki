@@ -46,11 +46,11 @@ public OnPlayerCommandText(playerid, cmdtext[])
 ## Related Functions
 
 
--  CreateObject: Create an object.
--  DestroyObject: Destroy an object.
--  MoveObject: Move an object.
--  EditObject: Edit an object.
--  EditPlayerObject: Edit an object.
--  EditAttachedObject: Edit an attached object.
--  CancelEdit: Cancel the edition of an object.
--  OnPlayerSelectObject: Called when a player selected an object.
+-  [CreateObject](../functions/CreateObject): Create an object.
+-  [DestroyObject](../functions/DestroyObject): Destroy an object.
+-  [MoveObject](../functions/MoveObject): Move an object.
+-  [EditObject](../functions/EditObject): Edit an object.
+-  [EditPlayerObject](../functions/EditPlayerObject): Edit an object.
+-  [EditAttachedObject](../functions/EditAttachedObject): Edit an attached object.
+-  [CancelEdit](../functions/CancelEdit): Cancel the edition of an object.
+-  [OnPlayerSelectObject](../functions/OnPlayerSelectObject): Called when a player selected an object.
