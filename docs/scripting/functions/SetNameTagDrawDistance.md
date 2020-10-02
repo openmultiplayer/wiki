@@ -40,6 +40,6 @@ Default distance is 70 SA units
 ## Related Functions
 
 
--  LimitGlobalChatRadius: Limit the distance between players needed to see their chat.
--  ShowNameTags: Set nametags on or off.
--  ShowPlayerNameTagForPlayer: Show or hide a nametag for a certain player.
+-  [LimitGlobalChatRadius](../functions/LimitGlobalChatRadius): Limit the distance between players needed to see their chat.
+-  [ShowNameTags](../functions/ShowNameTags): Set nametags on or off.
+-  [ShowPlayerNameTagForPlayer](../functions/ShowPlayerNameTagForPlayer): Show or hide a nametag for a certain player.
