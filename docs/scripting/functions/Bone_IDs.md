@@ -1,3 +1,4 @@
+### BoneIDs for SetPlayerAttachedObject
 ### From open.mp Wiki
 
 To be used with [SetPlayerAttachedObject](../scripting/functions/SetPlayerAttachedObject "SetPlayerAttachedObject").
