@@ -52,4 +52,4 @@ You can use NPCs to create your own custom death reasons.
 
 
 -  [SendDeathMessageToPlayer](../functions/SendDeathMessageToPlayer): Add a kill to the death list for a player.
--  [OnPlayerDeath](../functions/OnPlayerDeath): Called when a player dies.
+-  [OnPlayerDeath](../callbacks/OnPlayerDeath): Called when a player dies.
