@@ -1,7 +1,7 @@
 ---
-id: vehicleid
-title: Vehicle IDs
-description: A complete list of vehicle ids
+id: vehicles
+title: Vehicles
+description: A complete list of vehicles
 ---
 
 | ID                                   | Description                                                                                                                                        |
