@@ -4,8 +4,8 @@ title: Vehicles
 description: A complete list of vehicles
 ---
 
-| ID                                   | Description                                                                                                                                        |
-| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ID                                    | Description                                                                                                                                        |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
 | ![](/images/vehicles/Vehicle_400.jpg) | Vehicle Model ID: 400<br/> Vehicle Name: Landstalker<br/> Category: Off Road <br/>Modifications:Transfender <br/>Model name: landstal<br/>         |
 | ![](/images/vehicles/Vehicle_401.jpg) | Vehicle Model ID: 401<br/> Vehicle Name: Bravura<br/> Category: Saloons <br/>Modifications:Transfender <br/>Model name: bravura<br/>               |
 | ![](/images/vehicles/Vehicle_402.jpg) | Vehicle Model ID: 402<br/> Vehicle Name: Buffalo<br/> Category: Sport Vehicles <br/>Modifications:Transfender <br/>Model name: buffalo<br/>        |
