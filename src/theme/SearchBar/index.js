@@ -10,7 +10,7 @@ import classnames from "classnames";
 import { useHistory } from "@docusaurus/router";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 let loaded = false;
-const Search = props => {
+const Search = (props) => {
   const initialized = useRef(false);
   const searchBarRef = useRef(null);
   const history = useHistory();
@@ -33,7 +33,7 @@ const Search = props => {
           // So, we can safely remove it. See https://github.com/facebook/docusaurus/issues/1828 for more details.
 
           history.push(url);
-        }
+        },
       });
       initialized.current = true;
     }
@@ -49,7 +49,7 @@ const Search = props => {
       Promise.all([
         getSearchData(),
         import("./lib/DocSearch"),
-        import("./algolia.css")
+        import("./algolia.css"),
       ]).then(([searchData, { default: DocSearch }]) => {
         loaded = true;
         window.searchData = searchData;
@@ -62,7 +62,7 @@ const Search = props => {
   };
 
   const toggleSearchIconClick = useCallback(
-    e => {
+    (e) => {
       if (!searchBarRef.current.contains(e.target)) {
         searchBarRef.current.focus();
       }
@@ -78,7 +78,7 @@ const Search = props => {
         aria-label="expand searchbar"
         role="button"
         className={classnames("search-icon", {
-          "search-icon-hidden": props.isSearchBarExpanded
+          "search-icon-hidden": props.isSearchBarExpanded,
         })}
         onClick={toggleSearchIconClick}
         onKeyDown={toggleSearchIconClick}
