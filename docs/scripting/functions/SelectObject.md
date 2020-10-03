@@ -53,4 +53,4 @@ public OnPlayerCommandText(playerid, cmdtext[])
 -  [EditPlayerObject](../functions/EditPlayerObject): Edit an object.
 -  [EditAttachedObject](../functions/EditAttachedObject): Edit an attached object.
 -  [CancelEdit](../functions/CancelEdit): Cancel the edition of an object.
--  [OnPlayerSelectObject](../functions/OnPlayerSelectObject): Called when a player selected an object.
+-  [OnPlayerSelectObject](../callbacks/OnPlayerSelectObject): Called when a player selected an object.
