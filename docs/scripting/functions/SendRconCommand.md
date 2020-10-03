@@ -47,5 +47,5 @@ SendRconCommand(szCmd);
 
 ## Related Callbacks
 
-- [OnRconCommand](../functions/OnRconCommand): Called when an RCON command is sent.
-- [OnRconLoginAttempt](../functions/OnRconLoginAttempt): Called when an attempt to login to RCON is made.
+- [OnRconCommand](../callbacks/OnRconCommand): Called when an RCON command is sent.
+- [OnRconLoginAttempt](../callbacks/OnRconLoginAttempt): Called when an attempt to login to RCON is made.
