@@ -25,7 +25,7 @@ Esta callback é chamada quando um jogador responde a uma dialog mostrada usando
 
 ## Return
 
-É sempre chamado primeiro nos filterscripts, por isso, return 1 impede que as outras filterscripts o vejam.
+É sempre chamado primeiro nos filterscripts, por isso, retornar 1 impede que as outras filterscripts o vejam.
 
 ## Exemplos
 
