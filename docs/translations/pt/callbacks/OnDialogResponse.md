@@ -23,7 +23,7 @@ Esta callback é chamada quando um jogador responde a uma dialog mostrada usando
 | listitem    | O ID do item da lista selecionado pelo jogador (inicia 0) (apenas se estiver usando style list, caso contrário, será -1).                |
 | inputtext[] | O texto inserido no campo pelo jogador ou texto do item da lista que foi selecionado.                                                    |
 
-## Return
+## Retorno
 
 É sempre chamado primeiro nos filterscripts, por isso, retornar 1 impede que as outras filterscripts o vejam.
 
