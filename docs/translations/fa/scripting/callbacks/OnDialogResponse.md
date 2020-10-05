@@ -132,7 +132,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     }
 
     return 0;// Bayad inja return 0 konid, mesle OnPlayerCommandText
-}```
+}
+```
 
 ## Notes
 
