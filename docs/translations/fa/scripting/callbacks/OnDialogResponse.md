@@ -5,24 +5,26 @@ description: In callback vaghti player be "ShowPlayerDialog" az tarighe click ba
 tags: []
 ---
 
+<div dir="rtl" style={{ textAlign: "right" }}>
+
 :::warning
-In callback dar version SA-MP 0.3a ezafe shode va dar version haye ghabl kar nemikonad !
+این کالبک در نسخه سمپ 0.3a اضافه شده است و در نسخه های قبلی قابل استفاده نیست.
 :::
 
-## Tozihat
-In callback vaghti player be "ShowPlayerDialog" az tarighe click bar rooye dokme ya zadane ENTER/ESC ya click bar rooye list item (agar style dialog list bashad) pasokh bedahad fara khande mishavad.
-| Esm         | Tozih                                                                                                                                    |
+## توضیحات
+
+این کالبک زمانی  که بازیکن با "ShowPlayerDialog" از طریق کلیک روی دکمه یا فشردن دکمه ESC/ENTER یا کلیک بر روی آیتم(در صورتی که نوع دیالوگ لیست باشد) پاسخ بدهد فرا خوانده میشود
+
+| اسم         | توضیح                                                                                                                                    |
 | ----------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| playerid    | ID playeri ke be dialog pasokh dade.                                                                                                     |
-| dialogid    | ID dialogi ke player be an pasokh dade ast, dar ShowPlayerDialog vojood darad                                                            |
-| response    | 1 dar soorati ke player rooye dokme chap click kard, va 0 dar soorati ke player rooye dokme rast click kard(agar faqat dokme namayesh dade shode bashad) |
-| listitem    | ID itemi ke player az list entekhab karde (az 0 shoroo mishavad) (dar soorati ke noe dialog list bashad dar gheyre in soorat -1 mibashad)|
-| inputtext[] | Matni ke player dar input box neveshte ya esme item ke az list entekkhab karde                                                           |
+| playerid    | شناسه بازیکن مورد نظر                                                                                                     |
+| dialogid    | شناسه دیالوگی که برای بازیکن نمایش داده میشود                                                            |
+| response    | 1 در حالتی که به آن پاسخ داده باشد و 0 اگه بازیکن آن را کنسل کرده باشد |
+| lisitem     | شناسه موردی که بازیکن انتخاب کرده (از 0 شروع میشود) ) (فقط در صورتی که سبک دیالوگ لیست باشد، در غیر این صورت این مورد -1 خواهد بود). |
+| inputtext[] | متنی که بازیکن درون قسمت ورودی وارد کرده یا متن موردی که بازیکن انتخاب کرده است |
 
-## Return ha
-In callback hamishe aval dar filterscript ha fara khande mishavad pas agar return 1 shavad mane fara khande shodan dar filterscript digar mishavad.
-
-## Masal ha
+## مثال ها
+</div>
 
 ```c
 // Tarif kardane id dialog ke mikhahim ejra shavad
@@ -134,23 +136,30 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
     return 0;// Bayad inja return 0 konid, mesle OnPlayerCommandText
 }
 ```
+<div dir="rtl" style={{ textAlign: "right" }}>
 
-## Notes
+## نکته ها
 
 :::tip
 
-Parameter ha mitavanand daraye mohtavaye motefaveti bashad, bar asase style e dialog
+مقدار ها بر اثاث نوع استایل دیالوگ میتوانند محتوای متفاوتی داشته باشند
 
 :::
 
 :::tip
 
-Behtar ast az dialogid haye mokhtalefi estefade konid, agar tedade an ha ziad ast
+اگر تعداد دیالوگ ها زیاد است بهتر است از شناسه دیالوگ های مختلفی استفاده کنید
 
 :::
 
 :::warning
 
-Dialog player baad az restart shodan server penhan nemishavad va agar player be dialog pasokh bedahad baes namayesh "Warning: PlayerDialogResponse PlayerId: 0 dialog ID doesn't match last sent dialog ID" dar console mishavad.
+دیالوگ بعد از ری استارت شدن سرور برای بازیکن ها پنهان نمیشود و اگر بازیکن به دیالوگ پاسخ بدهد "Warning: PlayerDialogResponse PlayerId: 0 dialog ID doesn't match last sent dialog ID" در کنسول نمایش داده میشود
 
 :::
+
+## تابع های مرتبط
+</div>
+
+- [ShowPlayerDialog](../../../../translation/fa/scripting/functions/ShowPlayerDialog.md) 
+
