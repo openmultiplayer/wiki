@@ -263,7 +263,7 @@ playerid = 0, dialogid = YOUR_DIALOGID, response = 0, listitem = 1, inputtext = 
 
 :::
 
-:::note
+:::note نکته
 
 - شبیه**DIALOG_STYLE_LIST**.
 
@@ -273,7 +273,7 @@ playerid = 0, dialogid = YOUR_DIALOGID, response = 0, listitem = 1, inputtext = 
 
 نمایش دادن:
 
-:::note
+:::note نکته
 
 - **\t** مقداری فاصله ایجاد میکند.
 - **\n** یک خط جدید میسازد.
