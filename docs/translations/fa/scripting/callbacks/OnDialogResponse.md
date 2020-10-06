@@ -1,7 +1,7 @@
 ---
 id: OnDialogResponse
 title: OnDialogResponse
-description: In callback vaghti player be "ShowPlayerDialog" az tarighe click bar rooye dokme ya zadane ENTER/ESC ya click bar rooye list item (agar style dialog list bashad) pasokh bedahad fara khande mishavad.
+description: این کالبک زمانی  که بازیکن با "ShowPlayerDialog" از طریق کلیک روی دکمه یا فشردن دکمه ESC/ENTER یا کلیک بر روی آیتم(در صورتی که نوع دیالوگ لیست باشد) پاسخ بدهد فرا خوانده میشود
 tags: []
 ---
 
@@ -45,7 +45,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
         {
             Kick(playerid);
         }
-        return 1; // Ma yek dialog ra rasidegi kardim pas bayad return 1 konim, melse OnPlayerCommandText.
+        return 1; // Ma yek dialog ra residegi kardim pas bayad return 1 konim, melse OnPlayerCommandText.
     }
 
     return 0; // Bayad inja return 0 konid, mesle OnPlayerCommandText
@@ -77,7 +77,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
                 ShowPlayerDialog(playerid, DIALOG_LOGIN, DIALOG_STYLE_INPUT, "Login", "Please enter your password:", "Login", "Cancel");
             }
         }
-        return 1; // Ma yek dialog ra rasidegi kardim pas bayad return 1 konim, melse OnPlayerCommandText.
+        return 1; // Ma yek dialog ra residegi kardim pas bayad return 1 konim, melse OnPlayerCommandText.
     }
 
     return 0; // Bayad inja return 0 konid, mesle OnPlayerCommandText
@@ -101,7 +101,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
                 case 2: GivePlayerWeapon(playerid, WEAPON_SHOTGSPA, 28); // Give them a Combat Shotgun
             }
         }
-        return 1; // Ma yek dialog ra rasidegi kardim pas bayad return 1 konim, melse OnPlayerCommandText.
+        return 1; // Ma yek dialog ra residegi kardim pas bayad return 1 konim, melse OnPlayerCommandText.
     }
 
     return 0; // Bayad inja return 0 konid, mesle OnPlayerCommandText
@@ -130,7 +130,7 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
                 case 2: GivePlayerWeapon(playerid, WEAPON_AK47, 120); // Give them an AK-47
             }
         }
-        return 1; // Ma yek dialog ra rasidegi kardim pas bayad return 1 konim, melse OnPlayerCommandText.
+        return 1; // Ma yek dialog ra residegi kardim pas bayad return 1 konim, melse OnPlayerCommandText.
     }
 
     return 0;// Bayad inja return 0 konid, mesle OnPlayerCommandText
@@ -154,12 +154,11 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 
 :::warning
 
-دیالوگ بعد از ری استارت شدن سرور برای بازیکن ها پنهان نمیشود و اگر بازیکن به دیالوگ پاسخ بدهد "Warning: PlayerDialogResponse PlayerId: 0 dialog ID doesn't match last sent dialog ID" در کنسول نمایش داده میشود
+دیالوگ بعد از ری استارت شدن سرور برای بازیکن ها پنهان نمیشود و اگر بازیکن به دیالوگ پاسخ بدهد "Warning: PlayerDialogResponse PlayerId: 0 dialog ID doesn't match last sent dialog ID" در کنسول نمایش داده میشود.
 
 :::
 
 ## تابع های مرتبط
 </div>
 
-- [ShowPlayerDialog](../../../../translation/fa/scripting/functions/ShowPlayerDialog.md) 
-
+- [ShowPlayerDialog](../functions/ShowPlayerDialog.md) 
