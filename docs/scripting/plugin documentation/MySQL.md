@@ -21,6 +21,13 @@ ORM functions:
 * [orm_insert](#orm_insert)
 * [orm_delete](#orm_delete)
 * [orm_load](#orm_load)
+* [orm_save](#orm_save) 
+* [orm_addvar_int](#orm_addvar_int)
+* [orm_addvar_float](#orm_addvar_float)
+* [orm_addvar_string](#orm_addvar_string)
+* [orm_delvar](#orm_delvar)
+* [orm_clear_vars](#orm_clear_vars)
+* [orm_setkey](#orm_setkey)
 
 ##orm_create
 ==========
@@ -390,5 +397,81 @@ new ORM:ormid = orm_create("players");
  
 orm_addvar_string(ormid, Player[playerid][Name], MAX_PLAYER_NAME, "name");
 orm_addvar_string(ormid, Player[playerid][Password], 129, "passwd");
+```
+---------
+##orm_delvar
+==========
+**Description:**
+>Removes a previously registered variable from the specified ORM instance by its column name.
+
+**Parameters:**
+```bash
+(ORM:id, const columnname[])
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`const columnname[]`	The name of the column.
+
+**Return Values:**
+>1 if successfully added, 0 if not.
+------------
+```pawn
+new ORM:ormid = orm_create("players");
+ 
+orm_addvar_int(ormid, Player[playerid][ID], "id");
+// ...
+orm_delvar(ormid, "id"); //returns true, variable "Player[playerid][ID]" has been removed
+orm_delvar(ormid, "id"); //returns false, because the variable couldn't be found as it was already removed
+```
+---------
+##orm_clear_vars
+==========
+**Description:**
+>Sets all variables registered in the specified ORM instance to zero.
+
+**Parameters:**
+```bash
+(ORM:id)
+```
+`ORM:id` 	The id of the ORM instance.
+
+**Return Values:**
+>1 if successfully added, 0 if not.
+------------
+```pawn
+new ORM:ormid = orm_create("players");
+ 
+Player[playerid][Money] = GetPlayerMoney(playerid);
+GetPlayerHealth(playerid, Player[playerid][Health]);
+ 
+orm_addvar_int(ormid, Player[playerid][Money], "money");
+orm_addvar_float(ormid, Player[playerid][Health], "Health");
+ 
+orm_clear_vars(ormid); //the money and health variables are now set to '0'
+```
+---------
+##orm_setkey
+==========
+**Description:**
+>Sets a previously registered variable as key specified by the column name the variable has been linked to.
+
+**Parameters:**
+```bash
+(ORM:id, const columnname[])
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`const columnname[]`	The name of the column in the MySQL table.
+
+**Return Values:**
+>1 if successfully added, 0 if not.
+------------
+```pawn
+new ORM:ormid = orm_create("players");
+ 
+orm_addvar_int(ormid, Player[playerid][ID], "id");
+orm_addvar_float(ormid, Player[playerid][PosX], "pos_x");
+// ...
+orm_setkey(ormid, "id");
 ```
 ---------
