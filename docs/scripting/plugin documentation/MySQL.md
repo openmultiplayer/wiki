@@ -27,7 +27,34 @@ Documentation for BlueG's MySQL plugin version R41-4
 	* [orm_delvar](#orm_delvar)
 	* [orm_clear_vars](#orm_clear_vars)
 	* [orm_setkey](#orm_setkey)
-
+* MySQL functions
+	* [mysql_log](#mysql_log) 
+	* [mysql_connect](#mysql_connect) 
+	* [mysql_connect_file](#mysql_connect_file) 
+	* [Available fields](#Available_fields) 
+	* [mysql_close](#mysql_close) 
+	* [mysql_unprocessed_queries](#mysql_unprocessed_queries) 
+	* [mysql_global_options](#mysql_global_options) 
+	* [Options](#Options) 
+	* [mysql_init_options](#mysql_init_options) 
+	* [mysql_set_option](#mysql_set_option) 
+	* [Available options](#Available options) 
+	* [mysql_pquery](#mysql_pquery) 
+	* [Format specifiers](#Format specifiers) 
+	* [mysql_tquery](#mysql_tquery) 
+	* [Format specifiers](#Format specifiers) 
+	* [mysql_tquery_file](#mysql_tquery_file) 
+	* [mysql_query](#mysql_query) 
+	* [mysql_query_file](#mysql_query_file) 
+	* [mysql_errno](#mysql_errno) 
+	* [mysql_error](#mysql_error) 
+	* [mysql_escape_string](#mysql_escape_string) 
+	* [mysql_format](#mysql_format) 
+	* [Format strings](#Format strings) 
+	* [mysql_set_charset](#mysql_set_charset) 
+	* [mysql_get_charset](#mysql_get_charset) 
+	* [mysql_stat](#mysql_stat) 
+	
 #ORM functions
 ==========
 ##orm_create
@@ -474,5 +501,71 @@ orm_addvar_int(ormid, Player[playerid][ID], "id");
 orm_addvar_float(ormid, Player[playerid][PosX], "pos_x");
 // ...
 orm_setkey(ormid, "id");
+```
+---------
+MySQL functions
+==========
+##mysql_log
+==========
+**Description:**
+>Controls what information will be logged.
+
+**Parameters:**
+```bash
+(E_LOGLEVEL:loglevel = ERROR | WARNING)
+```
+`E_LOGLEVEL:loglevel`	Specifies what type of log messages will be logged (optional).
+
+**Return Values:**
+>This function does not return any specific values.
+
+**Log levels**
+| Log type	| Description                                  			|
+| ------------- | ------------------------------------------------------------- |
+| NONE	 	| Logs absolutely nothing. 					|
+| ERROR	        | Logs errors. 							|
+| WARNING	| Logs warnings.                   				|
+| INFO	 	| Logs informational messages 					|
+| DEBUG	        | Logs debug messages. 						|
+| ALL		| Logs everything.                   				|
+
+------------
+```pawn
+public OnGameModeInit()
+{
+	mysql_log(ALL); //logs everything (errors, warnings and debug messages)
+	return 1;
+}
+```
+---------
+##mysql_connect
+==========
+**Description:**
+>Connects to a MySQL server and database.
+
+**Parameters:**
+```bash
+(const host[], const user[], const password[], const database[], MySQLOpt:option_id = MySQLOpt:0)
+```
+`const host[]`	IP or hostname of the MySQL server.
+`const user[]`	Username of the account you want to connect to.
+`const password[]`	Password of the account you want to connect to.
+`const database[]`	Name of the database you want to connect to.
+`MySQLOpt:option_id`	MySQL connection options instance, see [mysql_init_options](#mysql_init_options)() and [mysql_set_option](#mysql_set_option)() (optional).
+
+**Return Values:**
+>Connection handle or MYSQL_INVALID_HANDLE on error.
+>
+>>**If no option id is specified, the default options will be used.**
+------------
+```pawn
+new MySQL:g_Sql;
+// ...
+public OnGameModeInit()
+{
+	g_Sql = mysql_connect("127.0.0.1", "root", "mypass", "mydatabase");
+	// ...
+	return 1;
+}
 ```
 ---------
