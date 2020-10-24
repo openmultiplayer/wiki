@@ -509,6 +509,8 @@ MySQL functions
 ==========
 **Description:**
 >Controls what information will be logged.
+>
+>> - **Logging is always enabled by default, even if you don't call mysql_log.**
 
 **Parameters:**
 ```bash
@@ -556,7 +558,7 @@ public OnGameModeInit()
 **Return Values:**
 >Connection handle or MYSQL_INVALID_HANDLE on error.
 >
->>**If no option id is specified, the default options will be used.**
+>> - **If no option id is specified, the default options will be used.**
 ------------
 ```pawn
 new MySQL:g_Sql;
