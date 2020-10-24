@@ -53,7 +53,7 @@ public OnPlayerConnect(playerid)
 `ORM:id	` 	The id of the ORM instance.
 
 **Return Values:**
-1 on success, 0 on failure.
+>1 on success, 0 on failure.
 ------------
 ```pawn
 public OnPlayerDisconnect(playerid, reason)
@@ -75,7 +75,7 @@ public OnPlayerDisconnect(playerid, reason)
 `ORM:id	` 	The id of the ORM instance.
 
 **Return Values:**
-Error id.
+>Error id.
 
 **Available errors**
 | Error	   	| Meaning                                  			|
@@ -122,7 +122,7 @@ public OnStuffSelected(playerid)
 `result_idx `	The result index to use (optional).
 
 **Return Values:**
-1 on success, 0 on failure.
+>1 on success, 0 on failure.
 ------------
 ```pawn
 new query[128];
