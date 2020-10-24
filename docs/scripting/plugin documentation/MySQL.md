@@ -31,14 +31,11 @@ Documentation for BlueG's MySQL plugin version R41-4
 	* [mysql_log](#mysql_log) 
 	* [mysql_connect](#mysql_connect) 
 	* [mysql_connect_file](#mysql_connect_file) 
-	* [Available fields](#Available_fields) 
 	* [mysql_close](#mysql_close) 
 	* [mysql_unprocessed_queries](#mysql_unprocessed_queries) 
 	* [mysql_global_options](#mysql_global_options) 
-	* [Options](#Options) 
 	* [mysql_init_options](#mysql_init_options) 
-	* [mysql_set_option](#mysql_set_option) 
-	* [Available options](#Available options) 
+	* [mysql_set_option](#mysql_set_option)  
 	* [mysql_pquery](#mysql_pquery) 
 	* [Format specifiers](#Format specifiers) 
 	* [mysql_tquery](#mysql_tquery) 
@@ -652,6 +649,64 @@ public OnGameModeExit()
 	mysql_tquery(g_Sql, "UPDATE `players` SET `is_online` = '0'");
  
 	mysql_close(g_Sql); //mysql_close will now halt the server until the query we just sent is executed.
+	return 1;
+}
+```
+---------
+##mysql_unprocessed_queries
+==========
+**Description:**
+>Returns the number of unprocessed (threaded) queries.
+
+**Parameters:**
+```bash
+(MySQL:handle = MYSQL_DEFAULT_HANDLE)
+```
+`MySQL:handle`		The connection handle this will be processed on (optional).
+
+**Return Values:**
+>Number of unprocessed queries or -1 on error.
+
+------------
+```pawn
+printf("There are %d unprocessed queries.", mysql_unprocessed_queries());
+```
+---------
+##mysql_global_options
+==========
+**Description:**
+>Sets global options regarding the MySQL plugin.
+
+**Parameters:**
+```bash
+(E_MYSQL_OPTION:type, value)
+```
+`E_MYSQL_OPTION:type`	Option to change.
+<br/>
+`value`	Value the option should be set to.
+
+**Return Values:**
+>1 on success, 0 on failure
+
+
+**Options**
+| Option			| Type				| Description								|
+| ------------- 		| -------------			|-------------								|
+| DUPLICATE_CONNECTIONS		| boolean (false by default)	| Allows to create multiple connections to the same database and server.|
+| DUPLICATE_CONNECTION_WARNING	| boolean (true by default)	| Controls whether to print a warning when a duplicate connection is detecte Used only if DUPLICATE_CONNECTIONS is false. |
+
+```pawn
+public OnGameModeInit()
+{
+	mysql_global_options(DUPLICATE_CONNECTIONS, true); //allows the use of dupl. connections
+ 
+	new MySQL:g_Sql1 = mysql_connect("127.0.0.1", "root", "mypass", "mydatabase");
+	new MySQL:g_Sql2 = mysql_connect("127.0.0.1", "root", "mypass", "mydatabase");
+ 
+	printf("connection 1 and connection 2 are %s.", g_Sql1 == g_Sql2 ? "the same" : "not the same");
+ 
+	//output: "connection 1 and connection 2 are the same."
+ 
 	return 1;
 }
 ```
