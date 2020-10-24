@@ -121,7 +121,7 @@ public OnStuffSelected(playerid)
 <br/>
 `result_idx `	The result index to use (optional).
 
-**Return Values:**<br/>
+**Return Values:**
 1 on success, 0 on failure.
 ------------
 ```pawn
