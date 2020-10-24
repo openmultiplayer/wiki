@@ -69,7 +69,7 @@ Documentation for BlueG's MySQL plugin version R41-4
 
 **Return Values:**
 >ORM id on success, 0 on failure.
-------------
+
 ```pawn
 public OnPlayerConnect(playerid)
 {
@@ -91,7 +91,7 @@ public OnPlayerConnect(playerid)
 
 **Return Values:**
 >1 on success, 0 on failure.
-------------
+
 ```pawn
 public OnPlayerDisconnect(playerid, reason)
 {
@@ -121,7 +121,6 @@ public OnPlayerDisconnect(playerid, reason)
 | ERROR_OK      | No error happened. 						|
 | ERROR_NO_DATA | No data has been found in the table.                   	|
 
-------------
 ```pawn
 orm_select(Player[playerid][ORM_ID], "OnStuffSelected", "d", playerid);
  
@@ -160,7 +159,7 @@ public OnStuffSelected(playerid)
 
 **Return Values:**
 >1 on success, 0 on failure.
-------------
+
 ```pawn
 new query[128];
 format(query, sizeof(query), "SELECT * FROM `players` WHERE `id` = %d", Player[playerid][ID]);
@@ -193,7 +192,7 @@ public OnStuffSelected(playerid)
 
 **Return Values:**
 >1 on success, 0 on failure.
-------------
+
 ```pawn
 orm_select(Player[playerid][ORM_ID], "OnPlayerDataLoaded", "d", playerid);
  
@@ -223,7 +222,7 @@ public OnPlayerDataLoaded(playerid)
 
 **Return Values:**
 >1 on success, 0 on failure.
-------------
+
 ```pawn
 orm_update(Player[playerid][ORM_ID]);
 //this generates a query like "UPDATE `players` SET ´name´='PlayerName', `money`='23141', `pos_x`='231.432' WHERE `id`='42'" and executes it
@@ -248,7 +247,7 @@ orm_update(Player[playerid][ORM_ID]);
 
 **Return Values:**
 >1 on success, 0 on failure.
-------------
+
 ```pawn
 orm_insert(Player[playerid][ORM_ID], "OnPlayerRegistered", "d", playerid);
  
@@ -278,7 +277,7 @@ public OnPlayerRegistered(playerid)
 
 **Return Values:**
 >1 on success, 0 on failure.
-------------
+
 ```pawn
 orm_delete(Player[playerid][ORM_ID]);
 //this generates a query like "DELETE FROM `players` WHERE `id`='42'" and executes it
@@ -302,7 +301,7 @@ orm_delete(Player[playerid][ORM_ID]);
 
 **Return Values:**
 >1 on success, 0 on failure.
-------------
+
 ```pawn
 orm_load(Player[playerid][ORM_ID], "OnPlayerDataLoaded", "d", playerid);
  
@@ -332,7 +331,7 @@ public OnPlayerDataLoaded(playerid)
 
 **Return Values:**
 >1 on success, 0 on failure.
-------------
+
 ```pawn
 Player[playerid][Money] = GetPlayerMoney(playerid);
 orm_save(Player[playerid][ORM_ID]);
@@ -355,7 +354,7 @@ orm_save(Player[playerid][ORM_ID]);
 
 **Return Values:**
 >1 if successfully added, 0 if not.
-------------
+
 ```pawn
 new ORM:ormid = orm_create("players");
  
@@ -380,7 +379,7 @@ orm_addvar_int(ormid, Player[playerid][Money], "money");
 
 **Return Values:**
 >1 if successfully added, 0 if not.
-------------
+
 ```pawn
 new ORM:ormid = orm_create("players");
  
@@ -407,7 +406,7 @@ orm_addvar_float(ormid, Player[playerid][PosY], "pos_y");
 
 **Return Values:**
 >1 if successfully added, 0 if not.
-------------
+
 ```pawn
 enum E_PLAYER {
 	// ...
@@ -439,7 +438,7 @@ orm_addvar_string(ormid, Player[playerid][Password], 129, "passwd");
 
 **Return Values:**
 >1 if successfully added, 0 if not.
-------------
+
 ```pawn
 new ORM:ormid = orm_create("players");
  
@@ -462,7 +461,7 @@ orm_delvar(ormid, "id"); //returns false, because the variable couldn't be found
 
 **Return Values:**
 >1 if successfully added, 0 if not.
-------------
+
 ```pawn
 new ORM:ormid = orm_create("players");
  
@@ -490,7 +489,7 @@ orm_clear_vars(ormid); //the money and health variables are now set to '0'
 
 **Return Values:**
 >1 if successfully added, 0 if not.
-------------
+
 ```pawn
 new ORM:ormid = orm_create("players");
  
@@ -528,7 +527,6 @@ MySQL functions
 | DEBUG	        | Logs debug messages. 						|
 | ALL		| Logs everything.                   				|
 
-------------
 ```pawn
 public OnGameModeInit()
 {
@@ -556,7 +554,7 @@ public OnGameModeInit()
 >Connection handle or MYSQL_INVALID_HANDLE on error.
 >
 >> - **If no option id is specified, the default options will be used.**
-------------
+
 ```pawn
 new MySQL:g_Sql;
 // ...
@@ -667,7 +665,6 @@ public OnGameModeExit()
 **Return Values:**
 >Number of unprocessed queries or -1 on error.
 
-------------
 ```pawn
 printf("There are %d unprocessed queries.", mysql_unprocessed_queries());
 ```
@@ -709,5 +706,258 @@ public OnGameModeInit()
  
 	return 1;
 }
+```
+---------
+##mysql_init_options
+==========
+**Description:**
+>Creates a MySQL connection options instance with default values.
+
+**Parameters:**
+```bash
+This function has no parameters
+```
+
+**Return Values:**
+>MySQL connection options id.
+
+```pawn
+new MySQLOpt:options = mysql_init_options();
+```
+---------
+##mysql_set_option
+==========
+**Description:**
+>Sets an option to the specified value.
+
+**Parameters:**
+```bash
+(MySQLOpt:option_id, E_MYSQL_OPTION:type, ...)
+```
+`MySQLOpt:option_id`	The MySQL connection options id.
+<br/>
+`E_MYSQL_OPTION:type`	The option to change.
+<br/>
+`...`	The new (single) value to set the option to.
+
+**Return Values:**
+>1 if option was successfully set, 0 otherwise.
+
+**Available options**
+
+| Option		| Type                                  			| Description                                  						|
+| ------------- 	| ------------------------------------------------------------- |-------------------------------------------------------------------------------	|
+| AUTO_RECONNECT	| boolean (optional, true by default) 				| Whether automatically reconnect to the server on connection loss or not.		|
+| MULTI_STATEMENTS	| boolean (optional, false by default)                   	| Allow/Disallow executing multiple SQL statements in one query.			|
+| POOL_SIZE		| unsigned integer (optional, 2 by default)	                | Size of connection pool for [mysql_pquery](#mysql_pquery).				|
+| SERVER_PORT		| unsigned integer (optional, 3306 by default)	 		| Server port.										|
+| SSL_ENABLE		| boolean (optional, false by default) 				| Enable/disable SSL.									|
+| SSL_KEY_FILE		| string (optional)                  				| Path to key file.									|
+| SSL_CERT_FILE		| string (optional)                   				| Path to certificate file.								|
+| SSL_CA_FILE		| string (optional)                   				| Path to certificate authority file.							|
+| SSL_CA_PATH		| string (optional) 						| Path name to a directory that contains trusted SSL CA certificates in PEM format. 	|
+| SSL_CIPHER		| string (optional) 						| List of permissible ciphers to use for SSL encryption.				|
+
+```pawn
+new MySQLOpt:options = mysql_init_options();
+ 
+mysql_set_option(options, AUTO_RECONNECT, false); //disable auto-reconnect
+mysql_set_option(options, POOL_SIZE, 0); //disable connection pool (and thus mysql_pquery)
+ 
+g_Sql = mysql_connect("127.0.0.1", "root", "mypass", "mydatabase", options);
+```
+---------
+##mysql_pquery
+==========
+**Description:**
+>Sends a query which will be executed in another thread concurrently and calls the callback (if there is one) when the execution is finished.
+
+> - If you are not sure which query native to use, use mysql_tquery().
+
+> - The difference between this native and mysql_tquery() is, that multiple queries sent with this native at once can be processed in parallel, thus it may be faster in some cases, depending on the connection pool size. There may be also cases where executing queries in parallel will result in worse performance than with mysql_tquery().
+> - The size of the connection pool can be specified through mysql_set_option() with the POOL_SIZE parameter. Each connection in the pool resembles a thread.
+
+> - **Queries sent with this native may be executed out of order.**
+
+> - **Queries sent with this native don't support transactions.**
+
+**Parameters:**
+```bash
+(MySQL:handle, const query[], const callback[] = "", const format[] = "", {Float,_}:...)
+```
+`MySQL:handle`	The connection handle this will be processed on.
+<br/>
+`const query[]`	The query to be executed.
+<br/>
+`const callback[]`	The result callback to call after the query successfully executed (optional).
+<br/>
+`const format[]`	The format specifier string for the result callback (optional).
+<br/>
+`{Float,_}:...`	Indefinite number of arguments (optional).
+
+
+**Return Values:**
+>1 if the query was successfully queued for execution, 0 otherwise.
+
+
+> - **The callback must be a public function. That means it has to be forwarded.**
+
+
+| Specifier		| Meaning                                  	|
+| ------------- 	| ---------------------------------------------	|
+| d/i	| integer number 						|
+| s	| string  			|
+| f	| floating point number 				|
+| b	| boolean  			|
+| a	| array (has to be followed by 'd'/'i' with the array length; the array length is also passed as a callback argument) |
+| r	| reference  			|
+
+```pawn
+forward OnPlayerDataLoaded(playerid);
+ 
+public OnPlayerConnect(playerid)
+{
+	new query[128], pname[MAX_PLAYER_NAME];
+	new array[10] = {1, 2, ...};
+ 
+	GetPlayerName(playerid, pname, MAX_PLAYER_NAME);
+ 
+	mysql_format(MySQL, query, sizeof(query), "SELECT * FROM `players` WHERE `name` LIKE '%e'", pname);
+	mysql_pquery(MySQL, query, "OnPlayerDataLoaded", "dad", playerid, array, sizeof array);
+	return 1;
+}
+ 
+public OnPlayerDataLoaded(playerid, array[], array_size)
+{
+	//Query processed, you can now execute cache functions (like cache_get_value_index) here.
+	printf("There are %d players with the same name.", cache_num_rows());
+	return 1;
+}
+```
+---------
+##mysql_tquery
+==========
+**Description:**
+>Sends a query which will be executed in another thread and call a callback (if there was one specified) when the execution is successfully finished.
+
+**Parameters:**
+```bash
+(MySQL:handle, const query[], const callback[] = "", const format[] = "", {Float,_}:...)
+```
+`MySQL:handle`	The connection handle this will be processed on.
+<br/>
+`const query[]`	The query you want to execute.
+<br/>
+`const callback[]`	The query you want to process (optional).
+<br/>
+`const format[]`	The format specifier string (optional).
+<br/>
+`{Float,_}:...`	Indefinite number of arguments (optional).
+
+
+**Return Values:**
+>1 if the query was successfully queued for execution, 0 otherwise.
+
+
+> - **The callback must be a public function. That means it has to be forwarded.**
+
+
+| Specifier		| Meaning                                  	|
+| ------------- 	| ---------------------------------------------	|
+| d/i	| integer number 						|
+| s	| string  			|
+| f	| floating point number 				|
+| b	| boolean  			|
+| a	| array (has to be followed by 'd'/'i' with the array length; the array length is also passed as a callback argument) |
+| r	| reference  			|
+
+```pawn
+enum E_PLAYER
+{
+	Id,
+	Name[MAX_PLAYER_NAME],
+	Stuff
+};
+new Players[MAX_PLAYERS][E_PLAYER]
+ 
+forward OnPlayerDataLoaded(playerid);
+ 
+public OnPlayerConnect(playerid)
+{
+	new query[128], pname[MAX_PLAYER_NAME];
+ 
+	GetPlayerName(playerid, pname, sizeof(pname));
+ 
+	mysql_format(MySQL, query, sizeof(query), "SELECT * FROM `players` WHERE `Name` LIKE '%e'", pname);
+	mysql_tquery(MySQL, query, "OnPlayerDataLoaded", "r", Players[playerid]);
+	return 1;
+}
+ 
+public OnPlayerDataLoaded(player[E_PLAYER])
+{
+	//Query processed, you can now execute cache functions (like cache_get_value_index) here.
+	printf("There are %d players with the name %s.", cache_num_rows(), player[Name]);
+	return 1;
+}
+}
+ 
+public OnPlayerDataLoaded(playerid, array[], array_size)
+{
+	//Query processed, you can now execute cache functions (like cache_get_value_index) here.
+	printf("There are %d players with the same name.", cache_num_rows());
+	return 1;
+}
+```
+---------
+##mysql_tquery_file
+==========
+**Description:**
+>This native reads all queries from the specified file and executes them in a threaded manner.
+
+**Parameters:**
+```bash
+(MySQL:handle, const file_path[], const callback[] = "", const format[] = "", {Float,_}:...)
+```
+`MySQL:handle`	The connection handle this will be processed on.
+<br/>
+`const file_path[]`	The file to read the queries from.
+<br/>
+`const callback[]`	The query you want to process (optional).
+<br/>
+`const format[]`	The format specifier string (optional).
+<br/>
+`{Float,_}:...`	Indefinite number of arguments (optional).
+
+
+**Return Values:**
+>1 if the query was successfully queued for execution, 0 otherwise.
+
+> - Only files inside the scriptfiles directory are considered.
+
+> - The file path has to be absolute (relative to the scriptfiles directory), e.g. folder1/../file.sql is invalid.
+
+> - All queries have to end with a semicolon.
+
+> - Comments (starting with # or -- ) are ignored (except C-style comments).
+
+> - Queries can be written over multiple lines.
+
+> - The callback must be a public function. That means it has to be forwarded.
+
+```pawn
+public OnGameModeInit()
+{
+    mysql_tquery_file(db_handle, "my_tables.sql", OnDatabaseTablesChecked);
+    return 1;
+}
+ 
+forward OnDatabaseTablesChecked();
+public OnDatabaseTablesChecked()
+{
+    LoadHouses();
+    LoadVehicles();
+    return 1;
+}
+
 ```
 ---------
