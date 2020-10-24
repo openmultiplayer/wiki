@@ -4,13 +4,12 @@ description: Documentation for BlueG's MySQL plugin version R41-4
 sidebar_label: MySQL
 ---
 
-#MySQL/R41-4
-==========
+## MySQL/R41-4
 
 Documentation for BlueG's MySQL plugin version R41-4
-==========
 
-* ORM functions
+
+* [ORM functions](#orm-functions)
 	* [orm_create](#orm_create) 
 	* [orm_destroy](#orm_destroy)
 	* [orm_errno](#orm_errno)
@@ -27,7 +26,7 @@ Documentation for BlueG's MySQL plugin version R41-4
 	* [orm_delvar](#orm_delvar)
 	* [orm_clear_vars](#orm_clear_vars)
 	* [orm_setkey](#orm_setkey)
-* MySQL functions
+* [MySQL functions](#mysql-functions)
 	* [mysql_log](#mysql_log) 
 	* [mysql_connect](#mysql_connect) 
 	* [mysql_connect_file](#mysql_connect_file) 
@@ -48,7 +47,7 @@ Documentation for BlueG's MySQL plugin version R41-4
 	* [mysql_set_charset](#mysql_set_charset) 
 	* [mysql_get_charset](#mysql_get_charset) 
 	* [mysql_stat](#mysql_stat)
-* Cache functions
+* [Cache functions](#cache-functions)
 	* [cache_get_row_count](#cache_get_row_count)
 	* [cache_get_field_count](#cache_get_field_count)
 	* [cache_get_result_count](#cache_get_result_count)
@@ -74,13 +73,13 @@ Documentation for BlueG's MySQL plugin version R41-4
 	* [cache_insert_id](#cache_insert_id)
 	* [cache_get_query_exec_time](#cache_get_query_exec_time)
 	* [cache_get_query_string](#cache_get_query_string)
-* Plugin callbacks
+* [Plugin callbacks](#plugin-callbacks)
 	* [OnQueryError](#OnQueryError)
 	
-#ORM functions
-==========
-##orm_create
-==========
+# ORM functions
+
+## orm_create
+
 **Description:**
 >Creates an ORM instance and returns its id.
 
@@ -103,8 +102,8 @@ public OnPlayerConnect(playerid)
 }
 ```
 ------------
-##orm_destroy
-==========
+## orm_destroy
+
 **Description:**
 >Destroys an ORM instance.
 
@@ -125,8 +124,8 @@ public OnPlayerDisconnect(playerid, reason)
 }
 ```
 ------------
-##orm_errno
-==========
+## orm_errno
+
 **Description:**
 >Returns the error-id of the result application in the current ORM result callback.
 
@@ -167,8 +166,8 @@ public OnStuffSelected(playerid)
 }
 ```
 ------------
-##orm_apply_cache
-==========
+## orm_apply_cache
+
 **Description:**
 >Applies the data of the active cache to an ORM instance.
 
@@ -198,8 +197,8 @@ public OnStuffSelected(playerid)
 }
 ```
 ------------
-##orm_select
-==========
+## orm_select
+
 **Description:**
 >Sends a SELECT query and applies the retrieved data to the previously registered variables.
 
@@ -228,8 +227,8 @@ public OnPlayerDataLoaded(playerid)
 }
 ```
 ---------
-##orm_update
-==========
+## orm_update
+
 **Description:**
 >Sends an UPDATE query with the current values of the registered variables.
 
@@ -253,8 +252,8 @@ orm_update(Player[playerid][ORM_ID]);
 //this generates a query like "UPDATE `players` SET ´name´='PlayerName', `money`='23141', `pos_x`='231.432' WHERE `id`='42'" and executes it
 ```
 ---------
-##orm_insert
-==========
+## orm_insert
+
 **Description:**
 >Sends an INSERT query with the current values of the registered variables.
 
@@ -283,8 +282,8 @@ public OnPlayerRegistered(playerid)
 }
 ```
 ---------
-##orm_delete
-==========
+## orm_delete
+
 **Description:**
 >Sends a DELETE query.
 
@@ -308,8 +307,8 @@ orm_delete(Player[playerid][ORM_ID]);
 //this generates a query like "DELETE FROM `players` WHERE `id`='42'" and executes it
 ```
 ---------
-##orm_load
-==========
+## orm_load
+
 **Description:**
 >Fetches data from a table and applies it to the previously registered variables. This function is the same as [orm_select](#orm_select).
 **Parameters:**
@@ -337,8 +336,8 @@ public OnPlayerDataLoaded(playerid)
 }
 ```
 ---------
-##orm_save
-==========
+## orm_save
+
 **Description:**
 >Saves data to a table. This function is a combination of [orm_insert](#orm_insert) and [orm_update](#orm_update). If the previously specified key variable has a valid value (not 0 for integers and not empty for strings), orm_save calls [orm_update](#orm_update), else [orm_insert](#orm_insert).
 
@@ -362,8 +361,8 @@ Player[playerid][Money] = GetPlayerMoney(playerid);
 orm_save(Player[playerid][ORM_ID]);
 ```
 ---------
-##orm_addvar_int
-==========
+## orm_addvar_int
+
 **Description:**
 >Registers an integer variable to an ORM instance and links it to the specified column.
 
@@ -387,8 +386,8 @@ orm_addvar_int(ormid, Player[playerid][ID], "id");
 orm_addvar_int(ormid, Player[playerid][Money], "money");
 ```
 ---------
-##orm_addvar_float
-==========
+## orm_addvar_float
+
 **Description:**
 >Registers a floating point variable to an ORM instance and links it to the specified column.
 
@@ -412,8 +411,8 @@ orm_addvar_float(ormid, Player[playerid][PosX], "pos_x");
 orm_addvar_float(ormid, Player[playerid][PosY], "pos_y");
 ```
 ---------
-##orm_addvar_string
-==========
+## orm_addvar_string
+
 **Description:**
 >Registers a string variable to an ORM instance and links it to the specified column.
 
@@ -448,8 +447,8 @@ orm_addvar_string(ormid, Player[playerid][Name], MAX_PLAYER_NAME, "name");
 orm_addvar_string(ormid, Player[playerid][Password], 129, "passwd");
 ```
 ---------
-##orm_delvar
-==========
+## orm_delvar
+
 **Description:**
 >Removes a previously registered variable from the specified ORM instance by its column name.
 
@@ -473,8 +472,8 @@ orm_delvar(ormid, "id"); //returns true, variable "Player[playerid][ID]" has bee
 orm_delvar(ormid, "id"); //returns false, because the variable couldn't be found as it was already removed
 ```
 ---------
-##orm_clear_vars
-==========
+## orm_clear_vars
+
 **Description:**
 >Sets all variables registered in the specified ORM instance to zero.
 
@@ -499,8 +498,8 @@ orm_addvar_float(ormid, Player[playerid][Health], "Health");
 orm_clear_vars(ormid); //the money and health variables are now set to '0'
 ```
 ---------
-##orm_setkey
-==========
+## orm_setkey
+
 **Description:**
 >Sets a previously registered variable as key specified by the column name the variable has been linked to.
 
@@ -524,10 +523,10 @@ orm_addvar_float(ormid, Player[playerid][PosX], "pos_x");
 orm_setkey(ormid, "id");
 ```
 ---------
-MySQL functions
-==========
-##mysql_log
-==========
+# MySQL functions
+
+## mysql_log
+
 **Description:**
 >Controls what information will be logged.
 >
@@ -560,8 +559,8 @@ public OnGameModeInit()
 }
 ```
 ---------
-##mysql_connect
-==========
+## mysql_connect
+
 **Description:**
 >Connects to a MySQL server and database.
 
@@ -570,10 +569,14 @@ public OnGameModeInit()
 (const host[], const user[], const password[], const database[], MySQLOpt:option_id = MySQLOpt:0)
 ```
 `const host[]`	IP or hostname of the MySQL server.
+<br/>
 `const user[]`	Username of the account you want to connect to.
+<br/>
 `const password[]`	Password of the account you want to connect to.
+<br/>
 `const database[]`	Name of the database you want to connect to.
-`MySQLOpt:option_id`	MySQL connection options instance, see [mysql_init_options](#mysql_init_options)() and [mysql_set_option](#mysql_set_option)() (optional).
+<br/>
+`MySQLOpt:option_id`	MySQL connection options instance, see [mysql_init_options](#mysql_init_options) and [mysql_set_option](#mysql_set_option)(optional).
 
 **Return Values:**
 >Connection handle or MYSQL_INVALID_HANDLE on error.
@@ -591,8 +594,8 @@ public OnGameModeInit()
 }
 ```
 ---------
-##mysql_connect_file
-==========
+## mysql_connect_file
+
 **Description:**
 >Connects to a MySQL server and database using a INI-like file where all connection credentials and options are specified.
 
@@ -648,8 +651,8 @@ public OnGameModeInit()
 }
 ```
 ---------
-##mysql_close
-==========
+## mysql_close
+
 **Description:**
 >Closes the MySQL connection.
 >
@@ -676,8 +679,8 @@ public OnGameModeExit()
 }
 ```
 ---------
-##mysql_unprocessed_queries
-==========
+## mysql_unprocessed_queries
+
 **Description:**
 >Returns the number of unprocessed (threaded) queries.
 
@@ -694,8 +697,8 @@ public OnGameModeExit()
 printf("There are %d unprocessed queries.", mysql_unprocessed_queries());
 ```
 ---------
-##mysql_global_options
-==========
+## mysql_global_options
+
 **Description:**
 >Sets global options regarding the MySQL plugin.
 
@@ -733,8 +736,8 @@ public OnGameModeInit()
 }
 ```
 ---------
-##mysql_init_options
-==========
+## mysql_init_options
+
 **Description:**
 >Creates a MySQL connection options instance with default values.
 
@@ -750,8 +753,8 @@ This function has no parameters
 new MySQLOpt:options = mysql_init_options();
 ```
 ---------
-##mysql_set_option
-==========
+## mysql_set_option
+
 **Description:**
 >Sets an option to the specified value.
 
@@ -792,8 +795,8 @@ mysql_set_option(options, POOL_SIZE, 0); //disable connection pool (and thus mys
 g_Sql = mysql_connect("127.0.0.1", "root", "mypass", "mydatabase", options);
 ```
 ---------
-##mysql_pquery
-==========
+## mysql_pquery
+
 **Description:**
 >Sends a query which will be executed in another thread concurrently and calls the callback (if there is one) when the execution is finished.
 
@@ -860,8 +863,8 @@ public OnPlayerDataLoaded(playerid, array[], array_size)
 }
 ```
 ---------
-##mysql_tquery
-==========
+## mysql_tquery
+
 **Description:**
 >Sends a query which will be executed in another thread and call a callback (if there was one specified) when the execution is successfully finished.
 
@@ -934,8 +937,8 @@ public OnPlayerDataLoaded(playerid, array[], array_size)
 }
 ```
 ---------
-##mysql_tquery_file
-==========
+## mysql_tquery_file
+
 **Description:**
 >This native reads all queries from the specified file and executes them in a threaded manner.
 
@@ -986,8 +989,8 @@ public OnDatabaseTablesChecked()
 
 ```
 ---------
-##mysql_query
-==========
+## mysql_query
+
 **Description:**
 >This native sends a non-threaded query to the MySQL server. The SA:MP server (the main PAWN thread) waits until the query has been executed and then returns the stored cache handle.
 
@@ -1016,8 +1019,8 @@ printf("There are %d players in the database.", registered_players);
 cache_delete(result);
 ```
 ---------
-##mysql_query_file
-==========
+## mysql_query_file
+
 **Description:**
 >This native reads all queries from the specified file and executes them in an unthreaded manner.
 
@@ -1048,8 +1051,8 @@ cache_delete(result);
 mysql_query_file(g_Sql, "players.sql");
 ```
 ---------
-##mysql_errno
-==========
+## mysql_errno
+
 **Description:**
 >Returns the error code of the error message from the previous MySQL operation.
 
@@ -1079,8 +1082,8 @@ if(mysql_errno() != 0)
 	print("Could not connect to database!");
 ```
 ---------
-##mysql_error
-==========
+## mysql_error
+
 **Description:**
 >Retrieves the error message of the last unthreaded MySQL command
 
@@ -1111,8 +1114,8 @@ if (errno != 0)
     printf("[ERROR] #%d '%s'", errno, error);
 ```
 ---------
-##mysql_escape_string
-==========
+## mysql_escape_string
+
 **Description:**
 >Escapes special characters in a string for the use in a SQL statement. It prepends backslashes to the following characters: \x00, \n, \r, \, ', " and \x1a.
 >
@@ -1148,8 +1151,8 @@ if (errno != 0)
     printf("[ERROR] #%d '%s'", errno, error);
 ```
 ---------
-##mysql_format
-==========
+## mysql_format
+
 **Description:**
 >Allows you to format a string which you can safely use in a query.
 
@@ -1196,8 +1199,8 @@ mysql_format(MySQL, query, sizeof(query), "SELECT * FROM `%s` WHERE `bar` = '%e'
 mysql_tquery(MySQL, query, "OnStuffSelected");
 ```
 ---------
-##mysql_set_charset
-==========
+## mysql_set_charset
+
 **Description:**
 >Use this function to change the character set the connection uses. Very useful for servers which often process data with foreign characters.
 
@@ -1216,8 +1219,8 @@ mysql_tquery(MySQL, query, "OnStuffSelected");
 mysql_set_charset("utf8");
 ```
 ---------
-##mysql_get_charset
-==========
+## mysql_get_charset
+
 **Description:**
 >Use this function to get the current character set in use.
 
@@ -1240,8 +1243,8 @@ mysql_get_charset(charset);
 
 ```
 ---------
-##mysql_stat
-==========
+## mysql_stat
+
 **Description:**
 >Use this function to retrieve the status of the MySQL server.
 
@@ -1268,12 +1271,12 @@ print(stats);
 // Open tables: 6  Queries per second avg: 0.008
 ```
 ---------
-Cache functions
-==========
+# Cache functions
+
 >Make sure you use these functions (except cache_delete(), cache_set_active(), cache_unset_active(), cache_is_any_active() and cache_is_valid()) only if there is an active cache available.
 
-##cache_get_row_count
-==========
+## cache_get_row_count
+
 **Description:**
 >Returns the number of rows.
 
@@ -1294,8 +1297,8 @@ else
 	printf("There are %d rows in the current result set.", row_count);
 ```
 ---------
-##cache_get_field_count
-==========
+## cache_get_field_count
+
 **Description:**
 >Returns the number of fields.
 
@@ -1316,8 +1319,8 @@ else
 	printf("There are %d fields in the current result set.", field_count);
 ```
 ---------
-##cache_get_result_count
-==========
+## cache_get_result_count
+
 **Description:**
 >Returns the number of available results.
 
@@ -1344,8 +1347,8 @@ for(new r; r < result_count; r++)
 }
 ```
 ---------
-##cache_get_field_name
-==========
+## cache_get_field_name
+
 **Description:**
 >Retrieves a fields name specified by its index.
 
@@ -1369,8 +1372,8 @@ cache_get_field_name(0, field_name);
 printf("The first field name in the current result set is '%s'.", field_name);
 ```
 ---------
-##cache_get_field_type
-==========
+## cache_get_field_type
+
 **Description:**
 >Returns a fields type specified by its index.
 
@@ -1389,8 +1392,8 @@ if(type == MYSQL_TYPE_VAR_STRING)
 	printf("The first field is of type VARCHAR.");
 ```
 ---------
-##cache_set_result
-==========
+## cache_set_result
+
 **Description:**
 >Sets an result as active, specified by an index.
 
@@ -1417,8 +1420,8 @@ for(new r; r < result_count; r++)
 }
 ```
 ---------
-##cache_get_value_index
-==========
+## cache_get_value_index
+
 **Description:**
 >Retrieves a value from the result set as a string.
 
@@ -1444,8 +1447,8 @@ cache_get_value_index(0, 0, dest);
 printf("The very first value in the current result set is '%s'.", dest);
 ```
 ---------
-##cache_get_value_index_int
-==========
+## cache_get_value_index_int
+
 **Description:**
 >Retrieves a value from the result set as a decimal number.
 
@@ -1457,9 +1460,7 @@ printf("The very first value in the current result set is '%s'.", dest);
 <br/>
 `column_idx`	The column index (starts at '0').
 <br/>
-`&destinationnew Float:float_dest;
-cache_get_row_float(3, 4, float_dest);
-printf("The floating point number stored in the fourth row and fifth column is '%f'.", float_dest);`		The variable to store the number into.
+`&destination The variable to store the number into.
 
 **Return Values:**
 >1 on success, 0 on failure.
@@ -1470,8 +1471,8 @@ cache_get_value_index_int(3, 0, int_dest);
 printf("The number stored in the fourth row and first column is '%d'.", int_dest);
 ```
 ---------
-##cache_get_value_index_float
-==========
+## cache_get_value_index_float
+
 **Description:**
 >Retrieves a value from the result set as a floating point number.
 
@@ -1494,8 +1495,8 @@ cache_get_row_float(3, 4, float_dest);
 printf("The floating point number stored in the fourth row and fifth column is '%f'.", float_dest);
 ```
 ---------
-##cache_is_value_index_null
-==========
+## cache_is_value_index_null
+
 **Description:**
 >Retrieve a boolean value on whether the specified column is NULL or not.
 
@@ -1518,8 +1519,8 @@ cache_is_value_index_null(3, 4, is_null);
 printf("The value in the fourth row and fifth column %s 'NULL'.", is_null ? "is" : "is not");
 ```
 ---------
-##cache_get_value_name
-==========
+## cache_get_value_name
+
 **Description:**
 >Retrieves a value from the result set as a string.
 
@@ -1545,8 +1546,8 @@ cache_get_value_name(0, "name", dest);
 printf("The value in the column 'name' is '%s'.", dest);
 ```
 ---------
-##cache_get_value_name_int
-==========
+## cache_get_value_name_int
+
 **Description:**
 >Retrieves a value from the result set as a decimal number.
 
@@ -1569,8 +1570,8 @@ cache_get_value_name_int(2, "money", int_dest);
 printf("The value in the third row and in the column 'money' is '%d'.", int_dest);
 ```
 ---------
-##cache_get_value_name_float
-==========
+## cache_get_value_name_float
+
 **Description:**
 >Retrieves a value from the result set as an floating point number.
 
@@ -1593,8 +1594,8 @@ cache_get_value_name_float(3, "pos_x", float_dest);
 printf("The value in the fourth row and in the column 'pos_x' is '%f'.", float_dest);
 ```
 ---------
-##cache_is_value_name_null
-==========
+## cache_is_value_name_null
+
 **Description:**
 >Retrieve a boolean value on whether the specified column is NULL or not.
 
@@ -1617,8 +1618,8 @@ cache_is_value_name_null(3, "date", is_null);
 printf("The value in the fourth row and in the column 'date' %s 'NULL'.", is_null ? "is" : "is not");
 ```
 ---------
-##cache_save
-==========
+## cache_save
+
 **Description:**
 >Saves the active cache in the memory and returns an cache-id to access it for later use.
 
@@ -1667,8 +1668,8 @@ public OnPlayerDataLoaded(playerid)
 }
 ```
 ---------
-##cache_delete
-==========
+## cache_delete
+
 **Description:**
 >Deletes the specified cache from the memory.
 
@@ -1699,8 +1700,8 @@ public OnPlayerDisconnect(playerid, reason)
 }
 ```
 ---------
-##cache_set_active
-==========
+## cache_set_active
+
 **Description:**
 >Sets the specified cache as the active cache.
 
@@ -1748,8 +1749,8 @@ public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
 }
 ```
 ---------
-##cache_unset_active
-==========
+## cache_unset_active
+
 **Description:**
 >Unsets the active cache.
 
@@ -1772,8 +1773,8 @@ else
 	printf("there is no active cache, because we just unset it.");
 ```
 ---------
-##cache_is_any_active
-==========
+## cache_is_any_active
+
 **Description:**
 >Checks whether there is an active cache.
 
@@ -1792,8 +1793,8 @@ cache_unset_active();
 assert(cache_is_any_active() == false);
 ```
 ---------
-##cache_is_valid
-==========
+## cache_is_valid
+
 **Description:**
 >Checks if the specified cache is valid.
 
@@ -1833,8 +1834,8 @@ public OnPlayerDisconnect(playerid, reason)
 }
 ```
 ---------
-##cache_affected_rows
-==========
+## cache_affected_rows
+
 **Description:**
 >Returns the number of affected rows if the query was an INSERT, UPDATE, REPLACE or DELETE query.
 
@@ -1857,8 +1858,8 @@ public OnLogsDeleted()
 }
 ```
 ---------
-##cache_warning_count
-==========
+## cache_warning_count
+
 **Description:**
 >Returns the number of warnings the sent query generated.
 
@@ -1882,8 +1883,8 @@ public OnStuffUpdated()
 }
 ```
 ---------
-##cache_insert_id
-==========
+## cache_insert_id
+
 **Description:**
 >Retrieves the ID generated for an AUTO_INCREMENT column by the sent query (usually INSERT).
 
@@ -1905,8 +1906,8 @@ public OnPlayerRegister(playerid)
 }
 ```
 ---------
-##cache_get_query_exec_time
-==========
+## cache_get_query_exec_time
+
 **Description:**
 >Returns the time the query took to be executed.
 
@@ -1941,8 +1942,8 @@ public OnDataRetrieved()
 }
 ```
 ---------
-##cache_get_query_string
-==========
+## cache_get_query_string
+
 **Description:**
 >Returns the query which was executed as string.
 
@@ -1972,10 +1973,10 @@ public OnDataRetrieved()
 }
 ```
 ---------
-#Plugin callbacks
-==========
-##OnQueryError
-==========
+# Plugin callbacks
+
+## OnQueryError
+
 **Description:**
 >This callback is called when an error occurs while processing a query.
 
