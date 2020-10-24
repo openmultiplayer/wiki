@@ -47,7 +47,36 @@ Documentation for BlueG's MySQL plugin version R41-4
 	* [mysql_format](#mysql_format) 
 	* [mysql_set_charset](#mysql_set_charset) 
 	* [mysql_get_charset](#mysql_get_charset) 
-	* [mysql_stat](#mysql_stat) 
+	* [mysql_stat](#mysql_stat)
+* Cache functions
+	* [cache_get_row_count](#cache_get_row_count)
+	* [cache_get_field_count](#cache_get_field_count)
+	* [cache_get_result_count](#cache_get_result_count)
+	* [cache_get_field_name](#cache_get_field_name)
+	* [cache_get_field_type](#cache_get_field_type)
+	* [cache_set_result](#cache_set_result)
+	* [cache_get_value_index](#cache_get_value_index)
+	* [cache_get_value_index_int](#cache_get_value_index_int)
+	* [cache_get_value_index_float](#cache_get_value_index_float)
+	* [cache_is_value_index_null](#cache_is_value_index_null)
+	* [cache_get_value_name](#cache_get_value_name)
+	* [cache_get_value_name_int](#cache_get_value_name_int)
+	* [cache_get_value_name_float](#cache_get_value_name_float)
+	* [cache_is_value_name_null](#cache_is_value_name_null)
+	* [cache_save](#cache_save)
+	* [cache_delete](#cache_delete)
+	* [cache_set_active](#cache_set_active)
+	* [cache_unset_active](#cache_unset_active)
+	* [cache_is_any_active](#cache_is_any_active)
+	* [cache_is_valid](#cache_is_valid)
+	* [cache_affected_rows](#cache_affected_rows)
+	* [cache_warning_count](#cache_warning_count)
+	* [cache_insert_id](#cache_insert_id)
+	* [cache_get_query_exec_time](#cache_get_query_exec_time)
+	* [Time units]
+	* [cache_get_query_string](#cache_get_query_string)
+* Plugin callbacks
+	* [OnQueryError](#OnQueryError)
 	
 #ORM functions
 ==========
@@ -997,7 +1026,7 @@ cache_delete(result);
 
 **Parameters:**
 ```bash
-(MySQL:handle, const file_path[]
+(MySQL:handle, const file_path[])
 ```
 `MySQL:handle`	The connection handle this will be processed on.
 <br/>
@@ -1018,5 +1047,346 @@ cache_delete(result);
 
 ```pawn
 mysql_query_file(g_Sql, "players.sql");
+```
+---------
+##mysql_errno
+==========
+**Description:**
+>Returns the error code of the error message from the previous MySQL operation.
+
+**Parameters:**
+```bash
+(MySQL:handle = MYSQL_DEFAULT_HANDLE)
+```
+`MySQL:handle`	The connection handle this will be processed on (optional).
+
+**Return Values:**
+>Error code, 0 if no error occurred, -1 otherwise.
+
+> **Only these natives can set an error code:**
+> - mysql_connect
+> - mysql_connect_file
+> - mysql_close
+> - mysql_escape_string
+> - mysql_format (uses mysql_escape_string internally if the %e specifier is used)
+> - mysql_query
+> - mysql_stat
+> - mysql_get_charset
+> - mysql_set_charset
+
+```pawn
+mysql_connect("127.0.0.1", "root", "mypass", "mydatabase");
+if(mysql_errno() != 0) 
+	print("Could not connect to database!");
+```
+---------
+##mysql_error
+==========
+**Description:**
+>Retrieves the error message of the last unthreaded MySQL command
+
+**Parameters:**
+```bash
+(destination[], max_len = sizeof(destination), MySQL:handle = MYSQL_DEFAULT_HANDLE)
+```
+`destination[]`	The string to store the data into.
+<br/>
+`max_len`	The max. size of the destination string (optional).
+<br/>
+`MySQL:handle`	The connection handle this will be processed on (optional).
+
+**Return Values:**
+>1 on success, 0 on error.
+
+```pawn
+new MySQL: handle, errno;
+ 
+handle = mysql_connect("127.0.0.1", "root", "mypass", "mydatabase");
+errno = mysql_errno(handle);
+ 
+if (errno != 0) 
+{
+    new error[100];
+ 
+    mysql_error(error, sizeof (error), handle);
+    printf("[ERROR] #%d '%s'", errno, error);
+```
+---------
+##mysql_escape_string
+==========
+**Description:**
+>Escapes special characters in a string for the use in a SQL statement. It prepends backslashes to the following characters: \x00, \n, \r, \, ', " and \x1a.
+>
+>>Always use this function (if you don't use [mysql_format](#mysql_format) with the '%e' specifier) before inserting user inputs in a query. You can be victim of a [SQL injection](//en.wikipedia.org/wiki/SQL_injection) if you do not do so.
+**Parameters:**
+```bash
+(const source[], destination[], max_len = sizeof(destination), MySQL:handle = MYSQL_DEFAULT_HANDLE)
+```
+`const source[]`	The string you want to be escaped.
+<br/>
+`destination[]`	The string to store escaped data in.
+<br/>
+`max_len`	The size of the destination (optional).
+<br/>
+`MySQL:handle`	The connection handle this will be processed on (optional).
+
+**Return Values:**
+>Length of escaped string, -1 on error.
+>% and _ are not escaped. These are wildcards in MySQL if combined with LIKE, GRANT, or REVOKE.
+> - You have to provide the size (max_len) by yourself if you use an enum-array as destination.
+> - If the destination cannot hold the whole text escaped, the function will return -1 and leave destination unchanged.
+```pawn
+new MySQL: handle, errno;
+ 
+handle = mysql_connect("127.0.0.1", "root", "mypass", "mydatabase");
+errno = mysql_errno(handle);
+ 
+if (errno != 0) 
+{
+    new error[100];
+ 
+    mysql_error(error, sizeof (error), handle);
+    printf("[ERROR] #%d '%s'", errno, error);
+```
+---------
+##mysql_format
+==========
+**Description:**
+>Allows you to format a string which you can safely use in a query.
+
+**Parameters:**
+```bash
+(MySQL:handle, output[], len, format[], {Float,_}:...)
+```
+`MySQL:handle`	The connection handle this will be processed on.
+<br/>
+`output[]`	The string to save the result to.
+<br/>
+`len`	The size of the output.
+<br/>
+`format[]`	The format string.
+<br/>
+`{Float,_}:...`	Indefinite number of arguments.
+
+**Return Values:**
+>Length of the formatted string.
+
+**Format strings**
+| Placeholder  	|	Meaning
+| ------------ 	| ----------------------------										|
+|%%		|	Literal %.											|
+|%e		|	Escaped string (escapes directly without the need to call mysql_escape_string() before).	|
+|%s		|	Normal string.											|
+|%d / %i	|	Decimal number.											|
+|%o		|	Octal number.											|
+|%f		|	Floating point number (will print INF and NAN in lowercase).					|
+|%F		|	Floating point number (will print INF and NAN in uppercase).					|
+|%X		|	Hexadecimal number in uppercase.								|
+|%x		|	Hexadecimal number in lowercase.								|
+|%b		|	Binary number.											|
+|%u		|	Unsigned decimal number.									|
+|%a / %A	|	Hexadecimal floating point number (lowercase/uppercase)						|
+|%g / %g	|	Floating point number in scientific notation (lowercase/uppercase, like %f/%F)			|
+
+The values for the placeholders follow in the exact same order as parameters in the call.
+
+```pawn
+new query[128];
+mysql_format(MySQL, query, sizeof(query), "SELECT * FROM `%s` WHERE `bar` = '%e' AND `foobar` = '%f' LIMIT %d", "foobar", "escape'me\"please", 1.2345, 1337);
+// the variable 'query' contains now the formatted query (including the escaped string)
+mysql_tquery(MySQL, query, "OnStuffSelected");
+```
+---------
+##mysql_set_charset
+==========
+**Description:**
+>Use this function to change the character set the connection uses. Very useful for servers which often process data with foreign characters.
+
+**Parameters:**
+```bash
+(const charset[], MySQL:handle = MYSQL_DEFAULT_HANDLE)
+```
+`const charset[]`	Character set you want to use.
+<br/>
+`MySQL:handle`	The connection handle this will be processed on (optional).
+
+**Return Values:**
+>1 on success, 0 on fail
+
+```pawn
+mysql_set_charset("utf8");
+```
+---------
+##mysql_get_charset
+==========
+**Description:**
+>Use this function to get the current character set in use.
+
+**Parameters:**
+```bash
+(destination[], max_len = sizeof(destination), MySQL:handle = MYSQL_DEFAULT_HANDLE)
+```
+`destination[]`	The string to store extracted data in.
+<br/>
+`max_len`	The size of the destination string (optional).
+<br/>
+`MySQL:handle`	The connection handle this will be processed on (optional).
+
+**Return Values:**
+>1 on success, 0 on fail
+
+```pawn
+new charset[20];
+mysql_get_charset(charset);
+
+```
+---------
+##mysql_stat
+==========
+**Description:**
+>Use this function to retrieve the status of the MySQL server.
+
+**Parameters:**
+```bash
+(destination[], max_len = sizeof(destination), MySQL:handle = MYSQL_DEFAULT_HANDLE)
+```
+`destination[]`	The string to store extracted data in.
+<br/>
+`max_len`	The size of the destination string (optional).
+<br/>
+`MySQL:handle`	The connection handle this will be processed on (optional).
+
+**Return Values:**
+>1 on success, 0 on fail
+
+```pawn
+new stats[150]; 
+mysql_stat(stats); 
+print(stats);
+ 
+//Output would be something like:
+// Uptime: 380  Threads: 1  Questions: 3  Slow queries: 0  Opens: 12  Flush tables: 1  
+// Open tables: 6  Queries per second avg: 0.008
+```
+---------
+Cache functions
+==========
+>Make sure you use these functions (except cache_delete(), cache_set_active(), cache_unset_active(), cache_is_any_active() and cache_is_valid()) only if there is an active cache available.
+
+##cache_get_row_count
+==========
+**Description:**
+>Returns the number of rows.
+
+**Parameters:**
+```bash
+(&destination)
+```
+`&destination`	Variable to store the number of rows into.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new row_count;
+if(!cache_get_row_count(row_count))
+	printf("couldn't retrieve row count");
+else
+	printf("There are %d rows in the current result set.", row_count);
+```
+---------
+##cache_get_field_count
+==========
+**Description:**
+>Returns the number of fields.
+
+**Parameters:**
+```bash
+(&destination)
+```
+`&destination`	Variable to store the number of fields into.Variable to store the number of fields into.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new field_count;
+if(!cache_get_field_count(field_count))
+	printf("couldn't retrieve field count");
+else
+	printf("There are %d fields in the current result set.", field_count);
+```
+---------
+##cache_get_result_count
+==========
+**Description:**
+>Returns the number of available results.
+
+**Parameters:**
+```bash
+(&destination)
+```
+`&destination`	Variable to store the number of results into.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new result_count;
+if(!cache_get_result_count(result_count))
+	return printf("couldn't retrieve result count");
+ 
+printf("we will now go through all %d results:", result_count);
+for(new r; r < result_count; r++)
+{
+	cache_set_result(r);
+	new rows = cache_num_rows();
+	printf("\t%d rows in %d. result", rows, r+1);
+}
+```
+---------
+##cache_get_field_name
+==========
+**Description:**
+>Retrieves a fields name specified by its index.
+
+**Parameters:**
+```bash
+(field_index, destination[], max_len = sizeof(destination))
+```
+`field_index`	The index of the field whose name to retrieve.
+<br/>
+`destination[]`	The string to store the name into.
+<br/>
+`max_len`	The size of the destination string (optional).
+
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new field_name[32];
+cache_get_field_name(0, field_name);
+printf("The first field name in the current result set is '%s'.", field_name);
+```
+---------
+##cache_get_field_type
+==========
+**Description:**
+>Returns a fields type specified by its index.
+
+**Parameters:**
+```bash
+(field_index)
+```
+`field_index`	The index of the field whose type to return.
+
+**Return Values:**
+>Field type or MYSQL_TYPE_INVALID on error.
+
+```pawn
+new E_MYSQL_FIELD_TYPE:type = cache_get_field_type(0);
+if(type == MYSQL_TYPE_VAR_STRING)
+	printf("The first field is of type VARCHAR.");
 ```
 ---------
