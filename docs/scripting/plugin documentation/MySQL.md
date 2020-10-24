@@ -9,26 +9,26 @@ sidebar_label: MySQL
 
 Documentation for BlueG's MySQL plugin version R41-4
 ==========
+* ORM functions:
+	* [orm_create](#orm_create) 
+	* [orm_destroy](#orm_destroy)
+	* [orm_errno](#orm_errno)
+	* [orm_apply_cache](#orm_apply_cache)
+	* [orm_select](#orm_select)
+	* [orm_update](#orm_update)
+	* [orm_insert](#orm_insert)
+	* [orm_delete](#orm_delete)
+	* [orm_load](#orm_load)
+	* [orm_save](#orm_save) 
+	* [orm_addvar_int](#orm_addvar_int)
+	* [orm_addvar_float](#orm_addvar_float)
+	* [orm_addvar_string](#orm_addvar_string)
+	* [orm_delvar](#orm_delvar)
+	* [orm_clear_vars](#orm_clear_vars)
+	* [orm_setkey](#orm_setkey)
 
-ORM functions:
+#ORM functions:
 ==========
-* [orm_create](#orm_create) 
-* [orm_destroy](#orm_destroy)
-* [orm_errno](#orm_errno)
-* [orm_apply_cache](#orm_apply_cache)
-* [orm_select](#orm_select)
-* [orm_update](#orm_update)
-* [orm_insert](#orm_insert)
-* [orm_delete](#orm_delete)
-* [orm_load](#orm_load)
-* [orm_save](#orm_save) 
-* [orm_addvar_int](#orm_addvar_int)
-* [orm_addvar_float](#orm_addvar_float)
-* [orm_addvar_string](#orm_addvar_string)
-* [orm_delvar](#orm_delvar)
-* [orm_clear_vars](#orm_clear_vars)
-* [orm_setkey](#orm_setkey)
-
 ##orm_create
 ==========
 **Description:**
