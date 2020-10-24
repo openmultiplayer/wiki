@@ -15,6 +15,7 @@ ORM functions:
 * [orm_create](#orm_create) 
 * [orm_destroy](#orm_destroy)
 * [orm_errno](#orm_errno)
+* [orm_apply_cache](#orm_apply_cache)
 
 ##orm_create
 ==========
@@ -77,11 +78,11 @@ public OnPlayerDisconnect(playerid, reason)
 Error id.
 
 **Available errors**
-| Error	   | Meaning                                  |
-| ------ | -------------------------------------------- |
+| Error	   	| Meaning                                  			|
+| ------------- | ------------------------------------------------------------- |
 | ERROR_INVALID | An error happened while executing orm_errno (invalid ORM id). |
-| ERROR_OK      | No error happened. |
-| ERROR_NO_DATA | No data has been found in the table.                   |
+| ERROR_OK      | No error happened. 						|
+| ERROR_NO_DATA | No data has been found in the table.                   	|
 
 ------------
 ```pawn
@@ -101,6 +102,35 @@ public OnStuffSelected(playerid)
 			printf("No data in the table found.");
 			break;
 	}
+	return 1;
+}
+```
+------------
+##orm_apply_cache
+==========
+**Description:**
+>Applies the data of the active cache to an ORM instance.
+
+**Parameters:**
+```bash
+(ORM:id, row_idx, result_idx = 0)
+```
+`ORM:id ` 	The id of the ORM instance. \
+`row_idx ` 	The row index to take the cache data from. \
+`result_idx `	The result index to use (optional).
+
+**Return Values:**
+1 on success, 0 on failure.
+------------
+```pawn
+new query[128];
+format(query, sizeof(query), "SELECT * FROM `players` WHERE `id` = %d", Player[playerid][ID]);
+mysql_tquery(MySQL, query, "OnStuffSelected", "d", playerid);
+ 
+public OnStuffSelected(playerid)
+{
+	orm_apply_cache(Player[playerid][ORM_ID], 0);
+	printf("Player %s has %d Money and is on PosX with %f.", Player[playerid][Name], Player[playerid][Money], Player[playerid][PosX]);
 	return 1;
 }
 ```
