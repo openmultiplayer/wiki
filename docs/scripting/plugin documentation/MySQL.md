@@ -281,68 +281,114 @@ public OnPlayerDataLoaded(playerid)
 }
 ```
 ---------
-orm_load
-orm_save
-orm_addvar_int
-orm_addvar_float
-orm_addvar_string
-orm_delvar
-orm_clear_vars
-orm_setkey
-2 MySQL functions
-2.1 mysql_log
-2.1.1 Log levels
-2.2 mysql_connect
-2.3 mysql_connect_file
-2.3.1 Available fields
-2.4 mysql_close
-2.5 mysql_unprocessed_queries
-2.6 mysql_global_options
-2.6.1 Options
-2.7 mysql_init_options
-2.8 mysql_set_option
-2.8.1 Available options
-2.9 mysql_pquery
-2.9.1 Format specifiers
-2.10 mysql_tquery
-2.10.1 Format specifiers
-2.11 mysql_tquery_file
-2.12 mysql_query
-2.13 mysql_query_file
-2.14 mysql_errno
-2.15 mysql_error
-2.16 mysql_escape_string
-2.17 mysql_format
-2.17.1 Format strings
-2.18 mysql_set_charset
-2.19 mysql_get_charset
-2.20 mysql_stat
-3 Cache functions
-3.1 cache_get_row_count
-3.2 cache_get_field_count
-3.3 cache_get_result_count
-3.4 cache_get_field_name
-3.5 cache_get_field_type
-3.6 cache_set_result
-3.7 cache_get_value_index
-3.8 cache_get_value_index_int
-3.9 cache_get_value_index_float
-3.10 cache_is_value_index_null
-3.11 cache_get_value_name
-3.12 cache_get_value_name_int
-3.13 cache_get_value_name_float
-3.14 cache_is_value_name_null
-3.15 cache_save
-3.16 cache_delete
-3.17 cache_set_active
-3.18 cache_unset_active
-3.19 cache_is_any_active
-3.20 cache_is_valid
-3.21 cache_affected_rows
-3.22 cache_warning_count
-3.23 cache_insert_id
-3.24 cache_get_query_exec_time
-3.24.1 Time units
-3.25 cache_get_query_string
-4 Plugin callbacks
-4.1 OnQueryError
+##orm_save
+==========
+**Description:**
+>Saves data to a table. This function is a combination of [orm_insert](#orm_insert) and [orm_update](#orm_update). If the previously specified key variable has a valid value (not 0 for integers and not empty for strings), orm_save calls [orm_update](#orm_update), else [orm_insert](#orm_insert).
+
+**Parameters:**
+```bash
+(ORM:id, const callback[] = "", const format[] = "", {Float, _}:...)
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`const callback[]`	The name of the callback to call when the operation is done (optional).
+<br/>
+`const format[]`	The format specifier for the callback (optional).
+<br/>
+`{Float, _}:...`	Indefinite number of parameters to pass to the callback (optional).
+
+**Return Values:**
+>1 on success, 0 on failure.
+------------
+```pawn
+Player[playerid][Money] = GetPlayerMoney(playerid);
+orm_save(Player[playerid][ORM_ID]);
+```
+---------
+##orm_addvar_int
+==========
+**Description:**
+>Registers an integer variable to an ORM instance and links it to the specified column.
+
+**Parameters:**
+```bash
+(ORM:id, &var, const columnname[])
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`&var`	The variable to register.
+<br/>
+`const columnname[]`	The name of the column in the MySQL table.
+
+**Return Values:**
+>1 if successfully added, 0 if not.
+------------
+```pawn
+new ORM:ormid = orm_create("players");
+ 
+orm_addvar_int(ormid, Player[playerid][ID], "id");
+orm_addvar_int(ormid, Player[playerid][Money], "money");
+```
+---------
+##orm_addvar_float
+==========
+**Description:**
+>Registers a floating point variable to an ORM instance and links it to the specified column.
+
+**Parameters:**
+```bash
+(ORM:id, &Float:var, const columnname[])
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`&Float:var`	The variable to register.
+<br/>
+`const columnname[]`	The name of the column in the MySQL table.
+
+**Return Values:**
+>1 if successfully added, 0 if not.
+------------
+```pawn
+new ORM:ormid = orm_create("players");
+ 
+orm_addvar_float(ormid, Player[playerid][PosX], "pos_x");
+orm_addvar_float(ormid, Player[playerid][PosY], "pos_y");
+```
+---------
+##orm_addvar_string
+==========
+**Description:**
+>Registers a string variable to an ORM instance and links it to the specified column.
+
+**Parameters:**
+```bash
+(ORM:id, var[], var_maxlen, const columnname[])
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`var[]`		The variable to register.
+<br/>
+`var_maxlen`	The size of the registered variable.
+<br/>
+`const columnname[]`	The name of the column in the MySQL table.
+
+**Return Values:**
+>1 if successfully added, 0 if not.
+------------
+```pawn
+enum E_PLAYER {
+	// ...
+	Name[MAX_PLAYER_NAME],
+	Password[129]
+};
+new Player[MAX_PLAYERS][E_PLAYER];
+ 
+// ...
+ 
+new ORM:ormid = orm_create("players");
+ 
+orm_addvar_string(ormid, Player[playerid][Name], MAX_PLAYER_NAME, "name");
+orm_addvar_string(ormid, Player[playerid][Password], 129, "passwd");
+```
+---------
