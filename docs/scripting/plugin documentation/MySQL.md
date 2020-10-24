@@ -571,3 +571,88 @@ public OnGameModeInit()
 }
 ```
 ---------
+##mysql_connect_file
+==========
+**Description:**
+>Connects to a MySQL server and database using a INI-like file where all connection credentials and options are specified.
+
+**Parameters:**
+```bash
+(const file_name[] = "mysql.ini")
+```
+`const file_name[]`	Name for the connection file (optional).
+
+**Return Values:**
+>Connection handle or MYSQL_INVALID_HANDLE on error.
+>
+>> - **You can't specify any directories in the file name, the connection file has to be in the SA-MP server root folder.**
+
+**Available fields**
+| Field			| Type                                  			| Description                                  						|
+| ------------- 	| ------------------------------------------------------------- |-------------------------------------------------------------------------------	|
+| hostname		| string 							| The IP/hostname.									|
+| username	        | string 							| The name of the user.									|
+| password		| string                   					| The password of the user.								|
+| database	 	| string 							| The database to use.									|
+| auto_reconnect	| boolean (optional, true by default) 				| Whether automatically reconnect to the server on connection loss or not.		|
+| multi_statements	| boolean (optional, false by default)                   	| Allow/Disallow executing multiple SQL statements in one query.			|
+| pool_size		| unsigned integer (optional, 2 by default)	                | Size of connection pool for [mysql_pquery](#mysql_pquery).				|
+| server_port		| unsigned integer (optional, 3306 by default)	 		| Server port.										|
+| ssl_enable		| boolean (optional, false by default) 				| Enable/disable SSL.									|
+| ssl_key_file		| string (optional)                  				| Path to key file.									|
+| ssl_cert_file		| string (optional)                   				| Path to certificate file.								|
+| ssl_ca_file		| string (optional)                   				| Path to certificate authority file.							|
+| ssl_ca_path		| string (optional) 						| Path name to a directory that contains trusted SSL CA certificates in PEM format. 	|
+| ssl_cipher		| string (optional) 						| List of permissible ciphers to use for SSL encryption.				|
+
+**Valid connection file example:**
+
+```c
+hostname	= 127.0.0.1	 ; this is a comment
+username    = tester  		# this is also a comment
+password	= 1234	
+database	= test	
+# auto_reconnect = false
+multi_statements = true
+# pool_size = 3
+; server_port = 3306
+```
+```pawn
+new MySQL:g_Sql;
+// ...
+public OnGameModeInit()
+{
+	g_Sql = mysql_connect_file();
+	// ...
+	return 1;
+}
+```
+---------
+##mysql_close
+==========
+**Description:**
+>Closes the MySQL connection.
+>
+>> - **mysql_close will always wait until all queued queries are executed, thus halting the server.**
+
+**Parameters:**
+```bash
+(MySQL:handle = MYSQL_DEFAULT_HANDLE)
+```
+`MySQL:handle`	The connection handle to close (optional).
+
+
+**Return Values:**
+>1 on success, 0 on fail.
+
+------------
+```pawn
+public OnGameModeExit()
+{
+	mysql_tquery(g_Sql, "UPDATE `players` SET `is_online` = '0'");
+ 
+	mysql_close(g_Sql); //mysql_close will now halt the server until the query we just sent is executed.
+	return 1;
+}
+```
+---------
