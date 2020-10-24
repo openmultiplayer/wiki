@@ -16,6 +16,7 @@ ORM functions:
 * [orm_destroy](#orm_destroy)
 * [orm_errno](#orm_errno)
 * [orm_apply_cache](#orm_apply_cache)
+* [orm_select](#orm_select)
 
 ##orm_create
 ==========
@@ -137,7 +138,36 @@ public OnStuffSelected(playerid)
 }
 ```
 ------------
-orm_apply_cache
+##orm_select
+==========
+**Description:**
+>Sends a SELECT query and applies the retrieved data to the previously registered variables.
+
+**Parameters:**
+```bash
+(ORM:id, const callback[] = "", const format[] = "", {Float, _}:...)
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`const callback[]`	The name of the callback to call when the operation is done (optional).
+<br/>
+`const format[]`	The format specifier for the callback (optional).
+<br/>
+`{Float, _}:...`	Indefinite number of parameters to pass to the callback (optional).
+
+**Return Values:**
+>1 on success, 0 on failure.
+------------
+```pawn
+orm_select(Player[playerid][ORM_ID], "OnPlayerDataLoaded", "d", playerid);
+ 
+public OnPlayerDataLoaded(playerid)
+{
+	printf("Player %s has %d Money and is on PosX with %f.", Player[playerid][Name], Player[playerid][Money], Player[playerid][PosX]);
+	return 1;
+}
+```
+------------
 orm_select
 orm_update
 orm_insert
