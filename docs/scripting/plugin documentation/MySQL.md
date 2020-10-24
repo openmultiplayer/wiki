@@ -17,6 +17,10 @@ ORM functions:
 * [orm_errno](#orm_errno)
 * [orm_apply_cache](#orm_apply_cache)
 * [orm_select](#orm_select)
+* [orm_update](#orm_update)
+* [orm_insert](#orm_insert)
+* [orm_delete](#orm_delete)
+* [orm_load](#orm_load)
 
 ##orm_create
 ==========
@@ -167,11 +171,116 @@ public OnPlayerDataLoaded(playerid)
 	return 1;
 }
 ```
+---------
+##orm_update
+==========
+**Description:**
+>Sends an UPDATE query with the current values of the registered variables.
+
+**Parameters:**
+```bash
+(ORM:id, const callback[] = "", const format[] = "", {Float, _}:...)
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`const callback[]`	The name of the callback to call when the operation is done (optional).
+<br/>
+`const format[]`	The format specifier for the callback (optional).
+<br/>
+`{Float, _}:...`	Indefinite number of parameters to pass to the callback (optional).
+
+**Return Values:**
+>1 on success, 0 on failure.
 ------------
-orm_select
-orm_update
-orm_insert
-orm_delete
+```pawn
+orm_update(Player[playerid][ORM_ID]);
+//this generates a query like "UPDATE `players` SET ´name´='PlayerName', `money`='23141', `pos_x`='231.432' WHERE `id`='42'" and executes it
+```
+---------
+##orm_insert
+==========
+**Description:**
+>Sends an INSERT query with the current values of the registered variables.
+
+**Parameters:**
+```bash
+(ORM:id, const callback[] = "", const format[] = "", {Float, _}:...)
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`const callback[]`	The name of the callback to call when the operation is done (optional).
+<br/>
+`const format[]`	The format specifier for the callback (optional).
+<br/>
+`{Float, _}:...`	Indefinite number of parameters to pass to the callback (optional).
+
+**Return Values:**
+>1 on success, 0 on failure.
+------------
+```pawn
+orm_insert(Player[playerid][ORM_ID], "OnPlayerRegistered", "d", playerid);
+ 
+public OnPlayerRegistered(playerid)
+{
+	printf("Player %s has registered with id %d.", Player[playerid][Name], Player[playerid][ID]);
+	return 1;
+}
+```
+---------
+##orm_delete
+==========
+**Description:**
+>Sends a DELETE query.
+
+**Parameters:**
+```bash
+(ORM:id, const callback[] = "", const format[] = "", {Float, _}:...)
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`const callback[]`	The name of the callback to call when the operation is done (optional).
+<br/>
+`const format[]`	The format specifier for the callback (optional).
+<br/>
+`{Float, _}:...`	Indefinite number of parameters to pass to the callback (optional).
+
+**Return Values:**
+>1 on success, 0 on failure.
+------------
+```pawn
+orm_delete(Player[playerid][ORM_ID]);
+//this generates a query like "DELETE FROM `players` WHERE `id`='42'" and executes it
+```
+---------
+##orm_load
+==========
+**Description:**
+>Fetches data from a table and applies it to the previously registered variables. This function is the same as [orm_select](#orm_select).
+**Parameters:**
+```bash
+(ORM:id, const callback[] = "", const format[] = "", {Float, _}:...)
+```
+`ORM:id` 	The id of the ORM instance.
+<br/>
+`const callback[]`	The name of the callback to call when the operation is done (optional).
+<br/>
+`const format[]`	The format specifier for the callback (optional).
+<br/>
+`{Float, _}:...`	Indefinite number of parameters to pass to the callback (optional).
+
+**Return Values:**
+>1 on success, 0 on failure.
+------------
+```pawn
+orm_load(Player[playerid][ORM_ID], "OnPlayerDataLoaded", "d", playerid);
+ 
+public OnPlayerDataLoaded(playerid)
+{
+	printf("Player %s has %d Money and is on PosX with %f.", Player[playerid][Name], Player[playerid][Money], Player[playerid][PosX]);
+	return 1;
+}
+```
+---------
 orm_load
 orm_save
 orm_addvar_int
