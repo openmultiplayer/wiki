@@ -115,12 +115,13 @@ public OnStuffSelected(playerid)
 ```bash
 (ORM:id, row_idx, result_idx = 0)
 ```
-`ORM:id ` 	The id of the ORM instance. \
-`row_idx ` 	The row index to take the cache data from. \
+`ORM:id ` 	The id of the ORM instance.
+<br/>
+`row_idx ` 	The row index to take the cache data from.
+<br/>
 `result_idx `	The result index to use (optional).
 
-**Return Values:**
-
+**Return Values:**<br/>
 1 on success, 0 on failure.
 ------------
 ```pawn
