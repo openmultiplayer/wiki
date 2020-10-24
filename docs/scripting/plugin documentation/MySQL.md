@@ -772,10 +772,10 @@ g_Sql = mysql_connect("127.0.0.1", "root", "mypass", "mydatabase", options);
 **Description:**
 >Sends a query which will be executed in another thread concurrently and calls the callback (if there is one) when the execution is finished.
 
-> - If you are not sure which query native to use, use mysql_tquery().
+> - If you are not sure which query native to use, use [mysql_tquery](#mysql_tquery).
 
-> - The difference between this native and mysql_tquery() is, that multiple queries sent with this native at once can be processed in parallel, thus it may be faster in some cases, depending on the connection pool size. There may be also cases where executing queries in parallel will result in worse performance than with mysql_tquery().
-> - The size of the connection pool can be specified through mysql_set_option() with the POOL_SIZE parameter. Each connection in the pool resembles a thread.
+> - The difference between this native and [mysql_tquery](#mysql_tquery) is, that multiple queries sent with this native at once can be processed in parallel, thus it may be faster in some cases, depending on the connection pool size. There may be also cases where executing queries in parallel will result in worse performance than with [mysql_tquery](#mysql_tquery).
+> - The size of the connection pool can be specified through [mysql_set_option](#mysql_set_option) with the POOL_SIZE parameter. Each connection in the pool resembles a thread.
 
 > - **Queries sent with this native may be executed out of order.**
 
@@ -959,5 +959,67 @@ public OnDatabaseTablesChecked()
     return 1;
 }
 
+```
+---------
+##mysql_query
+==========
+**Description:**
+>This native sends a non-threaded query to the MySQL server. The SA:MP server (the main PAWN thread) waits until the query has been executed and then returns the stored cache handle.
+
+> - Never send unthreaded queries unless you **really** know what you are doing.
+> - Use [cache_delete](#cache_delete) if you don't need the query's result anymore or you will experience memory leaks.
+
+**Parameters:**
+```bash
+(MySQL:handle, const query[], bool:use_cache = true)
+```
+`MySQL:handle`	The connection handle this will be processed on.
+<br/>
+`const query[]`	The query you want to execute.
+<br/>
+`bool:use_cache`	Set to true if you intend to use the cache/result mysql_query returns (optional).
+
+**Return Values:**
+>A valid cache-id if use_cache was set to true, MYSQL_INVALID_CACHE otherwise
+
+> - **If use_cache is set to false, there won't be any valid cache to use, so all cache-related natives wont work. You also don't need to call [cache_delete](#cache_delete)  in this case.**
+
+```pawn
+new registered_players, Cache:result = mysql_query(MySQL, "SELECT COUNT(*) FROM `players`");
+cache_get_value_int(0, 0, registered_players);
+printf("There are %d players in the database.", registered_players);
+cache_delete(result);
+```
+---------
+##mysql_query_file
+==========
+**Description:**
+>This native reads all queries from the specified file and executes them in an unthreaded manner.
+
+> - Don't send unthreaded queries unless you **really** know what you are doing.
+
+**Parameters:**
+```bash
+(MySQL:handle, const file_path[]
+```
+`MySQL:handle`	The connection handle this will be processed on.
+<br/>
+`const file_path[]`	The file to read the queries from.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+> - Only files inside the scriptfiles directory are considered.
+
+> - The file path has to be absolute (relative to the scriptfiles directory), e.g. folder1/../file.sql is invalid.
+
+> - All queries have to end with a semicolon.
+
+> - Comments (starting with # or -- ) are ignored (except C-style comments).
+
+> - Queries can be written over multiple lines.
+
+```pawn
+mysql_query_file(g_Sql, "players.sql");
 ```
 ---------
