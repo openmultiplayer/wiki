@@ -9,7 +9,8 @@ sidebar_label: MySQL
 
 Documentation for BlueG's MySQL plugin version R41-4
 ==========
-* [ORM functions](#ORM functions)
+
+* ORM functions
 	* [orm_create](#orm_create) 
 	* [orm_destroy](#orm_destroy)
 	* [orm_errno](#orm_errno)
