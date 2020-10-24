@@ -1390,3 +1390,628 @@ if(type == MYSQL_TYPE_VAR_STRING)
 	printf("The first field is of type VARCHAR.");
 ```
 ---------
+##cache_set_result
+==========
+**Description:**
+>Sets an result as active, specified by an index.
+
+**Parameters:**
+```bash
+(result_index)
+```
+`result_index`	The index of the result to set active.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new result_count;
+if(!cache_get_result_count(result_count))
+	return printf("couldn't retrieve result count");
+ 
+printf("we will now go through all %d results:", result_count);
+for(new r; r < result_count; r++)
+{
+	cache_set_result(r);
+	new rows = cache_num_rows();
+	printf("\t%d rows in %d. result", rows, r+1);
+}
+```
+---------
+##cache_get_value_index
+==========
+**Description:**
+>Retrieves a value from the result set as a string.
+
+**Parameters:**
+```bash
+(row_idx, column_idx, destination[], max_len = sizeof(destination))
+```
+`row_idx`	The row index (starts at '0').
+<br/>
+`column_idx`	The column index (starts at '0').
+<br/>
+`destination[]`	The string to store the data into.
+<br/>
+`max_len`	The max. size of the destination string (optional).
+
+**Return Values:**
+>1 on success, 0 on failure.
+>
+>> - You have to provide the size (max_len) by yourself if you use an enum-array as destination.
+```pawn
+new dest[128];
+cache_get_value_index(0, 0, dest);
+printf("The very first value in the current result set is '%s'.", dest);
+```
+---------
+##cache_get_value_index_int
+==========
+**Description:**
+>Retrieves a value from the result set as a decimal number.
+
+**Parameters:**
+```bash
+(row_idx, column_idx, &destination)
+```
+`row_idx`	The row index (starts at '0').
+<br/>
+`column_idx`	The column index (starts at '0').
+<br/>
+`&destinationnew Float:float_dest;
+cache_get_row_float(3, 4, float_dest);
+printf("The floating point number stored in the fourth row and fifth column is '%f'.", float_dest);`		The variable to store the number into.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new int_dest;
+cache_get_value_index_int(3, 0, int_dest);
+printf("The number stored in the fourth row and first column is '%d'.", int_dest);
+```
+---------
+##cache_get_value_index_float
+==========
+**Description:**
+>Retrieves a value from the result set as a floating point number.
+
+**Parameters:**
+```bash
+(row_idx, column_idx, &Float:destination)
+```
+`row_idx`	The row index (starts at '0').
+<br/>
+`column_idx`	The column index (starts at '0').
+<br/>
+`&Float:destination`		The variable to store the number into.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new Float:float_dest;
+cache_get_row_float(3, 4, float_dest);
+printf("The floating point number stored in the fourth row and fifth column is '%f'.", float_dest);
+```
+---------
+##cache_is_value_index_null
+==========
+**Description:**
+>Retrieve a boolean value on whether the specified column is NULL or not.
+
+**Parameters:**
+```bash
+(row_idx, column_idx, &bool:destination)
+```
+`row_idx`	The row index (starts at '0').
+<br/>
+`column_idx`	The column index (starts at '0').
+<br/>
+`&bool:destination`	The variable to set to true/false, whether the value is NULL or not.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new bool:is_null;
+cache_is_value_index_null(3, 4, is_null);
+printf("The value in the fourth row and fifth column %s 'NULL'.", is_null ? "is" : "is not");
+```
+---------
+##cache_get_value_name
+==========
+**Description:**
+>Retrieves a value from the result set as a string.
+
+**Parameters:**
+```bash
+(row_idx, const column_name[], destination[], max_len = sizeof(destination))
+```
+`row_idx`	The row index (starts at '0').
+<br/>
+`const column_name[]`	The column name..
+<br/>
+`destination[]`	The string to store the data into.
+<br/>
+`max_len`	The size of the destination string (optional).
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+> - You have to provide the size (max_len) by yourself if you use an enum-array as destination.
+```pawn
+new dest[128];
+cache_get_value_name(0, "name", dest);
+printf("The value in the column 'name' is '%s'.", dest);
+```
+---------
+##cache_get_value_name_int
+==========
+**Description:**
+>Retrieves a value from the result set as a decimal number.
+
+**Parameters:**
+```bash
+(row_idx, const column_name[], &destination)
+```
+`row_idx`	The row index (starts at '0').
+<br/>
+`const column_name[]`	The column name.
+<br/>
+`&destination`	The variable to store the number into.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new int_dest;
+cache_get_value_name_int(2, "money", int_dest);
+printf("The value in the third row and in the column 'money' is '%d'.", int_dest);
+```
+---------
+##cache_get_value_name_float
+==========
+**Description:**
+>Retrieves a value from the result set as an floating point number.
+
+**Parameters:**
+```bash
+(row_idx, const column_name[], &Float:destination)
+```
+`row_idx`	The row index (starts at '0').
+<br/>
+`const column_name[]`	The column name.
+<br/>
+`&Float:destination`	The variable to store the float into.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new Float:float_dest;
+cache_get_value_name_float(3, "pos_x", float_dest);
+printf("The value in the fourth row and in the column 'pos_x' is '%f'.", float_dest);
+```
+---------
+##cache_is_value_name_null
+==========
+**Description:**
+>Retrieve a boolean value on whether the specified column is NULL or not.
+
+**Parameters:**
+```bash
+(row_idx, const column_name[], &bool:destination)
+```
+`row_idx`	The row index (starts at '0').
+<br/>
+`const column_name[]`	The column name.
+<br/>
+`&bool:destination`	The variable to set to true/false, whether the value is NULL or not.
+
+**Return Values:**
+>1 on success, 0 on failure.
+
+```pawn
+new bool:is_null;
+cache_is_value_name_null(3, "date", is_null);
+printf("The value in the fourth row and in the column 'date' %s 'NULL'.", is_null ? "is" : "is not");
+```
+---------
+##cache_save
+==========
+**Description:**
+>Saves the active cache in the memory and returns an cache-id to access it for later use.
+
+**Parameters:**
+```bash
+This function has no parameters
+```
+
+**Return Values:**
+>Valid cache-id on success or MYSQL_INVALID_CACHE on failure.
+
+```pawn
+enum E_PLAYER {
+	ID,
+	Name[MAX_PLAYER_NAME],
+	Cache:Data,
+	// ...
+};
+new Player[MAX_PLAYERS][E_PLAYER];
+ 
+ 
+public OnPlayerConnect(playerid)
+{
+	new query[128];
+	GetPlayerName(playerid, Player[playerid][Name], MAX_PLAYER_NAME);
+ 
+	mysql_format(MySQL, query, sizeof(query), "SELECT * FROM `players` WHERE `name` = '%e' LIMIT 1", Player[playerid][Name]);
+	mysql_tquery(MySQL, query, "OnPlayerDataLoaded", "d", playerid);
+	return 1;
+}
+ 
+forward OnPlayerDataLoaded(playerid);
+public OnPlayerDataLoaded(playerid)
+{
+	if(cache_num_rows() == 1)
+	{
+		//save the cache for later use
+		Player[playerid][Data] = cache_save();
+ 
+		//show login dialog
+		// ShowPlayerDialog(playerid, ...
+	}
+	// else //show register dialog
+		// ShowPlayerDialog(playerid, ...
+	return 1;
+}
+```
+---------
+##cache_delete
+==========
+**Description:**
+>Deletes the specified cache from the memory.
+
+**Parameters:**
+```bash
+(Cache:cache_id)
+```
+`Cache:cache_id`	The cache-id which should be deleted.
+
+**Return Values:**
+>1 on success, 0 on fail.
+
+```pawn
+enum E_PLAYER {
+	ID,
+	Name[MAX_PLAYER_NAME],
+	Cache:Data,
+	// ...
+};
+new Player[MAX_PLAYERS][E_PLAYER];
+ 
+ 
+public OnPlayerDisconnect(playerid, reason)
+{
+	cache_delete(Player[playerid][Data]);
+	// ...
+	return 1;
+}
+```
+---------
+##cache_set_active
+==========
+**Description:**
+>Sets the specified cache as the active cache.
+
+**Parameters:**
+```bash
+(Cache:cache_id)
+```
+`Cache:cache_id`	The cache-id which should be set as active.
+
+**Return Values:**
+>1 on success, 0 on fail.
+
+```pawn
+enum E_PLAYER {
+	ID,
+	Name[MAX_PLAYER_NAME],
+	Cache:Data,
+	Money,
+	Float:PosX,
+	// ...
+};
+new Player[MAX_PLAYERS][E_PLAYER];
+ 
+ 
+public OnDialogResponse(playerid, dialogid, response, listitem, inputtext[])
+{
+	switch(dialogid)
+	{
+		// ...
+		case DIALOG_LOGIN:
+		{
+			//if password matches
+			cache_set_active(Player[playerid][Data]);
+ 
+			cache_get_value_int(0, "money", Player[playerid][Money]);
+			cache_get_value_float(0, "pos_x", Player[playerid][PosX]);
+			// ...
+			cache_unset_active(); 
+		}
+		// ...
+		default:
+			return 0;
+	}
+	return 1;
+}
+```
+---------
+##cache_unset_active
+==========
+**Description:**
+>Unsets the active cache.
+
+**Parameters:**
+```bash
+This function has no parameters
+```
+
+**Return Values:**
+>This function does not return any specific values.
+
+```pawn
+cache_set_active(Player[playerid][Data]);
+ 
+cache_get_value_int(0, "money", Player[playerid][Money]);
+cache_unset_active(); 
+if(cache_get_value_float(0, "pos_x", Player[playerid][PosX]))
+	printf("data was successfully retrieved, this should NOT happen!");
+else
+	printf("there is no active cache, because we just unset it.");
+```
+---------
+##cache_is_any_active
+==========
+**Description:**
+>Checks whether there is an active cache.
+
+**Parameters:**
+```bash
+This function has no parameters
+```
+
+**Return Values:**
+>1 if there is an active cache, 0 otherwise.
+
+```pawn
+cache_set_active(Player[playerid][Data]);
+assert(cache_is_any_active() == true);
+cache_unset_active(); 
+assert(cache_is_any_active() == false);
+```
+---------
+##cache_is_valid
+==========
+**Description:**
+>Checks if the specified cache is valid.
+
+**Parameters:**
+```bash
+(Cache:cache_id)
+```
+`Cache:cache_id`	The cache-id which should be checked.
+
+**Return Values:**
+>1 if valid, 0 if invalid.
+
+```pawn
+enum E_PLAYER {
+	ID,
+	Name[MAX_PLAYER_NAME],
+	Cache:Data,
+	// ...
+};
+new Player[MAX_PLAYERS][E_PLAYER];
+ 
+public OnPlayerUpdate(playerid)
+{
+	//if random event...
+	cache_delete(Player[playerid][Data]);
+ 
+	return 1;
+}
+ 
+public OnPlayerDisconnect(playerid, reason)
+{
+	if(cache_is_valid(Player[playerid][Data]))
+		cache_delete(Player[playerid][Data]);
+	// ...
+ 
+	return 1;
+}
+```
+---------
+##cache_affected_rows
+==========
+**Description:**
+>Returns the number of affected rows if the query was an INSERT, UPDATE, REPLACE or DELETE query.
+
+**Parameters:**
+```bash
+This function has no parameters
+```
+> - If the last query was a DELETE query with no WHERE clause, all of the records will be deleted from the table but this function will return zero.
+
+**Return Values:**
+>Number of affected rows, -1 on error
+
+```pawn
+mysql_tquery(MySQL, "DELETE FROM mylogs WHERE log_id > 10", "OnLogsDeleted");
+// ...
+public OnLogsDeleted()
+{
+	printf("%d logs deleted!", cache_affected_rows());
+	return 1;
+}
+```
+---------
+##cache_warning_count
+==========
+**Description:**
+>Returns the number of warnings the sent query generated.
+
+**Parameters:**
+```bash
+This function has no parameters
+```
+
+**Return Values:**
+>Number of warnings, -1 on error
+
+```pawn
+mysql_tquery(MySQL, "DROP TABLE IF EXISTS `nope`", "OnStuffHappened");
+// ...
+public OnStuffUpdated()
+{
+	if(cache_warning_count())
+		printf("table 'nope' doesn't exist.");
+ 
+	return 1;
+}
+```
+---------
+##cache_insert_id
+==========
+**Description:**
+>Retrieves the ID generated for an AUTO_INCREMENT column by the sent query (usually INSERT).
+
+**Parameters:**
+```bash
+This function has no parameters
+```
+
+**Return Values:**
+>new ID generated for an AUTO_INCREMENT column, -1 on error.
+
+```pawn
+mysql_tquery(MySQL, "INSERT INTO `players` (`name`, `password`) VALUES ('Ownage', MD5('mypass'))", "OnPlayerRegister", "d", playerid);
+// ...
+public OnPlayerRegister(playerid)
+{
+	printf("New player registered with ID '%d'.", cache_insert_id());
+	return 1;
+}
+```
+---------
+##cache_get_query_exec_time
+==========
+**Description:**
+>Returns the time the query took to be executed.
+
+**Parameters:**
+```bash
+(E_EXECTIME_UNIT:unit = UNIT_MICROSECONDS)
+```
+`E_EXECTIME_UNIT:unit`	Time unit which should be used for the execution time (optional).
+
+**Return Values:**
+>Execution time as positive number, -1 on error.
+
+> - Buffer overflows may occur if using microseconds as unit in combination with long queries.
+
+**Time units**
+| 	  Unit 		|
+| --------------------- |
+|   UNIT_MILLISECONDS	|
+|   UNIT_MICROSECONDS	|
+
+```pawn
+mysql_tquery(MySQL, "SELECT * FROM `data`", "OnDataRetrieved");
+// ...
+public OnDataRetrieved()
+{
+	printf("The query \"SELECT * FROM `data`\" took %d milliseconds / %d microseconds to execute.",
+		cache_get_query_exec_time(UNIT_MILLISECONDS), cache_get_query_exec_time(UNIT_MICROSECONDS));
+ 
+	//output:
+	//	The query "SELECT * FROM `data`" took 9 milliseconds / 9311 microseconds to execute.
+	return 1;
+}
+```
+---------
+##cache_get_query_string
+==========
+**Description:**
+>Returns the query which was executed as string.
+
+**Parameters:**
+```bash
+(destination[], max_len = sizeof(destination))
+```
+`destination[]`	The string to store the query into.
+<br/>
+`max_len`	The maximal size of the destination string (optional).
+
+
+**Return Values:**
+>1 on success, 0 on error.
+
+```pawn
+mysql_tquery(MySQL, "SELECT * FROM `data`", "OnDataRetrieved");
+// ...
+public OnDataRetrieved()
+{
+	new query[64];
+	cache_get_query_string(query);
+	printf("Executed query: \"%s\"", query);
+	//output:
+	//	Executed query: "SELECT * FROM `data`"
+	return 1;
+}
+```
+---------
+#Plugin callbacks
+==========
+##OnQueryError
+==========
+**Description:**
+>This callback is called when an error occurs while processing a query.
+
+**Parameters:**
+```bash
+(errorid, const error[], const callback[], const query[], MySQL:handle)
+```
+`errorid`	ID of the error.
+<br/>
+`const error[]`	Error message.
+<br/>
+`const callback[]`	Name of the result callback. Will be empty if there was none.
+<br/>
+`const query[]`	Query which was executed.
+<br/>
+`MySQL:handle`	The connection handle this was processed on.
+
+**Return Values:**
+>This callback does not handle returns.
+
+```pawn
+public OnQueryError(errorid, const error[], const callback[], const query[], MySQL:handle)
+{
+	switch(errorid)
+	{
+		case CR_SERVER_GONE_ERROR:
+		{
+			printf("Lost connection to server");
+		}
+		case ER_SYNTAX_ERROR:
+		{
+			printf("Something is wrong in your syntax, query: %s",query);
+		}
+	}
+	return 1;
+}
+```
+---------
