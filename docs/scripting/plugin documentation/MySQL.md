@@ -73,7 +73,6 @@ Documentation for BlueG's MySQL plugin version R41-4
 	* [cache_warning_count](#cache_warning_count)
 	* [cache_insert_id](#cache_insert_id)
 	* [cache_get_query_exec_time](#cache_get_query_exec_time)
-	* [Time units]
 	* [cache_get_query_string](#cache_get_query_string)
 * Plugin callbacks
 	* [OnQueryError](#OnQueryError)
