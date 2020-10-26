@@ -8,11 +8,11 @@ As of SA-MP 0.3x, the following information is outdated. Vehicle colour IDs from
 
 :::
 
-![image1](/images/vehicleColorIds/Carcolours_All.jpg)
+![image1](/static/images/vehicleColorIds/Carcolours_All.jpg)
 
 ## Colours added as of SA-MP 0.3x
 
-![image2](/images/vehicleColorIds/Ext_vcolours_2013.jpg)
+![image2](/static/images/vehicleColorIds/Ext_vcolours_2013.jpg)
 
 ```c
 new VehicleColoursTableRGBA[256] = {

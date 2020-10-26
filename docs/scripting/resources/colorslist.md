@@ -16,7 +16,7 @@ For the Hex code for these colors, go to the [Hex colors](../resources/hex-color
 
 The following images display the effect of transparency values used with a white quare under the player marker and left to the saving floppy icon. Increments of 0x11 (decimal 17) are used for demonstration, but of course you can use any value.
 
-![Image:trans_matrix.png](/images/colorList/transparency/trans_matrix.png)
+![Image:trans_matrix.png](/static/images/colorList/transparency/trans_matrix.png)
 
 ### Doing math
 
@@ -88,11 +88,11 @@ This type of color embedding does not work in textdraws. See [GameTextStyle](../
 
 Hello this is green and this is red
 
-![Image:Example1.png](/images/colorList/Example1.png)
+![Image:Example1.png](/static/images/colorList/Example1.png)
 
 #### Another example
 
-![Image:Cembed.png](/images/colorList/Cembed.png)  
+![Image:Cembed.png](/static/images/colorList/Cembed.png)
 The code for the above chat line looks like this:
 
 ```c
@@ -180,7 +180,7 @@ Game text colour tags can be used to form different colours easily. The below co
 ~w~Hello this is ~b~blue ~w~and this is ~r~red
 ```
 
-[![Image:Blueandred.png](/images/colorList/Blueandred.png)
+[![Image:Blueandred.png](/static/images/colorList/Blueandred.png)
 
 Now these colors are pretty dark. You can make them brighter by using **~h~** after the color code:
 
@@ -188,4 +188,4 @@ Now these colors are pretty dark. You can make them brighter by using **~h~** af
 ~w~Hello this is ~b~~h~blue ~w~and this is ~r~~h~red
 ```
 
-[![Image:Blueandred2.png](/images/colorList/Blueandred2.png)
+[![Image:Blueandred2.png](/static/images/colorList/Blueandred2.png)

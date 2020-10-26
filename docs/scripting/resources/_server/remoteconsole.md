@@ -13,6 +13,6 @@ The Remote Console is a command prompt where you can use RCON commands without h
 5. Run `rcon.bat`
 6. Enter the command you like.
 
-![Rcon console](/images/server/rcon.jpg)
+![Rcon console](/static/images/server/rcon.jpg)
 
 Note: There is no need to type `/rcon` before the command in the server browser and the commands will not work if you do. For Example if you want to reset the server just type `gmx` and hit enter. That is all you need to do. Enjoy

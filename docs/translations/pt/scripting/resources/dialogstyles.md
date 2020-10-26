@@ -24,7 +24,7 @@ public OnDialogResponse( playerid, dialogid, response, listitem, inputtext[ ] )
 
 ## Estilo 0: `DIALOG_STYLE_MSGBOX`
 
-![](/images/dialogStyles/Dialog_style_msgbox.png)
+![](/static/images/dialogStyles/Dialog_style_msgbox.png)
 
 Visualização:
 
@@ -59,7 +59,7 @@ playerid = 0, dialogid = YOUR_DIALOGID, response = 0, listitem = -1, inputtext =
 
 ## Estilo 1: `DIALOG_STYLE_INPUT`
 
-![](/images/dialogStyles/Dialog_style_input.png)
+![](/static/images/dialogStyles/Dialog_style_input.png)
 
 Visualização:
 
@@ -94,7 +94,7 @@ playerid = 0, dialogid = YOUR_DIALOGID, response = 0, listitem = -1, inputtext =
 
 ## Estilo 2: `DIALOG_STYLE_LIST`
 
-![](/images/dialogStyles/Dialog_style_list.png)
+![](/static/images/dialogStyles/Dialog_style_list.png)
 
 Visualização:
 
@@ -135,7 +135,7 @@ playerid = 0, dialogid = YOUR_DIALOGID, response = 0, listitem = 1, inputtext = 
 
 :::
 
-![](/images/dialogStyles/Dialog_style_password.png)
+![](/static/images/dialogStyles/Dialog_style_password.png)
 
 Visualização:
 
@@ -179,7 +179,7 @@ playerid = 0, dialogid = YOUR_DIALOGID, response = 0, listitem = -1, inputtext =
 
 :::
 
-![](/images/dialogStyles/Dialog_style_tablist.png)
+![](/static/images/dialogStyles/Dialog_style_tablist.png)
 
 Visualização:
 
@@ -225,7 +225,7 @@ playerid = 0, dialogid = YOUR_DIALOGID, response = 0, listitem = 1, inputtext = 
 
 :::
 
-![](/images/dialogStyles/Dialog_style_tablist_headers.png)
+![](/static/images/dialogStyles/Dialog_style_tablist_headers.png)
 
 Showing:
 

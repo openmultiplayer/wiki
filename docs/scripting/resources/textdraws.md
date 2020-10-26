@@ -80,7 +80,7 @@ The function names only differ slightly, with 'TextDraw' becoming 'PlayerTextDra
 
 ## Creating the Textdraw
 
-![Image:320px-Textdraw_map.png](/images/textdraws/320px-Textdraw_map.png)
+![Image:320px-Textdraw_map.png](/static/images/textdraws/320px-Textdraw_map.png)
 
 Once you've declared a variable/array to store the ID of your textdraw(s) in, you can proceed to create the textdraw itself. For global textdraws that are always created, the code should be placed under [OnGameModeInit](../callbacks/OnGameModeInit.md). To create the textdraw, the function [TextDrawCreate](../functions/TextDrawCreate.md) must be used.
 
@@ -116,7 +116,7 @@ We have created a textdraw in the center of the screen that says "Hello World!".
 
 There are 4 fonts available for textdraw text:
 
-![Image:320px-Textdraw_map.png](/images/textdraws/Textdraw_font_styles.png)
+![Image:320px-Textdraw_map.png](/static/images/textdraws/Textdraw_font_styles.png)
 
 | ID  | Info                                                           | Tips                                                   |
 | --- | -------------------------------------------------------------- | ------------------------------------------------------ |
