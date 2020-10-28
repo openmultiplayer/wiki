@@ -5,11 +5,9 @@ description: Get the velocity of a vehicle on the X, Y and Z axes.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -37,10 +35,13 @@ public OnPlayerCommandText(playerid, cmdtext[])
 {
     if (!strcmp("/GetMyCarVelocity", cmdtext) && IsPlayerInAnyVehicle(playerid))
     {
-        new Float:Velocity[3], output[80];
-        GetVehicleVelocity(GetPlayerVehicleID(playerid), Velocity[0], Velocity[1], Velocity[2]);
-        format(output, sizeof(output), "You are going at a velocity of X%f, Y%f, Z%f", Velocity[0], Velocity[1], Velocity[2]);
-        SendClientMessage(playerid, 0xFFFFFFFF, output);
+        new
+            Float: vehVelocity[3],
+            clientMessage[80];
+
+        GetVehicleVelocity(GetPlayerVehicleID(playerid), vehVelocity[0], vehVelocity[1], vehVelocity[2]);
+        format(clientMessage, sizeof(clientMessage), "You are going at a velocity of X%f, Y%f, Z%f", vehVelocity[0], vehVelocity[1], vehVelocity[2]);
+        SendClientMessage(playerid, 0xFFFFFFFF, clientMessage);
         return 1;
     }
     return 0;

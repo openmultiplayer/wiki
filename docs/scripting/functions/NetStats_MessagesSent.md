@@ -5,11 +5,9 @@ description: Gets the number of messages the server has sent to the player.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z' />
 
 ## Description
 
@@ -28,7 +26,7 @@ The number of messages the server has sent to the player.
 ```c
 public OnPlayerCommandText(playerid,cmdtext[])
 {
-    if(!strcmp(cmdtext, "/msgsent"))
+    if (!strcmp(cmdtext, "/msgsent"))
     {
         new szString[144];
         format(szString, sizeof(szString), "You have recieved %i network messages.", NetStats_MessagesSent(playerid));

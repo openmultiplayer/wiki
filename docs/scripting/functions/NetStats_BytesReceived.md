@@ -5,11 +5,9 @@ description: Gets the amount of data (in bytes) that the server has received fro
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z' />
 
 ## Description
 
@@ -28,7 +26,7 @@ This function returns the number of bytes the server has received from the playe
 ```c
 public OnPlayerCommandText(playerid,cmdtext[])
 {
-    if(!strcmp(cmdtext, "/bytesreceived"))
+    if (!strcmp(cmdtext, "/bytesreceived"))
     {
         new szString[144];
         format(szString, sizeof(szString), "You have sent %i bytes of information to the server.", NetStats_BytesReceived(playerid));

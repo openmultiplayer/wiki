@@ -33,15 +33,15 @@ new string1[] = "Hello World";
 new string2[] = "Hello World";
 
 // Check if the strings are the same
-if(!strcmp(string1, string2))
+if (!strcmp(string1, string2))
 
 new string3[] = "Hell";
 
 // Check if the first 4 characters match
-if(!strcmp(string2, string3, false, 4))
+if (!strcmp(string2, string3, false, 4))
 
 // Check for null strings with isnull()
-if(!strcmp(string1, string2) && !isnull(string1) && !isnull(string2))
+if (!strcmp(string1, string2) && !isnull(string1) && !isnull(string2))
 
 // Definition for isnull():
 #if !defined isnull
@@ -53,8 +53,7 @@ if(!strcmp(string1, string2) && !isnull(string1) && !isnull(string2))
 
 :::warning
 
-This function returns 0 if either string is empty. Check for null strings with isnull().
-If you compare strings from a text file, you should take in to account the 'carriage return' and 'new line' special characters (\r \n), as they are included, when using fread.
+This function returns 0 if either string is empty. Check for null strings with isnull(). If you compare strings from a text file, you should take in to account the 'carriage return' and 'new line' special characters (\r \n), as they are included, when using fread.
 
 :::
 

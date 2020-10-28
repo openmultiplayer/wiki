@@ -23,9 +23,11 @@ Set a vehicle's health. When a vehicle's health decreases the engine will produc
 ## Examples
 
 ```c
-if(strcmp("/fixengine", cmdtext, true) == 0)
+if (strcmp("/fixengine", cmdtext, true) == 0)
 {
-    new vehicleid = GetPlayerVehicleID(playerid);
+    new
+        vehicleid = GetPlayerVehicleID(playerid);
+
     SetVehicleHealth(vehicleid, 1000);
     SendClientMessage(playerid, COLOUR_WHITE, "The vehicles engine has been fully repaired.");
     return 1;
@@ -36,7 +38,7 @@ if(strcmp("/fixengine", cmdtext, true) == 0)
 
 :::tip
 
-Full vehicle health is 1000. Higher values are possible. For more information on health values, see this page.
+Full vehicle health is 1000. Higher values are possible. For more information on health values, see [this](../resources/vehiclehealth.md) page.
 
 :::
 

@@ -30,7 +30,7 @@ public OnPlayerUpdate(playerid)
 {
     // Store the ID
     new targetplayer = GetPlayerTargetPlayer(playerid);
-    if(GetPlayerTeam(targetplayer) == GetPlayerTeam(playerid) && targetplayer != INVALID_PLAYER_ID)
+    if (GetPlayerTeam(targetplayer) == GetPlayerTeam(playerid) && targetplayer != INVALID_PLAYER_ID)
     {
         GameTextForPlayer(playerid, "~R~do not shoot at team-mates!", 5000, 3);
     }
@@ -41,8 +41,7 @@ public OnPlayerUpdate(playerid)
 
 :::warning
 
-Does not work for joypads/controllers, and after a certain distance.
-Does not work for the sniper rifle, as it doesn't lock on to anything and as such can't and won't return a player.
+Does not work for joypads/controllers, and after a certain distance. Does not work for the sniper rifle, as it doesn't lock on to anything and as such can't and won't return a player.
 
 :::
 

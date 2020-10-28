@@ -5,11 +5,9 @@ description: Returns the length of a file.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -30,7 +28,7 @@ The length of a file, in bytes.
 new File:handle = fopen("file.txt", io_read);
 
 // If "file.txt" is open
-if(handle)
+if (handle)
 {
     // Success
 

@@ -5,11 +5,9 @@ description: Stops all the recordings that had been started with StartRecordingP
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -30,9 +28,9 @@ public OnPlayerCommandText(playerid, cmdtext[])
 {
     if (!strcmp("/stoprecording", cmdtext))
     {
-    StopRecordingPlayerData(playerid);
+        StopRecordingPlayerData(playerid);
         SendClientMessage(playerid, 0xFFFFFFFF, "Your recorded file has been saved to the scriptfiles folder!");
-    return 1;
+        return 1;
     }
 }
 ```

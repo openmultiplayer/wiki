@@ -5,11 +5,9 @@ description: Write data to a file in binary format, while ignoring line brakes a
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -45,7 +43,7 @@ new some_data[some_enum];
 new File:handle = fopen("file.bin", io_write);
 
 // Check, if "file.bin" is open
-if(handle)
+if (handle)
 {
     // Success
 

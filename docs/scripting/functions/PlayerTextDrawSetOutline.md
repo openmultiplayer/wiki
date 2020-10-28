@@ -5,11 +5,9 @@ description: Set the outline of a player-textdraw.
 tags: ["player", "textdraw", "playertextdraw"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This feature (player-textdraws) was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='feature (player-textdraws)' version='SA-MP 0.3e' />
 
 ## Description
 
@@ -28,8 +26,8 @@ This function does not return any specific values.
 ## Examples
 
 ```c
-MyTextDraw = CreatePlayerTextDraw(playerid, 100.0, 33.0,"Example TextDraw");
-PlayerTextDrawSetOutline(playerid, MyTextDraw, 1);
+gMyTextDraw[playerid] = CreatePlayerTextDraw(playerid, 100.0, 33.0,"Example TextDraw");
+PlayerTextDrawSetOutline(playerid, gMyTextDraw[playerid], 1);
 ```
 
 ## Related Functions

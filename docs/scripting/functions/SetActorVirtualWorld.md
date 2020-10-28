@@ -5,11 +5,9 @@ description: Set the virtual world of an actor.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -29,15 +27,15 @@ Set the virtual world of an actor. Only players in the same world will see the a
 ## Examples
 
 ```c
-new MyActor;
+new gMyActor;
 
 public OnGameModeInit()
 {
     // Create the actor
-    MyActor = CreateActor(69, 0.0, 0.0, 3.0, 0.0);
+    gMyActor = CreateActor(69, 0.0, 0.0, 3.0, 0.0);
 
     // Set their virtual world
-    SetActorVirtualWorld(MyActor, 69);
+    SetActorVirtualWorld(gMyActor, 69);
     return 1;
 }
 ```

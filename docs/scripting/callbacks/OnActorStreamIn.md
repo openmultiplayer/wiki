@@ -5,11 +5,9 @@ description: This callback is called when an actor is streamed in by a player's 
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='callback' version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -38,10 +36,6 @@ public OnActorStreamIn(actorid, forplayerid)
 
 ## Notes
 
-:::tip
-
-This callback can also be called by NPC.
-
-:::
+<T.TipNPCCallbacks />
 
 ## Related Functions

@@ -5,11 +5,9 @@ description: Retrieves the installed component ID (modshop mod(ification)) on a 
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -31,11 +29,12 @@ public OnPlayerCommandText(playerid, cmdtext[])
 {
     if (!strcmp("/myspoiler", cmdtext) && IsPlayerInAnyVehicle(playerid))
     {
-        new component;
-        component = GetVehicleComponentInSlot(GetPlayerVehicleID(playerid), CARMODTYPE_SPOILER);
+        new
+            component = GetVehicleComponentInSlot(GetPlayerVehicleID(playerid), CARMODTYPE_SPOILER);
+
         if (component == 1049)
         {
-            SendClientMessage(playerid,0xFFFFFFFF,"You have an Alien spoiler installed in your Elegy!");
+            SendClientMessage(playerid, -1, "You have an Alien spoiler installed in your Elegy!");
         }
     }
 }

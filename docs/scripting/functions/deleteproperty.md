@@ -5,11 +5,9 @@ description: Delete an earlier set property (setproperty).
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -31,8 +29,16 @@ The value of the property. If the property does not exist, the function returns 
 deleteproperty(0, "", 123984334);
 ```
 
+## Notes
+
+:::tip
+
+It is recommended to use the PVars/SVars or GVar plugin instead of these natives for being very slow.
+
+:::
+
 ## Related Functions
 
-- [Setproperty](Setproperty.md): Set a property.
-- [Getproperty](Getproperty.md): Get the value of a property.
-- [Existproperty](Existproperty.md): Check if a property exists.
+- [setproperty](setproperty): Set a property.
+- [getproperty](getproperty): Get the value of a property.
+- [existproperty](existproperty): Check if a property exists.

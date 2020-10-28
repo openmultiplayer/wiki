@@ -5,11 +5,9 @@ description: Play an 'audio stream' for a player.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3d and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3d' />
 
 ## Description
 
@@ -45,8 +43,8 @@ public OnPlayerCommandText(playerid, cmdtext[])
     {
         new Float:X, Float:Y, Float:Z, Float:Distance = 5.0;
         GetPlayerPos(playerid, X, Y, Z);
-    PlayAudioStreamForPlayer(playerid, "http://somafm.com/tags.pls", X, Y, Z, Distance, 1);
-    return 1;
+        PlayAudioStreamForPlayer(playerid, "http://somafm.com/tags.pls", X, Y, Z, Distance, 1);
+        return 1;
     }
     return 0;
 }

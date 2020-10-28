@@ -5,11 +5,9 @@ description: Checks if a player is streamed in another player's client.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -29,7 +27,10 @@ Checks if a player is streamed in another player's client.
 ## Examples
 
 ```c
-if(IsPlayerStreamedIn(playerid, 0)) SendClientMessage(playerid, -1, "ID 0 can see you.");
+if (IsPlayerStreamedIn(playerid, 0))
+{
+	SendClientMessage(playerid, -1, "ID 0 can see you.");
+}
 ```
 
 ## Notes

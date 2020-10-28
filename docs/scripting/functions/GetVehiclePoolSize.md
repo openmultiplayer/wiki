@@ -5,11 +5,9 @@ description: Gets the highest vehicleid currently in use on the server.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -20,7 +18,8 @@ Gets the highest vehicleid currently in use on the server.
 ```c
 RepairAllVehicles()
 {
-    for(new i = 1, j = GetVehiclePoolSize(); i <= j; i++) // vehicleids start at 1
+    // vehicleids start at 1
+    for(new i = 1, j = GetVehiclePoolSize(); i <= j; i++)
     {
         RepairVehicle(i);
     }

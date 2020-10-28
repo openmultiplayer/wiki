@@ -5,9 +5,13 @@ description: .
 tags: []
 ---
 
+import T from '../../../src/components/templates.js'
+
+<T.LowercaseNote />
+
 :::warning
 
-This function starts with lowercase letter.
+Notice that the y-value is the first parameter and the x-value is the second parameter.
 
 :::
 
@@ -17,8 +21,8 @@ Get the inversed value of an arc tangent of y/x, expressed in radians.
 
 | Name    | Description                                            |
 | ------- | ------------------------------------------------------ |
-| Float:x | Value representing the proportion of the y-coordinate. |
-| Float:y | Value representing the proportion of the x-coordinate. |
+| Float:y | Value representing the proportion of the y-coordinate. |
+| Float:x | Value representing the proportion of the x-coordinate. |
 
 ## Returns
 

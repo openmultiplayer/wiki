@@ -5,11 +5,9 @@ description: Creates an explosion that is only visible to a single player.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z R2-2 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z R2-2' />
 
 ## Description
 
@@ -33,9 +31,9 @@ This function always returns 1, even if the function failed to excute (player do
 ```c
 if (strcmp(cmdtext, "/burnme", true) == 0)
 {
-    new Float:POS[3];
-    GetPlayerPos(playerid, POS[0], POS[1], POS[2]);
-    CreateExplosionForPlayer(playerid, POS[0], POS[1], POS[2], 1, 10.0);
+    new Float: playerPos[3];
+    GetPlayerPos(playerid, playerPos[0], playerPos[1], playerPos[2]);
+    CreateExplosionForPlayer(playerid, playerPos[0], playerPos[1], playerPos[2], 1, 10.0);
     return 1;
 }
 ```

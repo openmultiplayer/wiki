@@ -24,8 +24,7 @@ Returns the name of a field at a particular index.
 
 ## ส่งคืน
 
-Returns 1, if the function was successful, otherwise 0 if DBResult:dbresult is a NULL reference or the column index not
-available.
+Returns 1, if the function was successful, otherwise 0 if DBResult:dbresult is a NULL reference or the column index not available.
 
 ## ตัวอย่าง
 
@@ -34,7 +33,7 @@ available.
 public OnPlayerCommandText(playerid, cmdtext[])
 {
     // If "cmdtext" equals "/getfieldnames"
-    if(!strcmp(cmdtext, "/getfieldnames", true, 14))
+    if (!strcmp(cmdtext, "/getfieldnames", true, 14))
     {
         // Declare "db_result", "i", and "columns"
         new DBResult:db_result = db_query(db_handle, "SELECT * FROM `join_log`"), i, columns = db_num_fields(db_result), info[30];
@@ -65,8 +64,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 :::warning
 
-Using an invalid handle will crash your server! Get a valid handle by using db_query. But it's protected against NULL
-references.
+Using an invalid handle will crash your server! Get a valid handle by using db_query. But it's protected against NULL references.
 
 :::
 

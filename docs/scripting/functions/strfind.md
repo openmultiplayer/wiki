@@ -5,11 +5,9 @@ description: Search for a sub string in a string.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -29,7 +27,7 @@ The number of characters before the sub string (the sub string's start position)
 ## Examples
 
 ```c
-if(strfind("Are you in here?", "you", true) != -1) //returns 4, because the start of 'you' (y) is at index 4 in the string
+if (strfind("Are you in here?", "you", true) != -1) //returns 4, because the start of 'you' (y) is at index 4 in the string
 {
     SendClientMessageToAll(0xFFFFFFFF, "I found you!");
 }
@@ -38,7 +36,6 @@ if(strfind("Are you in here?", "you", true) != -1) //returns 4, because the sta
 ## Related Functions
 
 - [strcmp](strcmp.md): Compare two strings to check if they are the same.
-- [strtok](strtok.md): Get the next 'token' (word/parameter) in a string.
 - [strdel](strdel.md): Delete part of a string.
 - [strins](strins.md): Insert text into a string.
 - [strlen](strlen.md): Get the length of a string.

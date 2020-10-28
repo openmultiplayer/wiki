@@ -26,7 +26,7 @@ It is always called first in filterscripts.
 ```c
 public OnPlayerStateChange(playerid, newstate, oldstate)
 {
-    if(oldstate == PLAYER_STATE_ONFOOT && newstate == PLAYER_STATE_DRIVER) // Player entered a vehicle as a driver
+    if (oldstate == PLAYER_STATE_ONFOOT && newstate == PLAYER_STATE_DRIVER) // Player entered a vehicle as a driver
     {
         new vehicleid = GetPlayerVehicleID(playerid);
         AddVehicleComponent(vehicleid, 1010); // Add NOS to the vehicle
@@ -37,11 +37,9 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
 
 ## Notes
 
-:::tip
+import T from '../../../src/components/templates.js'
 
-This callback can also be called by NPC.
-
-:::
+<T.TipNPCCallbacks />
 
 ## Related Functions
 

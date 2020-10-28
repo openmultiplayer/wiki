@@ -9,11 +9,11 @@ tags: []
 
 Shows 'game text' (on-screen text) for a certain length of time for all players.
 
-| Name           | Description                                           |
-| -------------- | ----------------------------------------------------- |
-| const string[] | The text to be displayed.                             |
-| time           | The duration of the text being shown in milliseconds. |
-| style          | The style of text to be displayed.                    |
+| Name           | Description                                                       |
+| -------------- | ----------------------------------------------------------------- |
+| const string[] | The text to be displayed.                                         |
+| time           | The duration of the text being shown in milliseconds.             |
+| style          | The [style](../resources/gametextstyles) of text to be displayed. |
 
 ## Returns
 
@@ -37,6 +37,14 @@ public OnPlayerDeath(playerid, killerid, reason)
     return 1;
 }
 ```
+
+## Notes
+
+:::warning
+
+Do note that the players may crash because of odd number of tilde (~) symbols used in the game text. Using color codes (e.g. ~r~) beyond the 255th character may crash the client.
+
+:::
 
 ## Related Functions
 

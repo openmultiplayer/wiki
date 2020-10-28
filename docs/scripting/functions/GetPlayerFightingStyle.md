@@ -5,11 +5,9 @@ description: Get the fighting style the player currently using.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -26,7 +24,7 @@ The ID of the fighting style of the player.
 ## Examples
 
 ```c
-if(GetPlayerFightingStyle(playerid) == FIGHT_STYLE_NORMAL)
+if (GetPlayerFightingStyle(playerid) == FIGHT_STYLE_NORMAL)
 {
     SendClientMessage(playerid,0xFFFFFFAA,"You are using normal fighting style!");
 }

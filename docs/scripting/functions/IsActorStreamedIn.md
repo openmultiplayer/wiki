@@ -5,11 +5,9 @@ description: Checks if an actor is streamed in for a player.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -27,17 +25,17 @@ This function returns 1 if the actor is streamed in for the player, or 0 if it i
 ## Examples
 
 ```c
-new MyActor;
+new gMyActor;
 
 public OnGameModeInit()
 {
-    MyActor = CreateActor(...);
+    gMyActor = CreateActor(...);
     return 1;
 }
 
 public OnPlayerSpawn(playerid)
 {
-    if(IsActorStreamedIn(MyActor, playerid))
+    if (IsActorStreamedIn(gMyActor, playerid))
     {
         // Do something
     }

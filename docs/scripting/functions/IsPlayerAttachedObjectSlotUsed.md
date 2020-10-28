@@ -5,11 +5,9 @@ description: Check if a player has an object attached in the specified index (sl
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c' />
 
 ## Description
 
@@ -32,9 +30,12 @@ Check if a player has an object attached in the specified index (slot).
 stock CountAttachedObjects(playerid)
 {
     new count;
-    for(new i=0; i<MAX_PLAYER_ATTACHED_OBJECTS; i++)
+    for(new i = 0; i < MAX_PLAYER_ATTACHED_OBJECTS; i++)
     {
-        if(IsPlayerAttachedObjectSlotUsed(playerid, i)) count++;
+        if (IsPlayerAttachedObjectSlotUsed(playerid, i))
+        {
+            count++;
+        }
     }
     return count;
 }

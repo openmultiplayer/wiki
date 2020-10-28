@@ -5,11 +5,9 @@ description: Attach a player object to a vehicle.
 tags: ["player", "vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -36,7 +34,7 @@ This function does not return any specific values.
 ```c
 public OnPlayerStateChange(playerid, newstate, oldstate)
 {
-    if(newstate == PLAYER_STATE_DRIVER) // If player enters vehicle
+    if (newstate == PLAYER_STATE_DRIVER) // If player enters vehicle
     {
         // Attach massive cow.
         new cow_object = CreatePlayerObject(playerid, 16442, 0, 0, 0, 0, 0, 0);
@@ -56,11 +54,11 @@ You need to create the object before attempting to attach it to a vehicle.
 
 ## Related Functions
 
-- [CreatePlayerObject](CreateObject.md): Create an object for only one player.
-- [DestroyPlayerObject](DestroyObject.md): Destroy a player object.
-- [IsValidPlayerObject](IsValidObject.md): Checks if a certain player object is vaild.
-- [MovePlayerObject](MoveObject.md): Move a player object.
-- [StopPlayerObject](StopObject.md): Stop a player object from moving.
+- [CreatePlayerObject](CreatePlayerObject.md): Create an object for only one player.
+- [DestroyPlayerObject](DestroyPlayerObject.md): Destroy a player object.
+- [IsValidPlayerObject](IsValidPlayerObject.md): Checks if a certain player object is vaild.
+- [MovePlayerObject](MovePlayerObject.md): Move a player object.
+- [StopPlayerObject](StopPlayerObject.md): Stop a player object from moving.
 - [SetPlayerObjectRot](SetPlayerObjectRot.md): Set the rotation of a player object.
 - [GetPlayerObjectPos](GetPlayerObjectPos.md): Locate a player object.
 - [SetPlayerObjectPos](SetPlayerObjectPos.md): Set the position of a player object.

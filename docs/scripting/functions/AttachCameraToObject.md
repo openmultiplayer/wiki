@@ -5,11 +5,9 @@ description: You can use this function to attach the player camera to objects.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -29,10 +27,10 @@ This function does not return any specific values.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/attach", false))
+    if (!strcmp(cmdtext, "/attach", false))
     {
-        new object = CreateObject(1245, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0);
-        AttachCameraToObject(playerid, object);
+        new objectId = CreateObject(1245, 0.0, 0.0, 3.0, 0.0, 0.0, 0.0);
+        AttachCameraToObject(playerid, objectId);
         SendClientMessage(playerid, 0xFFFFFFAA, "Your camera is attached on object now.");
         return 1;
     }
@@ -50,4 +48,4 @@ You need to create the object first, before attempting to attach a player camera
 
 ## Related Functions
 
-- [AttachCameraToPlayerObject](AttachCameraToPlayerObjecy.md): Attaches the player's camera to a player object.
+- [AttachCameraToPlayerObject](AttachCameraToPlayerObject.md): Attaches the player's camera to a player object.

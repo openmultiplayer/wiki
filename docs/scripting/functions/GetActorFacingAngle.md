@@ -5,11 +5,9 @@ description: Get the facing angle of an actor.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -31,8 +29,8 @@ The actor's facing angle is stored in the specified variable.
 ## Examples
 
 ```c
-new Float:angle;
-GetActorFacingAngle(actorid, angle);
+new Float:facingAngle;
+GetActorFacingAngle(actorid, facingAngle);
 ```
 
 ## Related Functions

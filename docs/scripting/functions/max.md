@@ -5,11 +5,9 @@ description: .
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -31,7 +29,8 @@ Returns the smallest of a and b. If both are equivalent, a is returned.
 
 public OnGameModeInit()
 {
-    new a, b, result;
+    new
+        a, b, result;
     a = 5;
     b = 10;
     result = max(a,b);

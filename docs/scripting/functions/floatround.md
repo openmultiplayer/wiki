@@ -5,20 +5,18 @@ description: Round a floating point number to an integer value.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
 Round a floating point number to an integer value.
 
-| Name   | Description                   |
-| ------ | ----------------------------- |
-| value  | The value to round.           |
-| method | The floatround method to use. |
+| Name                                    | Description                  |
+| --------------------------------------- | ---------------------------- |
+| value                                   | The value to round.          |
+| [mode](../resources/floatroundmodes.md) | The floatround modes to use. |
 
 ## Returns
 

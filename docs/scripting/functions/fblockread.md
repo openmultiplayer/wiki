@@ -5,11 +5,9 @@ description: This function allows you to read data from a file, without encoding
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -48,7 +46,7 @@ new File:handle = fopen("file.bin", io_write)
     file_len;
 
 // Check, if "file.bin" is open
-if(handle)
+if (handle)
 {
     // Success
 
@@ -56,7 +54,7 @@ if(handle)
     file_len = flength(handle);
 
     // If file is equally large than the array
-    if(file_len == (some_enum*4))
+    if (file_len == (some_enum*4))
     {
         // Success
 

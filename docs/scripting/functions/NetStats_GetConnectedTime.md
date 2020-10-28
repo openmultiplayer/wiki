@@ -5,11 +5,9 @@ description: Gets the amount of time (in milliseconds) that a player has been co
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z' />
 
 ## Description
 
@@ -28,7 +26,7 @@ This function returns the amount of time (in milliseconds) that a player has bee
 ```c
 public OnPlayerCommandText(playerid,cmdtext[])
 {
-    if(!strcmp(cmdtext, "/connectedtime"))
+    if (!strcmp(cmdtext, "/connectedtime"))
     {
         new szString[144];
         format(szString, sizeof(szString), "You have been connected for %i milliseconds.", NetStats_GetConnectedTime(playerid));

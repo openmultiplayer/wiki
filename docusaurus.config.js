@@ -4,6 +4,7 @@ module.exports = {
   url: "https://www.open.mp/",
   baseUrl: "/",
   favicon: "public/favicon.ico",
+  onBrokenLinks: "ignore",
   organizationName: "openmultiplayer",
   projectName: "wiki",
   themeConfig: {
@@ -14,7 +15,7 @@ module.exports = {
         src: "public/logo-light-trans.svg",
         href: "/docs/",
       },
-      links: [
+      items: [
         {
           to: "docs/index",
           activeBasePath: "docs",
@@ -90,13 +91,8 @@ module.exports = {
               href: "https://sa-mp.com",
             },
             {
-              label: "SA-MP Wiki",
-              href: "https://wiki.sa-mp.com",
-            },
-            {
               label: "Blog",
-              to: "blog",
-              href: "https://open.mp/blog",
+              to: "/blog",
             },
             {
               label: "GitHub",
@@ -106,6 +102,13 @@ module.exports = {
         },
       ],
       copyright: `Copyright © ${new Date().getFullYear()} Open Multiplayer Team. Built with Docusaurus.`,
+    },
+    algolia: {
+      apiKey: "da3ef2503509f8d1ac120a0ca993e3d7",
+      indexName: "sa_open_mp",
+      searchParameters: {
+        facetFilters: ["type:lvl1", "language:en"],
+      },
     },
     googleAnalytics: {
       trackingID: "UA-78828365-7",
@@ -125,12 +128,19 @@ module.exports = {
         },
         sitemap: {
           cacheTime: 600 * 1000,
-          changefreq: "daily",
-          priority: 0.5,
+          changefreq: "weekly",
+          priority: 1,
           trailingSlash: false,
         },
       },
     ],
   ],
-  plugins: ["docusaurus-lunr-search", "@docusaurus/plugin-google-analytics"],
+  plugins: [
+    [
+      "@docusaurus/plugin-google-analytics",
+      {
+        id: "plugin-google-analytics-1",
+      },
+    ],
+  ],
 };

@@ -5,11 +5,9 @@ description: Check who a player is aiming at.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3d and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3d' />
 
 ## Description
 
@@ -29,8 +27,8 @@ The ID of the target player, or INVALID_PLAYER_ID if none.
 public OnPlayerUpdate(playerid)
 {
     // Store the ID
-    new targetplayer = GetPlayerTargetPlayer(playerid);
-    if(GetPlayerTeam(targetplayer) == GetPlayerTeam(playerid) && targetplayer != INVALID_PLAYER_ID)
+    new playerTargetId = GetPlayerTargetPlayer(playerid);
+    if (playerTargetId != INVALID_PLAYER_ID && GetPlayerTeam(playerTargetId) == GetPlayerTeam(playerid))
     {
         GameTextForPlayer(playerid, "~R~do not shoot at team-mates!", 5000, 3);
     }

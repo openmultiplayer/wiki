@@ -9,12 +9,12 @@ tags: ["player"]
 
 Shows 'game text' (on-screen text) for a certain length of time for a specific player.
 
-| Name           | Description                                           |
-| -------------- | ----------------------------------------------------- |
-| playerid       | The ID of the player to show the gametext for.        |
-| const string[] | The text to be displayed.                             |
-| time           | The duration of the text being shown in milliseconds. |
-| style          | The style of text to be displayed.                    |
+| Name           | Description                                                       |
+| -------------- | ----------------------------------------------------------------- |
+| playerid       | The ID of the player to show the gametext for.                    |
+| const string[] | The text to be displayed.                                         |
+| time           | The duration of the text being shown in milliseconds.             |
+| style          | The [style](../resources/gametextstyles) of text to be displayed. |
 
 ## Returns
 
@@ -31,6 +31,16 @@ public OnPlayerDeath(playerid, killerid, reason)
     return 1;
 }
 ```
+
+## Notes
+
+:::warning
+
+Do note that the players may crash because of odd number of tilde (~) symbols used in the game text. Using color codes (e.g. ~r~) beyond the 255th character may crash the client.
+
+Also, a blank space at end of the string may result in faliure. For example: `"Headshot "` results in failure. Instead it should be `"Headshot"` or `"Headshot_"`.
+
+:::
 
 ## Related Functions
 

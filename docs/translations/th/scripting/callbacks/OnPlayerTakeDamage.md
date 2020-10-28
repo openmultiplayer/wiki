@@ -36,7 +36,7 @@ It is always called first in filterscripts so returning 1 there blocks other fil
 ```c
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 {
-    if(issuerid != INVALID_PLAYER_ID) // If not self-inflicted
+    if (issuerid != INVALID_PLAYER_ID) // If not self-inflicted
     {
         new
             infoString[128],
@@ -56,7 +56,7 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 }
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 {
-    if(issuerid != INVALID_PLAYER_ID && weaponid == 34 && bodypart == 9)
+    if (issuerid != INVALID_PLAYER_ID && weaponid == 34 && bodypart == 9)
     {
         // One shot to the head to kill with sniper rifle
         SetPlayerHealth(playerid, 0.0);
@@ -69,17 +69,13 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 
 :::tip
 
-The weaponid will return 37 (flame thrower) from any fire sources (e.g. molotov, 18).
-The weaponid will return 51 from any weapon that creates an explosion (e.g. RPG, grenade)
-playerid is the only one who can call the callback.
-The amount is always the maximum damage the weaponid can do, even when the health left is less than that maximum damage. So when a player has 100.0 health and gets shot with a Desert Eagle which has a damage value of 46.2, it takes 3 shots to kill that player. All 3 shots will show an amount of 46.2, even though when the last shot hits, the player only has 7.6 health left.
+The weaponid will return 37 (flame thrower) from any fire sources (e.g. molotov, 18). The weaponid will return 51 from any weapon that creates an explosion (e.g. RPG, grenade) playerid is the only one who can call the callback. The amount is always the maximum damage the weaponid can do, even when the health left is less than that maximum damage. So when a player has 100.0 health and gets shot with a Desert Eagle which has a damage value of 46.2, it takes 3 shots to kill that player. All 3 shots will show an amount of 46.2, even though when the last shot hits, the player only has 7.6 health left.
 
 :::
 
 :::warning
 
-GetPlayerHealth and GetPlayerArmour will return the old amounts of the player before this callback.
-Always check if issuerid is valid before using it as an array index.
+GetPlayerHealth and GetPlayerArmour will return the old amounts of the player before this callback. Always check if issuerid is valid before using it as an array index.
 
 :::
 

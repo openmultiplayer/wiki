@@ -38,7 +38,7 @@ The position of the last bullet is stored in the specified variables.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(strcmp(cmdtext, "/lastshot", true) == 0)
+    if (strcmp(cmdtext, "/lastshot", true) == 0)
     {
         new lsString[128],
             Float:fOriginX, Float:fOriginY, Float:fOriginZ,
@@ -57,8 +57,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 :::warning
 
-This function will only work when lag compensation is enabled.
-If the player hit nothing, the hit positions will be 0. This means you can't currently calculate how far a bullet travels through open air.
+This function will only work when lag compensation is enabled. If the player hit nothing, the hit positions will be 0. This means you can't currently calculate how far a bullet travels through open air.
 
 :::
 

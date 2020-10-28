@@ -26,8 +26,10 @@ public OnPlayerConnect(playerid)
 {
     new plrIP[16];
     GetPlayerIp(playerid, plrIP, sizeof(plrIP));
-    if(!strcmp(plrIP, "127.0.0.1"))
-    SendClientMessage(playerid, 0xFFFFFFFF, "Welcome to your server, master :)");
+    if (!strcmp(plrIP, "127.0.0.1"))
+    {
+        SendClientMessage(playerid, 0xFFFFFFFF, "Welcome to your server, master :)");
+    }
     return 1;
 }
 ```
@@ -36,8 +38,7 @@ public OnPlayerConnect(playerid)
 
 :::tip
 
-PAWN is case-sensitive. GetPlayerIP will not work.
-This function does not work when used in OnPlayerDisconnect because the player is already disconnected. It will return an invalid IP (255.255.255.255). Save players' IPs under OnPlayerConnect if they need to be used under OnPlayerDisconnect.
+PAWN is case-sensitive. GetPlayerIP will not work. This function does not work when used in OnPlayerDisconnect because the player is already disconnected. It will return an invalid IP (255.255.255.255). Save players' IPs under OnPlayerConnect if they need to be used under OnPlayerDisconnect.
 
 :::
 

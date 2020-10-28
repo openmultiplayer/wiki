@@ -5,11 +5,9 @@ description: OnPlayerClickMap is called when a player places a target/waypoint o
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This callback was added in SA-MP 0.3d and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='callback' version='SA-MP 0.3d' />
 
 ## Description
 
@@ -44,7 +42,7 @@ public OnPlayerClickMap(playerid, Float:fX, Float:fY, Float:fZ)
 
 :::tip
 
-The Z value returned will be 0 (invalid) if it is far away from the player; use the MapAndreas plugin to get a more accurate Z coordinate.
+As the callback name says, its only called when the player click to mark the target and not when pressed the key. The Z value returned will be 0 (invalid) if the clicked area on the map is far away from the player; use the MapAndreas or ColAndreas plugin to get a more accurate Z coordinate.
 
 :::
 

@@ -29,7 +29,7 @@ The sine of the value entered.
 ```c
 GetPosInFrontOfPlayer(playerid, Float:distance, &Float:x, &Float:y, &Float:z)
 {
-    if(GetPlayerPos(playerid, x, y, z)) // this functions returns 0 if the player is not connected
+    if (GetPlayerPos(playerid, x, y, z)) // this functions returns 0 if the player is not connected
     {
         new Float:z_angle;
         GetPlayerFacingAngle(playerid, z_angle);
@@ -47,8 +47,7 @@ GetPosInFrontOfPlayer(playerid, Float:distance, &Float:x, &Float:y, &Float:z)
 
 :::warning
 
-GTA/SA-MP use degrees for angles in most circumstances, for example GetPlayerFacingAngle. Therefore, it is most likely you'll want to use the 'degrees' angle mode, not radians.
-Also note that angles in GTA are counterclockwise; 270° is East and 90° is West. South is still 180° and North still 0°/360°.
+GTA/SA-MP use degrees for angles in most circumstances, for example GetPlayerFacingAngle. Therefore, it is most likely you'll want to use the 'degrees' angle mode, not radians. Also note that angles in GTA are counterclockwise; 270° is East and 90° is West. South is still 180° and North still 0°/360°.
 
 :::
 

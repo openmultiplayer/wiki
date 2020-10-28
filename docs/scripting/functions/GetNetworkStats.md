@@ -5,11 +5,9 @@ description: Gets the server's network stats and stores them in a string.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c R4 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c R4' />
 
 ## Description
 
@@ -29,7 +27,7 @@ This function always returns 1.
 ```c
 public OnPlayerCommandText(playerid,cmdtext[])
 {
-    if(!strcmp(cmdtext, "/netstats"))
+    if (!strcmp(cmdtext, "/netstats"))
     {
         new stats[400+1];
         GetNetworkStats(stats, sizeof(stats)); // get the servers networkstats

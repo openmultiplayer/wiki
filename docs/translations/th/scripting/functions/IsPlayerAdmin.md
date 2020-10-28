@@ -15,15 +15,14 @@ Check if a player is logged in as an RCON admin.
 
 ## ส่งคืน
 
-1: Player is an RCON admin.
-0: Player is NOT an RCON admin.
+1: Player is an RCON admin. 0: Player is NOT an RCON admin.
 
 ## ตัวอย่าง
 
 ```c
 public OnPlayerSpawn(playerid)
 {
-    if(IsPlayerAdmin(playerid))
+    if (IsPlayerAdmin(playerid))
     {
         SendClientMessageToAll(0xDEEE20FF, "An admin spawned.");
     }

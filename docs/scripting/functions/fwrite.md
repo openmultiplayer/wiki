@@ -5,11 +5,9 @@ description: Write text into a file.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -31,7 +29,7 @@ The length of the written string as an integer.
 new File:handle = fopen("file.txt", io_write);
 
 // Check, if file is open
-if(handle)
+if (handle)
 {
     // Success
 
@@ -53,7 +51,7 @@ new File:handle = fopen("file.txt"),
     buf[128];
 
 // Check, if file is open
-if(handle)
+if (handle)
 {
     // Success
 
@@ -78,7 +76,7 @@ else
 new File:handle = fopen("file.txt", io_append);
 
 // Check, if file is open
-if(handle)
+if (handle)
 {
     // Success
 

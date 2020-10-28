@@ -36,7 +36,7 @@ This function does not return any specific values.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/moveme", true))
+    if (!strcmp(cmdtext, "/moveme", true))
     {
         TogglePlayerSpectating(playerid, 1);
         InterpolateCameraPos(playerid, 0.0, 0.0, 10.0, 1000.0, 1000.0, 30.0, 10000, CAMERA_MOVE);
@@ -51,8 +51,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 :::tip
 
-Use TogglePlayerSpectating to make objects stream in for the player while the camera is moving and remove the HUD.
-The player's camera can be reset to behind the player with SetCameraBehindPlayer.
+Use TogglePlayerSpectating to make objects stream in for the player while the camera is moving and remove the HUD. The player's camera can be reset to behind the player with SetCameraBehindPlayer.
 
 :::
 

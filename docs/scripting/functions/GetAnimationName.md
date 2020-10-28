@@ -5,11 +5,9 @@ description: Get the animation library/name for the index.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3b and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3b' />
 
 ## Description
 
@@ -32,14 +30,16 @@ Get the animation library/name for the index.
 ```c
 public OnPlayerUpdate(playerid)
 {
-    if(GetPlayerAnimationIndex(playerid))
+    if (GetPlayerAnimationIndex(playerid))
     {
-        new animlib[32];
-        new animname[32];
-        new msg[128];
-        GetAnimationName(GetPlayerAnimationIndex(playerid),animlib,32,animname,32);
-        format(msg, 128, "Running anim: %s %s", animlib, animname);
-        SendClientMessage(playerid, 0xFFFFFFFF, msg);
+        new
+            animLib[32],
+            animName[32],
+            msgText[128];
+
+        GetAnimationName(GetPlayerAnimationIndex(playerid), animLib, sizeof animLib, animName, sizeof animName);
+        format(msgText, sizeof msgText, "Running anim: %s %s", animLib, animName);
+        SendClientMessage(playerid, 0xFFFFFFFF, msgText);
     }
     return 1;
 }

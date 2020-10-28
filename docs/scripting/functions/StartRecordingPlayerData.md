@@ -5,11 +5,9 @@ description: Starts recording a player's movements to a file, which can then be 
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -30,10 +28,14 @@ This function does not return any specific values.
 ```c
 if (!strcmp("/recordme", cmdtext))
 {
-    if(GetPlayerState(playerid) == 1)
-    StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE_ONFOOT, "MyFile");
-    else if(GetPlayerState(playerid) == 2)
-    StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE_DRIVER, "MyFile");
+    if (GetPlayerState(playerid) == PLAYER_STATE_ONFOOT)
+    {
+        StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE_ONFOOT, "MyFile");
+    }
+    else if (GetPlayerState(playerid) == PLAYER_STATE_DRIVER)
+    {
+        StartRecordingPlayerData(playerid, PLAYER_RECORDING_TYPE_DRIVER, "MyFile");
+    }
     SendClientMessage(playerid, 0xFFFFFFFF, "All your movements are now being recorded!");
     return 1;
 }

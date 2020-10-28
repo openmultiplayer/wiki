@@ -5,11 +5,9 @@ description: Disables collisions between occupied vehicles for a player.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -31,7 +29,7 @@ Disables collisions between occupied vehicles for a player.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/collision", true))
+    if (!strcmp(cmdtext, "/collision", true))
     {
         new string[64];
 

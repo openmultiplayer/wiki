@@ -5,11 +5,9 @@ description: Checks the player's level of drunkenness.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -28,7 +26,7 @@ An integer with the level of drunkenness of the player.
 ```c
 public OnPlayerStateChange(playerid, oldstate, newstate)
 {
-    if(newstate == PLAYER_STATE_DRIVER && GetPlayerDrunkLevel(playerid) > 1999)
+    if (newstate == PLAYER_STATE_DRIVER && GetPlayerDrunkLevel(playerid) > 1999)
     {
         SendClientMessage(playerid,0xFFFFFFFF,"Don't drink and drive!");
         RemovePlayerFromVehicle(playerid);

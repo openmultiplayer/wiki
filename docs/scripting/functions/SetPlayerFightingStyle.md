@@ -5,11 +5,9 @@ description: Set a player's special fighting style.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -29,7 +27,7 @@ This function does not return any specific values.
 ```c
 if (strcmp(cmdtext, "/boxing", true) == 0)
 {
-    SetPlayerFightingStyle (playerid, FIGHT_STYLE_BOXING);
+    SetPlayerFightingStyle(playerid, FIGHT_STYLE_BOXING);
     SendClientMessage(playerid, 0xFFFFFFAA, "You have changed your fighting style to boxing!");
     return 1;
 }

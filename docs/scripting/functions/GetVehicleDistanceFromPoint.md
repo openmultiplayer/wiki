@@ -5,11 +5,9 @@ description: This function can be used to calculate the distance (as a float) be
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c R3 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c R3' />
 
 ## Description
 
@@ -32,7 +30,7 @@ A float containing the distance from the point specified in the coordinates.
 /* when the player types 'vendingmachine' in to the chat box, they'll see this.*/
 public OnPlayerText(playerid, text[])
 {
-    if(strcmp(text, "vendingmachine", true) == 0)
+    if (strcmp(text, "vendingmachine", true) == 0)
     {
         new
             Float: fDistance = GetVehicleDistanceFromPoint(GetPlayerVehicleID(playerid), 237.9, 115.6, 1010.2),

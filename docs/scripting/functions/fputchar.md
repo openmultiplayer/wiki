@@ -5,11 +5,9 @@ description: Write one character to a file.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -30,7 +28,7 @@ This function does not return any specific values.
 ```c
 // Open "file.txt" in "write only" mode
 new File:handle = fopen("file.txt", io_write);
-if(handle)
+if (handle)
 {
     // Success
 

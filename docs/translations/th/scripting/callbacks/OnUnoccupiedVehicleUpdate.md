@@ -37,7 +37,7 @@ It is always called first in filterscripts so returning 0 there also blocks othe
 public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_x, Float:new_y, Float:new_z, Float:vel_x, Float:vel_y, Float:vel_z)
 {
     // Check if it moved far
-    if(GetVehicleDistanceFromPoint(vehicleid, new_x, new_y, new_z) > 50.0)
+    if (GetVehicleDistanceFromPoint(vehicleid, new_x, new_y, new_z) > 50.0)
     {
         // Reject the update
         return 0;
@@ -51,8 +51,7 @@ public OnUnoccupiedVehicleUpdate(vehicleid, playerid, passenger_seat, Float:new_
 
 :::warning
 
-This callback is called very frequently per second per unoccupied vehicle. You should refrain from implementing intensive calculations or intensive file writing/reading operations in this callback.
-GetVehiclePos will return the old coordinates of the vehicle before this update.
+This callback is called very frequently per second per unoccupied vehicle. You should refrain from implementing intensive calculations or intensive file writing/reading operations in this callback. GetVehiclePos will return the old coordinates of the vehicle before this update.
 
 :::
 

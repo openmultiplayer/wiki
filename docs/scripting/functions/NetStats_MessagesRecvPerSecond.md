@@ -5,11 +5,9 @@ description: Gets the number of messages the player has received in the last sec
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z' />
 
 ## Description
 
@@ -28,7 +26,7 @@ the number of messages the player has received in the last second.
 ```c
 public OnPlayerCommandText(playerid,cmdtext[])
 {
-    if(!strcmp(cmdtext, "/msgpersec"))
+    if (!strcmp(cmdtext, "/msgpersec"))
     {
         new szString[144];
         format(szString, sizeof(szString), "You have received %i network messages in the last second.", NetStats_MessagesRecvPerSecond(playerid));

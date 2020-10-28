@@ -5,11 +5,9 @@ description: You can use this function to attach objects to other objects.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3d and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3d' />
 
 ## Description
 
@@ -36,10 +34,10 @@ You can use this function to attach objects to other objects. The objects will f
 ## Examples
 
 ```c
-new objectid = CreateObject(...);
-new attachtoid = CreateObject(...);
+new gObjectId = CreateObject(...);
+new gAttachToId = CreateObject(...);
 
-AttachObjectToObject(objectid, attachtoid, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1);
+AttachObjectToObject(gObjectId, gAttachToId, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1);
 ```
 
 ## Notes

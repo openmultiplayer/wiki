@@ -5,11 +5,9 @@ description: Delete part of a string.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -36,7 +34,6 @@ strdel(string, 0, 37); // string is now "this"
 
 - [strcmp](strcmp.md): Compare two strings to check if they are the same.
 - [strfind](strfind.md): Search for a string in another string.
-- [strtok](strtok.md): Get the next 'token' (word/parameter) in a string.
 - [strins](strins.md): Insert text into a string.
 - [strlen](strlen.md): Get the length of a string.
 - [strmid](strmid.md): Extract part of a string into another string.

@@ -5,11 +5,9 @@ description: Stops the current audio stream for a player.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3d and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3d' />
 
 ## Description
 
@@ -28,8 +26,8 @@ This function does not return any specific values.
 ```c
 public OnPlayerStateChange(playerid, newstate, oldstate)
 {
-        // If the player exits a vehicle
-    if(oldstate == PLAYER_STATE_DRIVER || oldstate == PLAYER_STATE_PASSENGER)
+    // If the player exits a vehicle
+    if (oldstate == PLAYER_STATE_DRIVER || oldstate == PLAYER_STATE_PASSENGER)
     {
         StopAudioStreamForPlayer(playerid); // Stop the audio stream
     }

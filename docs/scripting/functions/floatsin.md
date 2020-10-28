@@ -5,11 +5,9 @@ description: Get the sine from a given angle.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -29,7 +27,7 @@ The sine of the value entered.
 ```c
 GetPosInFrontOfPlayer(playerid, Float:distance, &Float:x, &Float:y, &Float:z)
 {
-    if(GetPlayerPos(playerid, x, y, z)) // this functions returns 0 if the player is not connected
+    if (GetPlayerPos(playerid, x, y, z)) // this functions returns 0 if the player is not connected
     {
         new Float:z_angle;
         GetPlayerFacingAngle(playerid, z_angle);

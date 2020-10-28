@@ -5,11 +5,9 @@ description: Toggles whether a player-textdraw can be selected or not.
 tags: ["player", "textdraw", "playertextdraw"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -30,7 +28,7 @@ This function does not return any specific values.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/select_ptd", true))
+    if (!strcmp(cmdtext, "/select_ptd", true))
     {
         for(new i = 0; i < MAX_PLAYER_TEXT_DRAWS; i++) PlayerTextDrawSetSelectable(playerid, PlayerText:i, 1);
         SendClientMessage(playerid, 0xFFFFFFAA, "SERVER: All player-textdraws can be selected now!");

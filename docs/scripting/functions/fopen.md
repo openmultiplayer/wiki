@@ -5,11 +5,9 @@ description: Open a file (to read from or write to).
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -34,7 +32,7 @@ new File:handle = fopen("file.txt", io_read),
     buf[128];
 
 // Check, if the file is opened
-if(handle)
+if (handle)
 {
     // Success
 
@@ -53,7 +51,7 @@ else
 new File:handle = fopen("file.txt", io_write);
 
 // Check, if file is open
-if(handle)
+if (handle)
 {
     // Success
 
@@ -75,7 +73,7 @@ new File:handle = fopen("file.txt"),
     buf[128];
 
 // Check, if file is open
-if(handle)
+if (handle)
 {
     // Success
 
@@ -100,7 +98,7 @@ else
 new File:handle = fopen("file.txt", io_append);
 
 // Check, if file is open
-if(handle)
+if (handle)
 {
     // Success
 

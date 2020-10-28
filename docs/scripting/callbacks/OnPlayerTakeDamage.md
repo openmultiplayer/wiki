@@ -5,11 +5,9 @@ description: This callback is called when a player takes damage.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This callback was added in SA-MP 0.3d and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='callback' version='SA-MP 0.3d' />
 
 ## Description
 
@@ -36,7 +34,7 @@ It is always called first in filterscripts so returning 1 there blocks other fil
 ```c
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 {
-    if(issuerid != INVALID_PLAYER_ID) // If not self-inflicted
+    if (issuerid != INVALID_PLAYER_ID) // If not self-inflicted
     {
         new
             infoString[128],
@@ -56,7 +54,7 @@ public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 }
 public OnPlayerTakeDamage(playerid, issuerid, Float:amount, weaponid, bodypart)
 {
-    if(issuerid != INVALID_PLAYER_ID && weaponid == 34 && bodypart == 9)
+    if (issuerid != INVALID_PLAYER_ID && weaponid == 34 && bodypart == 9)
     {
         // One shot to the head to kill with sniper rifle
         SetPlayerHealth(playerid, 0.0);

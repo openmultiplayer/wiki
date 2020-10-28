@@ -5,11 +5,9 @@ description: Change the text of a player-textdraw.
 tags: ["player", "textdraw", "playertextdraw"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This feature (player-textdraws) was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='feature (player-textdraws)' version='SA-MP 0.3e' />
 
 ## Description
 
@@ -33,7 +31,7 @@ new PlayerText:pVehicleHealthTD[MAX_PLAYERS];
 
 public OnPlayerStateChange(playerid, newstate, oldstate)
 {
-    if(newstate == 2) // Entered a vehicle as driver
+    if (newstate == 2) // Entered a vehicle as driver
     {
         pVehicleHealthTD[playerid] = CreatePlayerTextDraw(playerid, x, y, " ");
         PlayerTextDrawShow(playerid, pVehicleHealthTD[playerid]);
@@ -41,7 +39,7 @@ public OnPlayerStateChange(playerid, newstate, oldstate)
         // Set a timer to update the textdraw every second
         pVehicleHealthTimer[playerid] = SetTimerEx("vhealth_td_update", 1000, true, "i", playerid);
     }
-    if(oldstate == 2)
+    if (oldstate == 2)
     {
         KillTimer(pVehicleHealthTD[playerid]);
         PlayerTextDrawDestroy(playerid, pVehicleHealthTD[playerid]);

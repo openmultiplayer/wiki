@@ -5,11 +5,9 @@ description: Returns the index of any running applied animations.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3b and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3b' />
 
 ## Description
 
@@ -28,13 +26,15 @@ Returns the index of any running applied animations.
 ```c
 public OnPlayerUpdate(playerid)
 {
-    if(GetPlayerAnimationIndex(playerid))
+    if (GetPlayerAnimationIndex(playerid))
     {
-        new animlib[32];
-        new animname[32];
-        new msg[128];
-        GetAnimationName(GetPlayerAnimationIndex(playerid),animlib,32,animname,32);
-        format(msg, 128, "Running anim: %s %s", animlib, animname);
+        new
+            animLib[32],
+            animName[32],
+            msg[128];
+
+        GetAnimationName(GetPlayerAnimationIndex(playerid), animLib, sizeof animLib, animName, sizeof animName);
+        format(msg, sizeof msg, "Running anim: %s %s", animLib, animName);
         SendClientMessage(playerid, 0xFFFFFFFF, msg);
     }
     return 1;

@@ -5,11 +5,9 @@ description: Change the size of a player-textdraw (box if PlayerTextDrawUseBox i
 tags: ["player", "textdraw", "playertextdraw"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This feature (player-textdraws) was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='feature (player-textdraws)' version='SA-MP 0.3e' />
 
 ## Description
 
@@ -41,8 +39,8 @@ This function defines the clickable area for use with PlayerTextDrawSetSelectabl
 ## Examples
 
 ```c
-MyTextDraw = CreatePlayerTextDraw(playerid, 100.0, 33.0, "Example TextDraw");
-PlayerTextDrawTextSize(playerid, MyTextDraw, 2.0, 3.6);
+MyTextDraw[playerid] = CreatePlayerTextDraw(playerid, 100.0, 33.0, "Example TextDraw");
+PlayerTextDrawTextSize(playerid, MyTextDraw[playerid], 2.0, 3.6);
 ```
 
 ## Notes

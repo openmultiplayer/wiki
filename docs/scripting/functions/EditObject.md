@@ -5,11 +5,9 @@ description: Allows a player to edit an object (position and rotation) using the
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -38,7 +36,7 @@ public OnGameModeInit()
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/oedit", true))
+    if (!strcmp(cmdtext, "/oedit", true))
     {
         EditObject(playerid, object);
         SendClientMessage(playerid, 0xFFFFFFFF, "SERVER: You can now edit the object!");

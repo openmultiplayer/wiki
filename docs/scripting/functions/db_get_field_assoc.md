@@ -6,11 +6,9 @@ keywords:
   - sqlite
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-The function starts with a lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -116,8 +114,7 @@ public OnGameModeExit()
 
 :::warning
 
-Using an invalid handle other than zero will crash your server!
-Get a valid database connection handle by using [db_query](db_query).
+Using an invalid handle other than zero will crash your server! Get a valid database connection handle by using [db_query](db_query).
 
 :::
 

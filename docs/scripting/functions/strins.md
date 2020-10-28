@@ -5,11 +5,9 @@ description: Insert a string into another string.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -30,10 +28,13 @@ This function does not return any specific values.
 
 ```c
 // Add an [AFK] tag to the start of players' names
-new pName[MAX_PLAYER_NAME+1];
-GetPlayerName(playerid, pName, MAX_PLAYER_NAME);
-strins(pName, "[AFK]", 0);
-SetPlayerName(playerid, pName);
+new playerName[MAX_PLAYER_NAME];
+GetPlayerName(playerid, playerName, MAX_PLAYER_NAME);
+if (strlen(playerName) <= 18)
+{
+	strins(playerName, "[AFK]", 0);
+}
+SetPlayerName(playerid, playerName);
 
 // WARNING: Players with names that are 20+ characters long can not have an [AFK] tag, as that would make their name 25 characters long and the limit is 24.
 ```
@@ -42,7 +43,6 @@ SetPlayerName(playerid, pName);
 
 - [strcmp](strcmp.md): Compare two strings to check if they are the same.
 - [strfind](strfind.md): Search for a string in another string.
-- [strtok](strtok.md): Get the next 'token' (word/parameter) in a string.
 - [strdel](strdel.md): Delete part of a string.
 - [strlen](strlen.md): Get the length of a string.
 - [strmid](strmid.md): Extract part of a string into another string.

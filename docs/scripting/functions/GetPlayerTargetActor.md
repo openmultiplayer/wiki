@@ -5,11 +5,9 @@ description: Gets id of an actor which is aimed by certain player.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -28,10 +26,11 @@ The ID of the targeted actor, or INVALID_ACTOR_ID if none.
 ```c
 public OnPlayerUpdate(playerid)
 {
-    new actorid = GetPlayerTargetActor(playerid);
+    new
+        targetActorId = GetPlayerTargetActor(playerid),
+        string[32];
 
-    new string[32];
-    format(string, sizeof(string), "You are aiming at actor id %d", actorid);
+    format(string, sizeof(string), "You are aiming at actor id %d", targetActorId);
     SendClientMessage(playerid, -1, string);
     return 1;
 }

@@ -21,8 +21,7 @@ This will compile fine.
 #assert MOO > 5
 ```
 
-That won't and will give a fatal error.
-This is similar to:
+That won't and will give a fatal error. This is similar to:
 
 ```c
 #define MOO 1
@@ -63,7 +62,7 @@ printf("%d", 7);
 This is why all defines are lost in decompilation as they don't exist when the code is compiled (all directives are pre-processed). Defines don't have to contain numbers:
 
 ```c
-#define PL new i = 0; i < MAX_PLAYERS; i++) if(IsPlayerConnected(i)
+#define PL new i = 0; i < MAX_PLAYERS; i++) if (IsPlayerConnected(i)
 
 for(PL) printf("%d connected", i);
 ```
@@ -75,7 +74,7 @@ Another little known fact about defines is that they can be multi-line if you es
 ```c
 #define PL \
         new i = 0; i < MAX_PLAYERS; i++) \
-                if(IsPlayerCOnnected(i)
+                if (IsPlayerConnected(i)
 
 printf("%d", MOO(6));
 ```
@@ -107,8 +106,7 @@ Which converts to:
 printf("%d", MOO(5 + 6 * 7));
 ```
 
-Which, due to the order of operations, compules as (5 + (6 \* 7)), whiche is 47 and very wrong.
-One interesting fact about the parameters is that if you have too many, the last one is all the extra ones. So doing:
+Which, due to the order of operations, compules as (5 + (6 \* 7)), whiche is 47 and very wrong. One interesting fact about the parameters is that if you have too many, the last one is all the extra ones. So doing:
 
 ```c
 #define PP(%0,%1) \
@@ -147,9 +145,7 @@ As `%1` contains "hi", "hello", "hi". You may have also noticed the use of `#` t
 
 ## `#emit`
 
-This directive is unlisted in the pawn-lang.pdf table however does exist. It is basically an inline compiler. If you know AMX you can use this to put AMX opcodes directly into your code. The one limitation is that is allows only one argument.
-Syntax: `#emit <opcode> <argument>`.
-`<argument>` can be a rational number, integer or (local or global) symbol(variables, functions and labels). The list of opcodes and their meaning can be found in Pawn Toolkit ver. 3664.
+This directive is unlisted in the pawn-lang.pdf table however does exist. It is basically an inline compiler. If you know AMX you can use this to put AMX opcodes directly into your code. The one limitation is that is allows only one argument. Syntax: `#emit <opcode> <argument>`. `<argument>` can be a rational number, integer or (local or global) symbol(variables, functions and labels). The list of opcodes and their meaning can be found in Pawn Toolkit ver. 3664.
 
 ## `#endif`
 
@@ -170,13 +166,19 @@ This halts the compiler instantly and gives a custom error message. See #assert 
 ```c
 #define LIMIT 10
 
-if(LIMIT < 10) printf("Limit too low");
+if (LIMIT < 10)
+{
+    printf("Limit too low");
+}
 ```
 
 That will compile as:
 
 ```c
-if(10 < 10) printf("Limit too low");
+if (10 < 10)
+{
+    printf("Limit too low");
+}
 ```
 
 Which will clearly never be true and the compiler knows it - so it tells you so, giving you a "constant expression" warning. The question is, if it will never be true what's the point of including it at all? You could just remove the code but then there will be no checks if someone changes LIMIT and recompiles. This is what #if is for. Unlike normal if which gives a warning if the expression is constant, #if expressions MUST be constant. So:

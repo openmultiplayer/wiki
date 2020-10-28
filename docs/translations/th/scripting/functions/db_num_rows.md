@@ -42,7 +42,7 @@ GetNameBySpawnID(spawn_id)
     db_result = db_query(db_handle, query);
 
     // If there is any valid entry
-    if(db_num_rows(db_result))
+    if (db_num_rows(db_result))
     {
         // Store data from "PlayerName" into "p_name"
         db_get_field(db_result, 0, p_name, sizeof p_name);
@@ -60,8 +60,7 @@ GetNameBySpawnID(spawn_id)
 
 :::warning
 
-Using an invalid handle will crash your server! Get a valid handle by using db_query. But it's protected against NULL
-references.
+Using an invalid handle will crash your server! Get a valid handle by using db_query. But it's protected against NULL references.
 
 :::
 

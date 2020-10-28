@@ -5,11 +5,9 @@ description: Calculate the distance between a player and a map coordinate.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c R3 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c R3' />
 
 ## Description
 
@@ -32,7 +30,7 @@ The distance between the player and the point as a float.
 /* when the player types '/vend' into the chat box, they'll see this.*/
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(strcmp(cmdtext, "/vend", true) == 0)
+    if (strcmp(cmdtext, "/vend", true) == 0)
     {
         new
             Float: fDistance = GetPlayerDistanceFromPoint(playerid, 237.9, 115.6, 1010.2),

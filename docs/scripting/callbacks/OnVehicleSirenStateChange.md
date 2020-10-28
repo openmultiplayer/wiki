@@ -5,11 +5,9 @@ description: This callback is called when a vehicle's siren is toggled.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This callback was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='callback' version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -34,8 +32,14 @@ It is always called first in filterscripts.
 ```c
 public OnVehicleSirenStateChange(playerid, vehicleid, newstate)
 {
-    if(newstate) GameTextForPlayer(playerid, "~W~Siren ~G~on", 1000, 3);
-    else GameTextForPlayer(playerid, "~W~Siren ~r~off", 1000, 3);
+    if (newstate)
+    {
+        GameTextForPlayer(playerid, "~W~Siren ~G~on", 1000, 3);
+    }
+    else
+    {
+        GameTextForPlayer(playerid, "~W~Siren ~r~off", 1000, 3);
+    }
     return 1;
 }
 ```

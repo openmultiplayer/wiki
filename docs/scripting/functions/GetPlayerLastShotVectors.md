@@ -5,11 +5,9 @@ description: Retrieves the start and end (hit) position of the last bullet a pla
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z' />
 
 ## Description
 
@@ -38,7 +36,7 @@ The position of the last bullet is stored in the specified variables.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(strcmp(cmdtext, "/lastshot", true) == 0)
+    if (strcmp(cmdtext, "/lastshot", true) == 0)
     {
         new lsString[128],
             Float:fOriginX, Float:fOriginY, Float:fOriginZ,

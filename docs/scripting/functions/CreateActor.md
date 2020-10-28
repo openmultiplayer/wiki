@@ -5,11 +5,9 @@ description: Create a static 'actor' in the world.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -32,12 +30,18 @@ INVALID_ACTOR_ID (65535) If the actor limit (1000) is reached.
 ## Examples
 
 ```c
-new ActorCJ;
+new gActorCJ;
 
 public OnGameModeInit()
 {
     // Create an actor (CJ) at Blueberry Acres (Center of SA map)
-    ActorCJ = CreateActor(0, 0.0, 0.0, 3.0, 0.0);
+    gActorCJ = CreateActor(0, 0.0, 0.0, 3.0, 0.0);
+}
+
+public OnGameModeExit()
+{
+    // Destroy our lovely actor (CJ)
+    DestroyActor(gActorCJ);
 }
 ```
 

@@ -5,11 +5,9 @@ description: Sets the X, Y and Z velocity of a vehicle.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -35,9 +33,11 @@ public OnPlayerCommandText(playerid, cmdtext[])
 {
     if (!strcmp("/jump", cmdtext))
     {
-    if(IsPlayerInAnyVehicle(playerid))
-        SetVehicleVelocity(GetPlayerVehicleID(playerid), 0.0, 0.0, 0.2);
-    return 1;
+        if (IsPlayerInAnyVehicle(playerid))
+        {
+            SetVehicleVelocity(GetPlayerVehicleID(playerid), 0.0, 0.0, 0.2);
+        }
+        return 1;
     }
 }
 ```

@@ -5,11 +5,9 @@ description: Checks if a vehicle is streamed in for a player.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -33,9 +31,9 @@ new streamedVehicleCount;
 
 for(new v = 1; v <= MAX_VEHICLES; v++)
 {
-    if(IsVehicleStreamedIn(v, playerid))
+    if (IsVehicleStreamedIn(v, playerid))
     {
-        streamedVehicleCount++;
+        streamedVehicleCount ++;
     }
 }
 

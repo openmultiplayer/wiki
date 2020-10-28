@@ -5,11 +5,9 @@ description: Interpolate a player's camera's 'look at' point between two coordin
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -36,7 +34,7 @@ This function does not return any specific values.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/rotateme", true))
+    if (!strcmp(cmdtext, "/rotateme", true))
     {
         TogglePlayerSpectating(playerid, 1);
         InterpolateCameraLookAt(playerid, 50.0, 50.0, 10.0, -50.0, 50.0, 10.0, 10000, CAMERA_MOVE);

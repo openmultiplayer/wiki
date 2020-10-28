@@ -5,11 +5,9 @@ description: Add a new property or change an existing property.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -46,8 +44,16 @@ setproperty(.value = 123984334, .string = ":)");
 // The rest is the same as above.
 ```
 
+## Notes
+
+:::tip
+
+It is recommended to use the PVars/SVars or GVar plugin instead of these natives for being very slow.
+
+:::
+
 ## Related Functions
 
-- [Getproperty](Getproperty.md): Get the value of a property.
-- [Deleteproperty](Deleteproperty.md): Delete a property.
-- [Existproperty](Existproperty.md): Check if a property exists.
+- [getproperty](getproperty): Get the value of a property.
+- [deleteproperty](deleteproperty): Delete a property.
+- [existproperty](existproperty): Check if a property exists.

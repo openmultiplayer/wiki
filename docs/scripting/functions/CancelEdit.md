@@ -5,11 +5,9 @@ description: Cancel object edition mode for a player.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -28,7 +26,7 @@ This function does not return any specific values.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/stopedit", true))
+    if (!strcmp(cmdtext, "/stopedit", true))
     {
         CancelEdit(playerid);
         SendClientMessage(playerid, 0xFFFFFFFF, "SERVER: You stopped editing the object!");

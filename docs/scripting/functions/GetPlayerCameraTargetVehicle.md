@@ -5,11 +5,9 @@ description: Get the ID of the vehicle the player is looking at.
 tags: ["player", "vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -41,10 +39,10 @@ public OnPlayerConnect(playerid)
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/check", true))
+    if (!strcmp(cmdtext, "/check", true))
     {
         new vehicleid = GetPlayerCameraTargetVehicle(playerid);
-        if(vehicleid == globalVehicleID)
+        if (vehicleid == globalVehicleID)
         {
              SendClientMessage(playerid, -1, "You're looking at your vehicle!");
         }

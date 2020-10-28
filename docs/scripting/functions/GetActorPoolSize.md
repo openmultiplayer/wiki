@@ -5,11 +5,9 @@ description: Gets the highest actorid created on the server.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -22,7 +20,7 @@ SetAllActorsHealth(Float:health)
 {
     for(new i = 0, j = GetActorPoolSize(); i <= j; i++)
     {
-        if(IsValidActor(i))
+        if (IsValidActor(i))
         {
             SetActorHealth(i, health);
         }

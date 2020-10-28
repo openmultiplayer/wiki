@@ -5,11 +5,9 @@ description: Gets a vehicle's parameters.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c' />
 
 ## Description
 
@@ -37,7 +35,8 @@ The vehicle's parameters are stored in the referenced variables, not in the retu
 ## Examples
 
 ```c
-new engine, lights, alarm, doors, bonnet, boot, objective;
+new
+	engine, lights, alarm, doors, bonnet, boot, objective;
 GetVehicleParamsEx(vehicleid, engine, lights, alarm, doors, bonnet, boot, objective);
 //This would cause all the variable above, to become the status of its subject.
 ```

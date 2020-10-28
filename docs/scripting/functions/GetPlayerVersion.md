@@ -5,11 +5,9 @@ description: Returns the SA-MP client version, as reported by the player.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -30,7 +28,8 @@ The client version is stored in the specified array.
 ```c
 public OnPlayerConnect(playerid)
 {
-    new string[24];
+    new
+        string[24];
     GetPlayerVersion(playerid, string, sizeof(string));
     format(string, sizeof(string), "Your version of SA-MP: %s", string);
     SendClientMessage(playerid, 0xFFFFFFFF, string);

@@ -22,18 +22,16 @@ It is always called first in filterscripts.
 ```c
 public OnPlayerEnterRaceCheckpoint(playerid)
 {
-    printf("Player %d entered a race checkpoint!",playerid);
+    printf("Player %d entered a race checkpoint!", playerid);
     return 1;
 }
 ```
 
 ## Notes
 
-:::tip
+import T from '../../../src/components/templates.js'
 
-This callback can also be called by NPC.
-
-:::
+<T.TipNPCCallbacks />
 
 ## Related Functions
 

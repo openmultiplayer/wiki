@@ -5,11 +5,9 @@ description: This function plays a crime report for a player - just like in sing
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -32,7 +30,7 @@ This function plays a crime report for a player - just like in single-player whe
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/suspect"))
+    if (!strcmp(cmdtext, "/suspect"))
     {
         PlayCrimeReportForPlayer(playerid, 0, 16);
         SendClientMessage(playerid, 0xFFFFFFFF, "ID 0 committed a crime (10-16).");

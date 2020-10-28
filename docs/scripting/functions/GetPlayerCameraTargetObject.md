@@ -5,11 +5,9 @@ description: Allows you to retrieve the ID of the object the player is looking a
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -35,14 +33,14 @@ public OnGameModeInit()
 
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/check", true))
+    if (!strcmp(cmdtext, "/check", true))
     {
         new objectid = GetPlayerCameraTargetObject(playerid);
-        if(objectid == globalObjectID)
+        if (objectid == globalObjectID)
         {
              SendClientMessage(playerid, -1, "You're looking at your object.");
         }
-        else if(objectid == INVALID_OBJECT_ID) // INVALID_OBJECT_ID = 65535
+        else if (objectid == INVALID_OBJECT_ID) // INVALID_OBJECT_ID = 65535
         {
              SendClientMessage(playerid, -1, "You're not looking at any object.");
         }

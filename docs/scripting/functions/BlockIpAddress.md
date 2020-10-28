@@ -5,11 +5,9 @@ description: Blocks an IP address from further communication with the server for
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z R2-2 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z R2-2' />
 
 ## Description
 
@@ -29,7 +27,7 @@ This function does not return any specific values.
 ```c
 public OnRconLoginAttempt(ip[], password[], success)
 {
-    if(!success) // if they supplied a bad password
+    if (!success) // if they supplied a bad password
     {
         BlockIpAddress(ip, 60 * 1000); // block the connections from this ip for one minute
     }

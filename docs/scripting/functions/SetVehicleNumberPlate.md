@@ -5,11 +5,9 @@ description: Set a vehicle numberplate.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c' />
 
 ## Description
 
@@ -29,7 +27,8 @@ Set a vehicle numberplate.
 ## Examples
 
 ```c
-new vehicleid = CreateVehicle(542, 2074.73, 1089.89, 10.51, 0.0, -1, -1, -1);
+new
+	vehicleid = CreateVehicle(542, 2074.73, 1089.89, 10.51, 0.0, -1, -1, -1);
 SetVehicleNumberPlate(vehicleid, "ABCD 123");
 ```
 

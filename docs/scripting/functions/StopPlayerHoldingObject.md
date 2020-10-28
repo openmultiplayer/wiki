@@ -5,11 +5,9 @@ description: Removes attached objects.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3b and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3b' />
 
 ## Description
 
@@ -28,7 +26,10 @@ Removes attached objects.
 ```c
 public OnPlayerDeath(playerid, killerid, reason)
 {
-    if(IsPlayerHoldingObject(playerid)) StopPlayerHoldingObject(playerid);
+    if (IsPlayerHoldingObject(playerid))
+    {
+        StopPlayerHoldingObject(playerid);
+    }
     return 1;
 }
 ```

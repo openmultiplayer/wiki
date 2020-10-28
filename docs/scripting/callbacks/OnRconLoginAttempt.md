@@ -5,11 +5,9 @@ description: This callback is called when someone attempts to log in to RCON in-
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This callback was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='callback' version='SA-MP 0.3a' />
 
 ## Description
 
@@ -30,14 +28,14 @@ It is always called first in filterscripts.
 ```c
 public OnRconLoginAttempt(ip[], password[], success)
 {
-    if(!success) //If the password was incorrect
+    if (!success) //If the password was incorrect
     {
         printf("FAILED RCON LOGIN BY IP %s USING PASSWORD %s",ip, password);
         new pip[16];
         for(new i = GetPlayerPoolSize(); i != -1; --i) //Loop through all players
         {
             GetPlayerIp(i, pip, sizeof(pip));
-            if(!strcmp(ip, pip, true)) //If a player's IP is the IP that failed the login
+            if (!strcmp(ip, pip, true)) //If a player's IP is the IP that failed the login
             {
                 SendClientMessage(i, 0xFFFFFFFF, "Wrong Password. Bye!"); //Send a message
                 Kick(i); //They are now kicked.

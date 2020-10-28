@@ -5,11 +5,9 @@ description: This function can be used to unpack a string.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -39,7 +37,6 @@ strunpack(string, pstring);
 - [strpack](strpack): This function can be used to pack a string.
 - [strcmp](strcmp): Compare two strings to check if they are the same.
 - [strfind](strfind): Search for a string in another string.
-- [strtok](strtok): Get the next 'token' (word/parameter) in a string.
 - [strins](../function/strins): Insert text into a string.
 - [strlen](../function/strlen): Get the length of a string.
 - [strmid](strmid): Extract part of a string into another string.

@@ -5,11 +5,9 @@ description: Get a player's IP and port.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z' />
 
 ## Description
 
@@ -30,7 +28,7 @@ The player's IP and port is stored in the specified array.
 ```c
 public OnPlayerCommandText(playerid,cmdtext[])
 {
-    if(!strcmp(cmdtext, "/ipandport"))
+    if (!strcmp(cmdtext, "/ipandport"))
     {
         new dest[22];
         NetStats_GetIpPort(playerid, dest, sizeof(dest));

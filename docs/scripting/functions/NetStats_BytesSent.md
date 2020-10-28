@@ -5,11 +5,9 @@ description: Gets the amount of data (in bytes) that the server has sent to the 
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3z and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3z' />
 
 ## Description
 
@@ -28,7 +26,7 @@ Gets the amount of data (in bytes) that the server has sent to the player.
 ```c
 public OnPlayerCommandText(playerid,cmdtext[])
 {
-    if(!strcmp(cmdtext, "/bytes_sent"))
+    if (!strcmp(cmdtext, "/bytes_sent"))
     {
         new szString[144];
         format(szString, sizeof(szString), "You have sent %i bytes of information to the server.", NetStats_BytesSent(playerid));

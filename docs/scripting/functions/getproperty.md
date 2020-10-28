@@ -5,11 +5,9 @@ description: Get a specific property from the memory, the string is returned as 
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -38,8 +36,16 @@ strunpack(value, value, sizeof(value));
 print(value);
 ```
 
+## Notes
+
+:::tip
+
+It is recommended to use the PVars/SVars or GVar plugin instead of these natives for being very slow.
+
+:::
+
 ## Related Functions
 
-- [Setproperty](Setproperty.md): Set a property.
-- [Deleteproperty](Deleteproperty.md): Delete a property.
-- [Existproperty](Existproperty.md): Check if a property exists.
+- [setproperty](setproperty): Set a property.
+- [deleteproperty](deleteproperty): Delete a property.
+- [existproperty](existproperty): Check if a property exists.

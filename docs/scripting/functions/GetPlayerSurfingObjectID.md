@@ -5,11 +5,9 @@ description: Returns the ID of the object the player is surfing on.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c R3 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c R3' />
 
 ## Description
 
@@ -29,7 +27,7 @@ The ID of the moving object the player is surfing. If the player isn't surfing a
 /* when the player types 'objectsurfing' in to the chat box, they'll see this.*/
 public OnPlayerText(playerid, text[])
 {
-    if(strcmp(text, "objectsurfing", true) == 0)
+    if (strcmp(text, "objectsurfing", true) == 0)
     {
         new
             szMessage[30];

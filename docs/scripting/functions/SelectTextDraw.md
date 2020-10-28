@@ -5,11 +5,9 @@ description: Display the cursor and allow the player to select a textdraw.
 tags: ["textdraw"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -29,7 +27,7 @@ This function does not return any specific values.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/tdselect", true))
+    if (!strcmp(cmdtext, "/tdselect", true))
     {
         SelectTextDraw(playerid, 0x00FF00FF); // Highlight green when hovering over
         SendClientMessage(playerid, 0xFFFFFFFF, "SERVER: Please select a textdraw!");

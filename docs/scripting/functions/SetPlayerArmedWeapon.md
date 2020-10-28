@@ -5,11 +5,9 @@ description: Sets which weapon (that a player already has) the player is holding
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -34,12 +32,16 @@ public OnPlayerUpdate(playerid)
     SetPlayerArmedWeapon(playerid,0); // disables weapons
     return 1;
 }
+
 // SMG driveby by [03]Garsino (for SA:MP 0.3c)
 public OnPlayerStateChange(playerid, newstate, oldstate)
 {
-    if(newstate == PLAYER_STATE_DRIVER || newstate == PLAYER_STATE_PASSENGER)
+    if (newstate == PLAYER_STATE_DRIVER || newstate == PLAYER_STATE_PASSENGER)
     {
-        new weapon, ammo;
+        new
+            weapon,
+            ammo;
+
         GetPlayerWeaponData(playerid, 4, weapon, ammo); // Get the players SMG weapon in slot 4
         SetPlayerArmedWeapon(playerid, weapon); // Set the player to driveby with SMG
     }

@@ -22,7 +22,7 @@ It is always called first in filterscripts so returning 0 there also blocks othe
 ```c
 public OnPlayerRequestSpawn(playerid)
 {
-    if(!IsPlayerAdmin(playerid))
+    if (!IsPlayerAdmin(playerid))
     {
         SendClientMessage(playerid, -1, "You may not spawn.");
         return 0;
@@ -33,11 +33,9 @@ public OnPlayerRequestSpawn(playerid)
 
 ## Notes
 
-:::tip
+import T from '../../../src/components/templates.js'
 
-This callback can also be called by NPC.
-
-:::
+<T.TipNPCCallbacks />
 
 :::tip
 

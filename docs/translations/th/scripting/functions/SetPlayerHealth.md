@@ -26,12 +26,12 @@ Set the health of a player.
 //Sets the players health to full
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp("/heal", cmdtext, true))
+    if (!strcmp("/heal", cmdtext, true))
     {
         SetPlayerHealth(playerid, 100.0);
         return 1;
     }
-    if(!strcmp("/kill", cmdtext, true))
+    if (!strcmp("/kill", cmdtext, true))
     {
         SetPlayerHealth(playerid, 0.0);
         return 1;
@@ -44,8 +44,7 @@ public OnPlayerCommandText(playerid, cmdtext[])
 
 :::tip
 
-If a player's health is set to 0 or a minus value, they will die instantly.
-If a player's health is below 10 or above 98303, their health bar will flash.
+If a player's health is set to 0 or a minus value, they will die instantly. If a player's health is below 10 or above 98303, their health bar will flash.
 
 :::
 

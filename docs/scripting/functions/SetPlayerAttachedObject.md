@@ -5,11 +5,9 @@ description: Attach an object to a specific bone on a player.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c' />
 
 ## Description
 
@@ -49,9 +47,6 @@ public OnPlayerSpawn(playerid)
     // Attach a white hat to the head of the player and paint it green
     return 1;
 }
-#define SetPlayerHoldingObject(%1,%2,%3,%4,%5,%6,%7,%8,%9) SetPlayerAttachedObject(%1,MAX_PLAYER_ATTACHED_OBJECTS-1,%2,%3,%4,%5,%6,%7,%8,%9)
-#define StopPlayerHoldingObject(%1) RemovePlayerAttachedObject(%1,MAX_PLAYER_ATTACHED_OBJECTS-1)
-#define IsPlayerHoldingObject(%1) IsPlayerAttachedObjectSlotUsed(%1,MAX_PLAYER_ATTACHED_OBJECTS-1)
 ```
 
 ## Notes

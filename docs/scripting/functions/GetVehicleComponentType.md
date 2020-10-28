@@ -5,11 +5,9 @@ description: Find out what type of component a certain ID is.
 tags: ["vehicle"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -28,11 +26,13 @@ The component slot ID of the specified component or -1 if the component is inval
 ```c
 public OnVehicleMod(playerid, vehicleid, componentid)
 {
-    new componentType = GetVehicleComponentType(componentid);
+    new
+        componentType = GetVehicleComponentType(componentid);
 
-    if(componentType != -1)
+    if (componentType != -1)
     {
-        new clientMessage[41];
+        new
+            clientMessage[41];
 
         format(clientMessage, sizeof(clientMessage), "You have modified your vehicle on slot %i", componentType);
         SendClientMessage(playerid, 0xFFFFFFFF, clientMessage);

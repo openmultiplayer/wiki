@@ -5,11 +5,9 @@ description: Checks if the given objectid is moving.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3d and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3d' />
 
 ## Description
 
@@ -26,7 +24,10 @@ Checks if the given objectid is moving.
 ## Examples
 
 ```c
-if(IsObjectMoving(objectid)) StopObject(objectid);
+if (IsObjectMoving(objectid))
+{
+	StopObject(objectid);
+}
 ```
 
 ## Related Functions

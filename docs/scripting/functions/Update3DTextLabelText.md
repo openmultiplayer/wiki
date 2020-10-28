@@ -5,11 +5,9 @@ description: Updates a 3D Text Label text and color.
 tags: ["3dtextlabel"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -30,8 +28,8 @@ This function does not return any specific values.
 ```c
 public OnGameModeInit()
 {
-    new Text3D:mylabel;
-    mylabel = Create3DTextLabel("I'm at the coordinates:\n30.0,40.0,50.0",0x008080FF,30.0,40.0,50.0,40.0,0);
+    new Text3D: mylabel;
+    mylabel = Create3DTextLabel("I'm at the coordinates:\n30.0,40.0,50.0", 0x008080FF, 30.0, 40.0, 50.0, 40.0, 0);
     Update3DTextLabelText(mylabel, 0xFFFFFFFF, "New text.");
     return 1;
 }

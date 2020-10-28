@@ -5,11 +5,9 @@ description: Set the position of an actor.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.7 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.7' />
 
 ## Description
 
@@ -31,16 +29,16 @@ Set the position of an actor.
 ## Examples
 
 ```c
-new MyActor;
+new gMyActor;
 
 public OnGameModeInit()
 {
-    MyActor = CreateActor(...);
+    gMyActor = CreateActor(...);
     return 1;
 }
 
 // Somewhere else
-SetActorPos(MyActor, 1.0, 2.0, 3.0);
+SetActorPos(gMyActor, 1.0, 2.0, 3.0);
 ```
 
 ## Notes

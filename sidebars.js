@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const ISO6391 = require("iso-639-1");
 
 const SIDE_BAR_NAME = "Sidebar";
 const CATEGORY_NAME_CAPITALIZATION = true;
@@ -19,7 +20,22 @@ function parseDir(filename) {
     // it's a directory inside `docs` folder
     else {
       info.type = "category";
-      const catName = path.basename(filename);
+      let catName = path.basename(filename);
+
+      if (catName[0] == "_") {
+        catName = catName.substring(1);
+      }
+      catName = catName.replace("_", " ");
+
+      if (catName.length == 2) {
+        catName = ISO6391.getNativeName(catName);
+      } else if (catName.length == 5) {
+        // Taiwan uses Traditional Chinese as its script, we're using ISO codes
+        // for countries not languages, so this slight modification is for that.
+        if (catName == "zh-tw") {
+          catName = "正體中文/繁體中文";
+        }
+      }
 
       if (CATEGORY_NAME_CAPITALIZATION) {
         info.label = catName.charAt(0).toUpperCase() + catName.substring(1);
@@ -69,7 +85,9 @@ function parseDir(filename) {
     tmpPath.splice(0, 1);
     let docPath = "";
     tmpPath.map((name) => (docPath = docPath + name + "/"));
-    return docPath + path.basename(filename).replace(".md", "");
+    return (
+      docPath + path.basename(filename).replace(".mdx", "").replace(".md", "")
+    );
   }
   return info;
 }

@@ -5,11 +5,9 @@ description: This callback is called when a player enters or exits a mod shop.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This callback was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn name='callback' version='SA-MP 0.3a' />
 
 ## Description
 
@@ -30,7 +28,7 @@ It is always called first in filterscripts.
 ```c
 public OnEnterExitModShop(playerid, enterexit, interiorid)
 {
-    if(enterexit == 0) // If enterexit is 0, this means they are exiting
+    if (enterexit == 0) // If enterexit is 0, this means they are exiting
     {
         SendClientMessage(playerid, COLOR_WHITE, "Nice car! You have been taxed $100.");
         GivePlayerMoney(playerid, -100);

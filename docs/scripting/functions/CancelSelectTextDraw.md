@@ -5,11 +5,9 @@ description: Cancel textdraw selection with the mouse.
 tags: ["textdraw"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3e and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3e' />
 
 ## Description
 
@@ -28,7 +26,7 @@ This function does not return any specific values.
 ```c
 public OnPlayerCommandText(playerid, cmdtext[])
 {
-    if(!strcmp(cmdtext, "/cancelselect", true))
+    if (!strcmp(cmdtext, "/cancelselect", true))
     {
         CancelSelectTextDraw(playerid);
         SendClientMessage(playerid, 0xFFFFFFFF, "SERVER: TextDraw selection disabled!");

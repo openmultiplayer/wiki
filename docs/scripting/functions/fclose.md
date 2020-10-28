@@ -5,11 +5,9 @@ description: Closes a file.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -32,7 +30,7 @@ Closes a file. Files should always be closed when the script no longer needs the
 new File:handle = fopen("file.txt", io_append);
 
 // Check, if file is open
-if(handle)
+if (handle)
 {
     // Success
 

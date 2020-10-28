@@ -22,18 +22,16 @@ It is always called first in filterscripts.
 ```c
 public OnPlayerLeaveCheckpoint(playerid)
 {
-    printf("Player %i left a checkpoint!",playerid);
+    printf("Player %i left a checkpoint!", playerid);
     return 1;
 }
 ```
 
 ## Notes
 
-:::tip
+import T from '../../../src/components/templates.js'
 
-This callback can also be called by NPC.
-
-:::
+<T.TipNPCCallbacks />
 
 ## Related Functions
 

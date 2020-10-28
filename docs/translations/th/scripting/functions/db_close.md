@@ -33,7 +33,7 @@ new DB:db_handle;
 public OnGameModeInit()
 {
     // Create a connection to the database
-    if((db_handle = db_open("example.db")) == DB:0)
+    if ((db_handle = db_open("example.db")) == DB:0)
     {
         // Error
         print("Failed to open a connection to \"example.db\".");
@@ -61,8 +61,7 @@ public OnGameModeExit()
 
 :::warning
 
-Using an invalid handle will crash your server! Get a valid handle by using db_open. But it's protected against NULL
-references.
+Using an invalid handle will crash your server! Get a valid handle by using db_open. But it's protected against NULL references.
 
 :::
 

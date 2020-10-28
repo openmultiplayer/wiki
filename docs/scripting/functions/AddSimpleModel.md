@@ -5,11 +5,9 @@ description: Adds a new custom simple object model for download.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3.DL R1 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3.DL R1' />
 
 ## Description
 
@@ -47,7 +45,7 @@ AddSimpleModel(-1, 19379, -2000, "wallzzz.dff", "wallzzz.txd");
 
 :::tip
 
-useartwork must be enabled first in server settings in order for this to work When virtualworld is set, the models will be downloaded once the player enters the specific world
+`useartwork` must be enabled first in server settings in order for this to work When virtualworld is set, the models will be downloaded once the player enters the specific world
 
 :::
 

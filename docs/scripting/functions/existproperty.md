@@ -5,11 +5,9 @@ description: Check if a property exist.
 tags: []
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function starts with lowercase letter.
-
-:::
+<T.LowercaseNote />
 
 ## Description
 
@@ -34,8 +32,16 @@ if ( existproperty(0, "", 123984334) )
 }
 ```
 
+## Notes
+
+:::tip
+
+It is recommended to use the PVars/SVars or GVar plugin instead of these natives for being very slow.
+
+:::
+
 ## Related Functions
 
-- [SetProperty](SetProperty): Set a property.
-- [GetProperty](GetProperty): Get the value of a property.
-- [DeleteProperty](DeleteProperty): Delete a property.
+- [setproperty](setproperty): Set a property.
+- [getproperty](getproperty): Get the value of a property.
+- [deleteproperty](deleteproperty): Delete a property.

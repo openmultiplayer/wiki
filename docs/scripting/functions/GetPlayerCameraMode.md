@@ -5,15 +5,13 @@ description: Returns the current GTA camera mode for the requested player.
 tags: ["player"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3c R3 and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3c R3' />
 
 ## Description
 
-Returns the current GTA camera mode for the requested player. The camera modes are useful in determining whether a player is aiming, doing a passenger driveby etc.
+Returns the current GTA [camera mode](../resources/cameramodes) for the requested player. The camera modes are useful in determining whether a player is aiming, doing a passenger driveby etc.
 
 | Name     | Description                                        |
 | -------- | -------------------------------------------------- |
@@ -29,7 +27,7 @@ The camera mode as an integer (or -1 if player is not connected)
 /* when the player types 'cameramode' in to the chat box, they'll see this. */
 public OnPlayerText(playerid, text[])
 {
-    if(strcmp(text, "cameramode", true) == 0)
+    if (strcmp(text, "cameramode", true) == 0)
     {
         new szMessage[22];
         format(szMessage, sizeof(szMessage), "Your camera mode: %d", GetPlayerCameraMode(playerid));

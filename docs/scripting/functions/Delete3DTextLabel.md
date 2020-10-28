@@ -5,11 +5,9 @@ description: Delete a 3D text label (created with Create3DTextLabel).
 tags: ["3dtextlabel"]
 ---
 
-:::warning
+import T from '../../../src/components/templates.js'
 
-This function was added in SA-MP 0.3a and will not work in earlier versions!
-
-:::
+<T.VersionWarn version='SA-MP 0.3a' />
 
 ## Description
 
@@ -26,11 +24,11 @@ Delete a 3D text label (created with Create3DTextLabel).
 ## Examples
 
 ```c
-new Text3D:MyLabel;
+new Text3D:gMyLabel;
 
-MyLabel = Create3DTextLabel(...);
+gMyLabel = Create3DTextLabel(...);
 
-Delete3DTextLabel(MyLabel);
+Delete3DTextLabel(gMyLabel);
 ```
 
 ## Related Functions
