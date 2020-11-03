@@ -1,5 +1,5 @@
 ---
-title: Dialog Styles
+title: سبک های دیالوگ
 ---
 
 <div dir="rtl" style={{ textAlign: "right" }}>
