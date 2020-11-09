@@ -1,45 +1,44 @@
 ---
 id: OnPlayerEditAttachedObject
 title: OnPlayerEditAttachedObject
-description: Callback ini dipanggil saat pemain mengakhiri mode edisi objek yang dilampirkan.
+description: Callback ini dipanggil saat pemain mengakhiri mode penyuntingan objek yang dilampirkan.
 tags: ["player"]
 ---
 
 :::warning
 
-Callback ini di tambahkan pada SA-MP 0.3e dan tidak akan berguna pada versi sebelumnya!
+Callback ini telah ditambahkan dalam SA-MP 0.3e dan tidak bekerja pada versi dibawahnya atau sebelumnya!
 
 :::
 
-## Description
+## Deskripsi
 
-Callback ini terpanggil ketika pemain selesai melakukan edit penautan object.
+Callback ini dipanggil saat pemain mengakhiri mode penyuntingan objek yang dilampirkan.
 
 | Name           | Description                                                         |
 | -------------- | --------------------------------------------------------------------|
-| playerid       | ID dari pemain dimana ia menyelesaikan edit                         |
+| playerid       | ID dari pemain yang melakukan pengeditan objek                      |
 | response       | 0 jika mereka membatalkan (ESC) or 1 jika mereka menekan save icon. |
 | modelid        | Model dari penautan object yang di edit                             |
 | boneid         | Tulang dari penautan object yang di edit                            |
-| Float:fOffsetX | Offset X untuk penautan object yang di edit                         |
-| Float:fOffsetY | Offset Y untuk penautan object yang di edit                         |
-| Float:fOffsetZ | Offset Z untuk penautan object yang di edit                         |
-| Float:fRotX    | Rotasi X untuk penautan object yang di edit                         |
-| Float:fRotY    | Rotasi Y untuk penautan object yang di edit                         |
-| Float:fRotZ    | Rotasi Z untuk penautan object yang di edit                         |
-| Float:fScaleX  | Skala X untuk penautan object yang di edit                          |
-| Float:fScaleY  | Skala Y untuk penautan object yang di edit                          |
-| Float:fScaleZ  | Skala Z penautan object yang di edit                                |
+| Float:fOffsetX | Offset X untuk obyek yang di sunting                                |
+| Float:fOffsetY | Offset Y untuk obyek yang di sunting                                |
+| Float:fOffsetZ | Offset Z obyek yang di sunting                                      |
+| Float:fRotX    | Rotasi X untuk untuk obyek yang di sunting                          |
+| Float:fRotY    | Rotasi Y untuk obyek yang di sunting                                |
+| Float:fRotZ    | Rotasi Z untuk obyek yang di sunting                                |
+| Float:fScaleX  | Skala X untuk obyek yang di sunting                                 |
+| Float:fScaleY  | Skala Y untuk obyek yang di sunting                                 |
+| Float:fScaleZ  | Skala Z untuk obyek yang di sunting                                 |
 
 ## Returns
 
-1 - Akan mencegah skrip lain menerima panggilan balik ini.
+1 - Akan melarang filterscript lain untuk menerima callback ini.
 
-0 - Menunjukkan bahwa panggilan balik ini akan diteruskan ke skrip berikutnya.
+0 - Mengindikasikan bahwa callback ini akan diteruskan ke filtercript lain.
 
-Ini akan selalu terpanggil pertama di filterscripts.
-
-## Examples
+Selalu terpanggil pertama di filterscripts.
+## Contoh
 
 ```c
 enum attached_object_data
@@ -57,7 +56,7 @@ enum attached_object_data
 
 new ao[MAX_PLAYERS][MAX_PLAYER_ATTACHED_OBJECTS][attached_object_data];
 
-// Data harus disimpan dalam array di atas saat penautan objects terpasang.
+// Data harus disimpan kedalam array disaat penautan obyek.
 
 public OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ)
 {
@@ -86,7 +85,7 @@ public OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Fl
 }
 ```
 
-## Notes
+## Catatan
 
 :::warning
 
@@ -94,7 +93,7 @@ Pengeditan harus dibuang jika tanggapan adalah '0' (dibatalkan). Ini harus dilak
 
 :::
 
-## Related Functions
+## Fungsi Terkait
 
 - [EditAttachedObject](../functions/EditAttachedObject.md): Edit penautan object.
 - [SetPlayerAttachedObject](../functions/SetPlayerAttachedObject.md): penautan object kepada pemain
