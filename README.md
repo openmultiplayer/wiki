@@ -1,6 +1,6 @@
 <p align="center">
   <a aria-label="Pico logo" href="https://open.mp">
-    <img src="https://www.open.mp/static/wordmark-light-mono.png" width="420" />
+    <img src="https://assets.open.mp/assets/images/assets/wordmark-light-mono.png" width="420" />
   </a>
 </p>
 
@@ -30,32 +30,6 @@
 
 <hr>
 
-## Development
+# Deprecated
 
-### Requirements:
-
-- Git
-- Node.js
-- npm
-
-### Setup
-
-```bash
-# clone the project
-git clone https://github.com/openmultiplayer/wiki.git
-
-# Move into the directory
-cd wiki
-
-# Install the dependencies
-npm install
-
-# Start the server
-npm start
-```
-
-By default the development server will run on `http://localhost:3000` but can be changed with the following command:
-
-```bash
-npm start -- --host=0.0.0.0 --port=1234
-```
+This project has been superseded by [openmultiplayer/web](https://github.com/openmultiplayer/web), please direct all contributions to documentation and other content there.
