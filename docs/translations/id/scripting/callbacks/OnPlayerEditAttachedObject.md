@@ -35,7 +35,7 @@ Callback ini dipanggil saat pemain mengakhiri mode penyuntingan objek yang dilam
 
 1 - Akan melarang filterscript lain untuk menerima callback ini.
 
-0 - Mengindikasikan bahwa callback ini akan diteruskan ke filtercript lain.
+0 - Mengindikasikan bahwa callback ini akan diteruskan ke filterscript lain.
 
 Selalu terpanggil pertama di filterscripts.
 ## Contoh
