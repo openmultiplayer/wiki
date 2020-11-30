@@ -37,7 +37,7 @@ Callback ini dipanggil saat pemain mengakhiri mode penyuntingan objek yang dilam
 
 0 - Mengindikasikan bahwa callback ini akan diteruskan ke filterscript lain.
 
-Selalu terpanggil pertama di filterscripts.
+Selalu terpanggil pertama di filterscript.
 ## Contoh
 
 ```c
