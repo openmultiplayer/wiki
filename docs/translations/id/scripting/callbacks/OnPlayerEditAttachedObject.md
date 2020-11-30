@@ -89,7 +89,7 @@ public OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Fl
 
 :::warning
 
-Pengeditan harus dibuang jika tanggapan adalah '0' (dibatalkan). Ini harus dilakukan dengan menyimpan offset dll dalam array SEBELUM menggunakan EditAttachedObject.
+Penyuntingan harus dibuang jika tanggapannya adalah '0' (dibatalkan). Ini harus dilakukan dengan menyimpan offset, dll. ke dalam array SEBELUM menggunakan EditAttachedObject.
 
 :::
 
