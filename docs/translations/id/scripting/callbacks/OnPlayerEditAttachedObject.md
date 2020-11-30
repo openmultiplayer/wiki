@@ -56,7 +56,7 @@ enum attached_object_data
 
 new ao[MAX_PLAYERS][MAX_PLAYER_ATTACHED_OBJECTS][attached_object_data];
 
-// Data harus disimpan kedalam array disaat penautan obyek.
+// Data harus disimpan kedalam array disaat penautan objek.
 
 public OnPlayerEditAttachedObject(playerid, response, index, modelid, boneid, Float:fOffsetX, Float:fOffsetY, Float:fOffsetZ, Float:fRotX, Float:fRotY, Float:fRotZ, Float:fScaleX, Float:fScaleY, Float:fScaleZ)
 {
