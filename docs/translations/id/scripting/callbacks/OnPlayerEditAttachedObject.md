@@ -96,4 +96,4 @@ Pengeditan harus dibuang jika tanggapan adalah '0' (dibatalkan). Ini harus dilak
 ## Fungsi Terkait
 
 - [EditAttachedObject](../functions/EditAttachedObject.md): Edit penautan objek.
-- [SetPlayerAttachedObject](../functions/SetPlayerAttachedObject.md): penautan object kepada pemain
+- [SetPlayerAttachedObject](../functions/SetPlayerAttachedObject.md): penautan objek kepada pemain
