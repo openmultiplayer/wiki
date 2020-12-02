@@ -26,7 +26,7 @@ ShowNameTags must be set to 1 to be able to show name tags with ShowPlayerNameTa
 //The player who typed /nameoff will not be able to see any other players nametag.
 if (strcmp("/nameoff", cmdtext, true) == 0)
 {
-    for (new i = 0; i != MAX_PLAYERS; -- i)
+    for (new i = 0, j = GetPlayerPoolSize(); i <= j; i++)
     {
         ShowPlayerNameTagForPlayer(playerid, i, false);
     }
